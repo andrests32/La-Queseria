@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+  }
+  
+
+@theme {
+    --color-primary: #264653;
+    --color-moss: #3A5A40;
+    --color-sand: #f4dfa4;
+    --color-chedar: #FF8F0E;
+    --color-rock: #1e1e1e;
+    --color-chedarlow: #f5b239;
+    --color-verde: #266302;
+
+    --font-play: 'Playfair', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-avenir: 'Avenir', sans-serif;
+
+    --text-outline: 'text-outline';
+    --text-outline-white: 'text-outline-white';
+}
+
+/* Cinzel Variants */
+@font-face {
+    font-family: 'Playfair';
+    src: url('/fonts/ArcherBoldPro.otf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Poppins Variants */
+@font-face {
+    font-family: 'Inter';
+    src: url('/public/fonts/ArcherBook.otf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('/public/fonts/AvenirLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@layer utilities {
+    .text-shadow-sm {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .text-shadow-md {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .text-shadow-lg {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .text-shadow-xl {
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .text-outline {
+        -webkit-text-stroke: 1px black;
+        /* Borde de 1px color negro */
+    }
+
+    .text-outline-white {
+        -webkit-text-stroke: 1px white;
+    }
+
+    .text-outline-lg {
+        -webkit-text-stroke: 2px black;
+    }
+}
