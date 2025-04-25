@@ -215,7 +215,7 @@ const ShoppingList = () => {
               <PDFDownloadLink
                 document={<MyDocument selectedProducts={selectedProducts} qrValue={qrValue} />}
                 fileName="lista_compras.pdf"
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center gap-2"
+                className="px-4 py-2 bg-chedar hover:bg-chedarlow text-white rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
               >
                 {({ loading }) => (
                   <>

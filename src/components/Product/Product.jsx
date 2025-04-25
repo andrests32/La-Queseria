@@ -1,12 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  Crown,
-  Percent,
-  Gift,
-  Timer,
-  Trophy,
-  ShoppingBag,
-} from "lucide-react";
+import { Crown, Star, ShoppingBag } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import ProductCard from "../ProductCard/ProductCard";
@@ -55,9 +48,9 @@ const products = [
 
 const ProductsSection = () => {
   return (
-    <section className="bg-white">
+    <section className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Header informativo */}
+        {/* Título elegante */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
@@ -65,41 +58,47 @@ const ProductsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-lg text-rock/80 font-avenir">
-            <span className="flex items-center gap-2 bg-gray-50/40 border border-b-2 border-gray-200 px-5 py-2 rounded-full">
-              <Crown className="w-5 h-5 lg:w-7 lg:h-7 text-rock/70" />
-              Selección Premium
-            </span>
-            <span className="hidden md:block text-gray-400">•</span>
-            <span className="flex items-center gap-2 bg-gray-50/40 border border-b-2 border-gray-200 px-3 py-2 rounded-full">
-              <IoShieldCheckmarkOutline className="w-5 h-5 lg:w-7 lg:h-7 text-rock/70" />
-              Entrega rápida & Segura
-            </span>
-            <span className="hidden md:block text-gray-400">•</span>
-            <span className="flex items-center gap-2 bg-gray-50/40 border border-b-2 border-gray-200 px-3 py-2 rounded-full">
-              <FaWhatsapp className="w-5 h-5 lg:w-7 lg:h-7 text-rock/70" />
-              Compra por WhatsApp
-            </span>
-          </div>
+          <h2 className="text-4xl lg:text-5xl text-rock font-avenir leading-tight">
+            <span className="bg-gradient-to-r from-chedar to-chedarlow bg-clip-text text-transparent font-play">Productos Destacados</span> de la Semana
+          </h2>
+          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto font-avenir">
+            Disfruta de nuestra selección exclusiva de quesos, perfectos para cualquier ocasión. ¡Solo esta semana!
+          </p>
         </motion.div>
 
         {/* Cards de productos */}
-        <div className="overflow-x-auto md:overflow-visible lg:pb-20">
-          <div className="flex md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 snap-x md:snap-none">
-            {products.map((product, index) => (
-              <motion.div
-                key={index}
-                className="snap-start shrink-0 w-72 md:w-auto"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <ProductCard {...product} />
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              className="w-full"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <ProductCard {...product} />
+            </motion.div>
+          ))}
         </div>
+
+        {/* Llamado a la acción */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className="text-xl font-semibold font-avenir tracking-wide text-rock mb-4">
+            ¿Listo para disfrutar de lo mejor? ¡Haz tu pedido ahora!
+          </p>
+          {/* <a
+            href="https://wa.me/1XXXXXXXXXX"
+            className="bg-yellow-500 text-white font-bold py-3 px-6 rounded-full hover:bg-yellow-600 transition duration-300"
+          >
+            Comprar por WhatsApp
+          </a> */}
+        </motion.div>
       </div>
     </section>
   );

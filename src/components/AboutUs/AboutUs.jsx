@@ -9,7 +9,7 @@ const AboutSection = () => {
   return (
     <section 
     id='about'
-    className="relative py-20 px-6 bg-gradient-to-b from-chedarlow/10 to-white overflow-hidden">
+    className="relative py-20 px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Elegant Title */}
         <motion.div 
@@ -19,9 +19,9 @@ const AboutSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl md:text-6xl font-play font-light text-rock mb-4 tracking-wide">¿Quiénes somos?</h2>
-          <div className="w-20 h-1 bg-chedar mx-auto mb-6"></div>
-          <p className="text-lg md:text-xl text-verde max-w-3xl mx-auto font-avenir leading-relaxed">
+          <h2 className="text-5xl md:text-7xl bg-gradient-to-r from-chedar to-chedarlow bg-clip-text text-transparent font-play mb-4 tracking-wide">¿Quiénes somos?</h2>
+          <div className="w-20 h-1 bg-verde mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-avenir leading-relaxed">
             Herederos de una tradición quesera que fusiona técnicas artesanales con la más alta calidad para traer a su mesa lo mejor de nuestra tierra.
           </p>
         </motion.div>

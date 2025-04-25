@@ -8,7 +8,7 @@ const ProductCard = ({ name, price, image, description, badge, category }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-b from-chedarlow/20 to-white rounded-2xl lg:shadow-md overflow-hidden"
+      className="bg-gradient-to-b from-chedarlow/20 to-white hover:from-chedarlow/60 hover:to-white hover:scale-105 transition duration-300 rounded-2xl lg:shadow-md overflow-hidden cursor-pointer"
     >
       <div className="relative">
         <img src={image} alt={name} className="w-full h-48 object-cover" />
@@ -33,7 +33,7 @@ const ProductCard = ({ name, price, image, description, badge, category }) => {
             <TbCurrencyDollar className="text-verde w-7 h-7" />
             {price}
           </span>
-          <button className="bg-gradient-to-r from-chedar to-chedarlow hover:from-verde hover:to-verde/70 cursor-pointer font-avenir text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center gap-2">
+          <button className="bg-gradient-to-r from-chedar to-chedarlow hover:from-verde hover:to-verde/70 hover:font-semibold cursor-pointer font-avenir text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center gap-2">
             <ShoppingBasket className="w-5 h-5" />
             Comprar
           </button>

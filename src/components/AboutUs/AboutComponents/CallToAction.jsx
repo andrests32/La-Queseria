@@ -1,62 +1,97 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, ArrowRight } from 'lucide-react';
+import { Building2, Store, Phone, ArrowRight, Compass } from 'lucide-react';
+
+const locations = [
+  {
+    icon: <Building2 size={26} className="text-chedar" />,
+    title: 'Matriz',
+    desc: 'Av. Principal 123, Centro\nLunes a Sábado: 9:00 - 18:00'
+  },
+  {
+    icon: <Store size={26} className="text-chedar" />,
+    title: 'Sucursal',
+    desc: 'Av. Norte 456, Sector Comercio\nLunes a Sábado: 9:00 - 18:00'
+  },
+  {
+    icon: <Phone size={26} className="text-chedar" />,
+    title: 'Contáctanos',
+    desc: '+593 98 765 4321\ninfo@quesosartesanales.com'
+  }
+];
 
 const CallToAction = () => {
   return (
-    <motion.div
-      className="bg-chedar rounded-2xl p-10 text-white text-center relative overflow-hidden"
+    <motion.section
+      className="relative bg-white/80 backdrop-blur-sm p-12 md:p-20 rounded-2xl overflow-hidden border border-white/30 shadow-[0_8px_40px_rgba(0,0,0,0.06)]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+        hidden: { opacity: 0, y: 60 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1 } }
       }}
     >
-      {/* Movimiento sutil de fondo */}
-      <div className="absolute -top-20 -left-20 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse z-0"></div>
-      <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000 z-0"></div>
+      {/* Círculos blur decorativos */}
+      <div className="absolute top-0 left-10 w-52 h-52 bg-chedar/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-10 w-44 h-44 bg-chedar/20 rounded-full blur-2xl"></div>
 
-      <div className="relative z-10">
-        <h3 className="text-3xl md:text-4xl font-play mb-4">
-          Descubre el Auténtico Sabor de la Tradición
-        </h3>
-        <p className="mb-8 font-avenir max-w-3xl mx-auto text-white/90 text-lg">
-          Visítanos en nuestra tienda principal o contáctanos para conocer más sobre nuestros productos y servicios personalizados.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10">
-          <div className="inline-flex flex-col items-center justify-center bg-sand/20 backdrop-blur-sm p-6 rounded-xl">
-            <MapPin className="mx-auto mb-3 text-white" size={28} />
-            <h4 className="text-xl font-play mb-2">Visítanos</h4>
-            <p className="text-white/90 font-avenir">Av. Principal 123, Sector Centro<br />Lunes a Sábado: 9:00 - 18:00</p>
-          </div>
-
-          <div className="inline-flex flex-col items-center justify-center bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-            <Phone className="mx-auto mb-3 text-white" size={28} />
-            <h4 className="text-xl font-play mb-2">Contáctanos</h4>
-            <p className="text-white/90 font-avenir">+593 98 765 4321<br />info@quesosartesanales.com</p>
-          </div>
+      {/* Título con brújula */}
+      <div className="text-center mb-16 relative z-10">
+        <div className="inline-flex items-center justify-center gap-2 text-chedar mb-2">
+          <Compass className="animate-spin-slow" size={20} />
+          <span className="uppercase tracking-widest font-avenir font-semibold text-sm">Ubícanos</span>
         </div>
+        <h2 className="text-4xl md:text-5xl text-rock font-play">
+        Encuéntranos & Conéctate con Nosotros
+        </h2>
+        <p className="text-lg text-gray-600 mt-4 max-w-xl mx-auto font-avenir">
+          Cada espacio está diseñado para ofrecerte una experiencia auténtica y cercana.
+        </p>
+      </div>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-          href='/checkproducts'
-           className="bg-white text-rock px-8 py-3 rounded-full font-avenir font-bold hover:text-chedar transition-colors duration-300 shadow-md flex items-center justify-center tracking-wide cursor-pointer">
-            Ver Catálogo <ArrowRight size={18} className="ml-2" />
-          </a>
-          <a
-            href="https://wa.me/593xxxxxxxxx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-transparent backdrop-blur-sm text-white border border-white/30 px-8 py-3 rounded-full font-avenir font-semibold hover:bg-white hover:text-chedar transition-colors duration-300 shadow-md tracking-wide cursor-pointer"
+      {/* Tarjetas */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto z-10 relative">
+        {locations.map((loc, i) => (
+          <motion.div
+            key={i}
+            className="group relative p-8 bg-white rounded-2xl shadow-md border border-chedar/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 backdrop-blur-sm"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.2 }}
           >
-            Contactar Ahora
-          </a>
+            {/* Reflejo vidrio */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-white/60 to-white/0 rounded-t-2xl"></div>
+
+            {/* Icono */}
+            <div className="p-3 mb-3 bg-amber-100 rounded-full shadow-inner w-fit mx-auto">
+              {loc.icon}
+            </div>
+            <h4 className="text-xl font-play text-rock text-center">{loc.title}</h4>
+            <p className="text-gray-600 text-sm text-center whitespace-pre-line leading-relaxed font-avenir">
+              {loc.desc}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Firma Artesanal */}
+      <div className="mt-16 text-center relative z-10">
+        <a
+          href="https://wa.me/593xxxxxxxxx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 bg-chedar text-white px-8 py-3 rounded-full shadow-md hover:shadow-lg text-sm tracking-wider font-avenir font-semibold transition-all duration-300"
+        >
+          <ArrowRight size={18} />
+          Contáctanos por WhatsApp
+        </a>
+
+        <div className="mt-12 text-2xl text-chedar/60 italic font-play">
+          “Lo artesanal se siente desde el primer bocado.”
         </div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

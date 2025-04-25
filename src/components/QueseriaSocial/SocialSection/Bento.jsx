@@ -84,7 +84,7 @@ const data = [
 
 const BentoSocialGrid = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[180px] gap-4 p-4 max-w-8xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[90px] lg:auto-rows-[180px] gap-4 p-4 max-w-8xl mx-auto">
       {data.map((item, index) => (
         <div
           key={index}
