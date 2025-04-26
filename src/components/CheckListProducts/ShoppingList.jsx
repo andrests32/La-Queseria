@@ -152,14 +152,16 @@ const ShoppingList = () => {
 
   // Limpiar selección
   const clearSelection = () => {
-    setCategories(initialCategories);
-  };
-
-  // Obtener productos seleccionados
-  const selectedProducts = categories.map(category => ({
-    ...category,
-    items: category.items.filter(item => item.checked)
-  })).filter(category => category.items.length > 0);
+  setCategories(prevCategories => 
+    prevCategories.map(category => ({
+      ...category,
+      items: category.items.map(item => ({
+        ...item,
+        checked: false // ← Solo cambia esto, lo demás queda igual
+      }))
+    }))
+  );
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-chedarlow/20 to-white p-4 md:p-8">
