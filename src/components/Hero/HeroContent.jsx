@@ -30,7 +30,7 @@ export default function HeroContent() {
                 <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                     <a
                         href="/products"
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-chedar to-chedarlow text-white px-8 py-4 rounded-full text-lg font-avenir font-semibold tracking-wide transition-transform hover:scale-105 active:scale-95"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-chedar to-chedarlow text-white px-8 py-4 rounded-full md:text-md font-avenir font-semibold tracking-wide transition-transform hover:scale-105 active:scale-95"
                     >
                         Ver Productos
                         <motion.div
@@ -42,7 +42,7 @@ export default function HeroContent() {
 
                     <a
                         href="/checkproducts"
-                        className="relative group inline-flex items-center gap-2 text-chedar border border-chedar px-8 py-4 rounded-full text-lg font-avenir font-semibold tracking-wide overflow-hidden transition-all hover:scale-105 active:scale-95"
+                        className="relative group inline-flex items-center gap-2 text-chedar border border-chedar px-8 py-4 rounded-full md:text-md font-avenir font-semibold tracking-wide overflow-hidden transition-all hover:scale-105 active:scale-95"
                     >
                         {/* Fondo animado */}
                         <span className="absolute inset-0 bg-gradient-to-r from-chedar to-chedarlow scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 z-0"></span>

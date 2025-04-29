@@ -3,41 +3,34 @@ import { motion } from 'framer-motion';
 
 const VideoSection = () => {
   const videoRef = useRef(null);
-  const [hasPlayed, setHasPlayed] = useState(false);  // Estado para verificar si ya se reprodujo
+  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
-    // Usamos Intersection Observer para detectar cuando el video entra en el viewport
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5
-    };
-
-    const handleIntersect = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !hasPlayed) {
-          // Reproducir video solo si aún no ha sido reproducido
-          videoRef.current.play();
-          setHasPlayed(true);  // Marcar que el video ya se reprodujo
-        } else if (!entry.isIntersecting) {
-          // Pausar video cuando salga del viewport
-          videoRef.current.pause();
+    const playVideo = () => {
+      if (videoRef.current && !hasPlayed) {
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setHasPlayed(true); // Marcar que el video ya empezó
+            })
+            .catch((error) => {
+              console.error('Error al reproducir el video:', error);
+            });
         }
-      });
+      }
     };
-
-    const observer = new IntersectionObserver(handleIntersect, options);
 
     if (videoRef.current) {
-      observer.observe(videoRef.current);
+      videoRef.current.addEventListener('loadeddata', playVideo);
     }
 
     return () => {
       if (videoRef.current) {
-        observer.unobserve(videoRef.current);
+        videoRef.current.removeEventListener('loadeddata', playVideo);
       }
     };
-  }, [hasPlayed]);  // Aseguramos que el estado 'hasPlayed' se tenga en cuenta
+  }, [hasPlayed]);
 
   return (
     <motion.div
@@ -50,7 +43,6 @@ const VideoSection = () => {
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
       }}
     >
-      {/* Video de fondo */}
       <video
         ref={videoRef}
         autoPlay
@@ -58,10 +50,7 @@ const VideoSection = () => {
         playsInline
         className="w-full h-full lg:object-cover"
       >
-        <source
-          src="/videoquesos.webm"
-          type="video/webm"
-        />
+        <source src="/videoquesos.webm" type="video/webm" />
         Tu navegador no soporta el video.
       </video>
     </motion.div>

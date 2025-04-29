@@ -80,7 +80,7 @@ export default function BubbleBackground({ images, currentImageIndex, showBubble
       className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
       ref={containerRef}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-amber-50/70 to-white/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-amber-50/50 to-white" />
 
       <AnimatePresence>
         {showBubbles &&

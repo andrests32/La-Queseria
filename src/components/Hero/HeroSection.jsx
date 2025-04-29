@@ -36,7 +36,7 @@ export default function HeroSection() {
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-white"></div>
+      <div className="absolute inset-0 bg-white"></div>
       
       {/* Animated bubbles background */}
       <BubbleBackground 
