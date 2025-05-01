@@ -308,7 +308,7 @@ const ProductItem = ({ item, onChange, onQuantityChange, onUnitChange }) => {
 
 // Componente ProductCategory
 const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantityChange, onUnitChange }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const hasCheckedItems = category.items.some(item => item.checked);
 
   return (
