@@ -1,33 +1,55 @@
 ---
-import ClientRouter from 'astro/components/ClientRouter.astro';
-import '../styles/global.css';
-import LogoQueseria from '../components/LogoQueseria/LogoQueseria';
+import ClientRouter from "astro/components/ClientRouter.astro";
+import "../styles/global.css";
+import LogoQueseria from "../components/LogoQueseria/LogoQueseria";
+import NavBar from "../components/NavBar/NavBar";
+
+const currentPath = Astro.url.pathname;
+const showNavBar = currentPath === "/" || currentPath === "/about";
 ---
+
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- SEO Básico -->
-    <title>Queseria | Fábrica de Quesos y Productos Naturales en Santo Domingo </title>
-    <meta name="description" content="Empresa local en Santo Domingo, Ecuador dedicada a la producción artesanal de quesos, derivados del plátano verde, huevos frescos y más." />
+    <title>
+      Queseria | Fábrica de Quesos y Productos Naturales en Santo Domingo
+    </title>
+    <meta
+      name="description"
+      content="Empresa local en Santo Domingo, Ecuador dedicada a la producción artesanal de quesos, derivados del plátano verde, huevos frescos y más."
+    />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href='/queseriaicono.ico' />
+    <link rel="icon" type="image/svg+xml" href="/queseriaicono.ico" />
 
     <!-- Open Graph (para compartir en redes sociales) -->
-    <meta property="og:title" content="Quesos y Productos Naturales en Santo Domingo - [Nombre de tu empresa]" />
-    <meta property="og:description" content="Conoce nuestros productos frescos: quesos, plátano verde, huevos y más, elaborados en Santo Domingo, Ecuador." />
+    <meta
+      property="og:title"
+      content="Quesos y Productos Naturales en Santo Domingo - [Nombre de tu empresa]"
+    />
+    <meta
+      property="og:description"
+      content="Conoce nuestros productos frescos: quesos, plátano verde, huevos y más, elaborados en Santo Domingo, Ecuador."
+    />
     <meta property="og:image" content="/ruta-a-tu-imagen.jpg" />
     <meta property="og:url" content="https://www.tu-dominio.com/" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Fábrica de Quesos y Productos Naturales | Santo Domingo" />
-    <meta name="twitter:description" content="Quesos artesanales, plátano verde, huevos y más desde Santo Domingo, Ecuador." />
+    <meta
+      name="twitter:title"
+      content="Fábrica de Quesos y Productos Naturales | Santo Domingo"
+    />
+    <meta
+      name="twitter:description"
+      content="Quesos artesanales, plátano verde, huevos y más desde Santo Domingo, Ecuador."
+    />
     <meta name="twitter:image" content="/ruta-a-tu-imagen.jpg" />
 
     <!-- Schema.org (para buscadores) -->
@@ -50,6 +72,7 @@ import LogoQueseria from '../components/LogoQueseria/LogoQueseria';
     <ClientRouter />
   </head>
   <body>
+    {showNavBar && <NavBar client:load />}
     <slot />
   </body>
 </html>

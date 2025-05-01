@@ -5,6 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 import ProductCard from './ProductCard';
 import CategoryFilter from './CategoryFilter';
 import HomeButton from './HomeButton';
+import LogoQueseria from '../LogoQueseria/LogoQueseria';
 import { products, categories } from '../../data/products';
 
 const ProductFilterPage = () => {
@@ -69,7 +70,8 @@ const ProductFilterPage = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <div className="max-w-7xl mx-auto">
-                        <h1 className="text-3xl md:text-4xl font-play text-chedar mb-4">
+                        <LogoQueseria />
+                        <h1 className="text-3xl md:text-4xl font-play text-rock mb-4">
                             Catálogo de Productos
                         </h1>
                         <p className="text-primary-100 max-w-xl font-avenir text-gray-600">

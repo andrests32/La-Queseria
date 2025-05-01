@@ -34,7 +34,7 @@ const Navbar = () => {
                             <NavLink href="/products" icon={<ShoppingBag className="w-5.5 h-5.5" />}>
                                 Productos
                             </NavLink>
-                            <NavLink href="#about" icon={<Users className="w-5.5 h-5.5" />}>
+                            <NavLink href="/about" icon={<Users className="w-5.5 h-5.5" />}>
                                 Quiénes Somos
                             </NavLink>
                             <NavLink href="/contact" icon={<PhoneCall className="w-5.5 h-5.5" />}>
@@ -64,7 +64,7 @@ const Navbar = () => {
                             <MobileNavLink href="/products" icon={<ShoppingBag className="w-5 h-5" />}>
                                 Productos
                             </MobileNavLink>
-                            <MobileNavLink href="#about" icon={<Users className="w-5 h-5" />}>
+                            <MobileNavLink href="/about" icon={<Users className="w-5 h-5" />}>
                                 Quiénes Somos
                             </MobileNavLink>
                             <MobileNavLink href="/contact" icon={<PhoneCall className="w-5 h-5" />}>

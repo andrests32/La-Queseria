@@ -5,12 +5,12 @@ import { Building2, Store, Phone, ArrowRight, Compass } from "lucide-react";
 const locations = [
   {
     icon: <Building2 size={26} />,
-    title: "Matriz",
+    title: "Sucursal",
     desc: "Av. Principal 123, Centro\nLunes a Sábado: 9:00 - 18:00",
   },
   {
     icon: <Store size={26} />,
-    title: "Sucursal",
+    title: "Matriz",
     desc: "Av. Norte 456, Sector Comercio\nLunes a Sábado: 9:00 - 18:00",
   },
   {
@@ -23,7 +23,7 @@ const locations = [
 const CallToAction = () => {
   return (
     <motion.section
-      className="relative bg-[#fffef9] p-10 md:p-20 rounded-[3rem] shadow-2xl border border-white/30 overflow-hidden"
+      className="relative bg-white p-10 md:p-20 rounded-2xl shadow-md overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -54,7 +54,7 @@ const CallToAction = () => {
         {locations.map((loc, i) => (
           <motion.div
             key={i}
-            className={`relative bg-white rounded-3xl shadow-xl p-8 transition-all group hover:-translate-y-2 ${i === 1 ? "md:scale-105 z-20 bg-gradient-to-br from-chedar to-chedarlow text-white" : "text-gray-800"
+            className={`relative bg-white rounded-2xl shadow-md p-8 transition-all group hover:-translate-y-2 ${i === 1 ? "md:scale-105 z-20 bg-gradient-to-br from-chedar to-chedarlow text-white" : "text-gray-800"
               }`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ const CallToAction = () => {
         </a>
 
         <div className="mt-12 text-xl tracking-wide text-rock font-play max-w-lg mx-auto">
-          “Cada queso cuenta una historia hecha a mano.”
+          “Cada producto cuenta una historia hecha a mano.”
         </div>
       </div>
     </motion.section>
