@@ -1,4 +1,3 @@
-// src/pages/api/contentful-products.js
 import { client } from '../../utils/contentful';
 
 export async function get({ url }) {

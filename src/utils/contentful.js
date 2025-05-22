@@ -33,3 +33,5 @@ export const fetchProductsDirectly = async () => {
     return { products: [], lastUpdated: null };
   }
 };
+
+export { client };
