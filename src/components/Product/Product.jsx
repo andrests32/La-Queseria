@@ -18,7 +18,7 @@ export default function ProductsOfTheWeek({
   const [hoveredCard, setHoveredCard] = useState(null);
   const [products, setProducts] = useState(initialProducts);
   const [lastUpdated, setLastUpdated] = useState(initialLastUpdated);
-  const { timeLeft, resetTimer, setIsActive } = usePersistentTimer(1 * 1 * 30);
+  const { timeLeft, resetTimer, setIsActive } = usePersistentTimer(1 * 10 * 30);
   const [isChecking, setIsChecking] = useState(false);
 
   // Función para obtener productos directamente de Contentful
@@ -240,15 +240,15 @@ export default function ProductsOfTheWeek({
               }}
               className="bg-gradient-to-r from-chedar to-chedarlow text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center"
             >
-              <Zap className="w-4 h-4 mr-2 fill-yellow-300" />
+              <Zap className="w-4 h-4 mr-2 fill-chedar" />
               <span className="tracking-wider font-avenir">OFERTA SEMANAL</span>
-              <Zap className="w-4 h-4 ml-2 fill-yellow-300" />
+              <Zap className="w-4 h-4 ml-2 fill-chedarlow" />
             </motion.div>
           </motion.div>
 
           {/* Título principal */}
           <motion.h2
-            className="text-4xl md:text-6xl text-gray-900 mb-6"
+            className="text-4xl md:text-7xl text-gray-900 mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -274,7 +274,7 @@ export default function ProductsOfTheWeek({
             <motion.p
               className="text-lg md:text-xl font-avenir text-gray-600 leading-relaxed"
             >
-              Descubre nuestras selecciones premium elegidas cuidadosamente por nuestro equipo de expertos.
+              Descubre nuestra selecciòn elegidas cuidadosamente por nuestro equipo de expertos.
               <span className="block mt-2 font-medium font-avenir text-chedar">¡Solo disponibles por tiempo limitado!</span>
             </motion.p>
           </motion.div>
@@ -390,7 +390,7 @@ export default function ProductsOfTheWeek({
                   transition={{ delay: 0.5 + index * 0.1 }}
                   className="absolute -top-3 -left-3 z-10"
                 >
-                  <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center">
+                  <div className="bg-gradient-to-r from-chedar to-chedarlow text-white text-xs font-avenir font-semibold px-3 py-1 rounded-full shadow-lg flex items-center">
                     <Star className="w-3 h-3 mr-1 fill-white" />
                     TOP {index + 1}
                   </div>

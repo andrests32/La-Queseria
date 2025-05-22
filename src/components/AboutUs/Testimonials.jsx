@@ -56,7 +56,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
         >
           Voces que Inspiran Confianza
-        <div className="w-24 h-1 bg-chedar mx-auto mt-2"></div>
+          <div className="w-24 h-1 bg-chedar mx-auto mt-2"></div>
 
         </motion.h2>
 
@@ -109,21 +109,6 @@ const Testimonials = () => {
           ))}
         </div>
 
-        <motion.div
-          className="mt-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.button
-            className="bg-chedar text-white px-10 py-4 rounded-full font-semibold font-avenir tracking-wide cursor-pointer shadow-md hover:bg-chedarlow transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Visita nuestra tienda
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );

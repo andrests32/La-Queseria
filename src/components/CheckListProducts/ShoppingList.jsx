@@ -5,6 +5,13 @@ import { UserCheck as ShoppingBag, Download, RefreshCw, ChevronDown, ChevronUp, 
 import LogoQueseria from '../LogoQueseria/LogoQueseria';
 import HomeButton from '../ProductsFilter/HomeButton';
 
+// Rutas para ilustraciones
+const illustrationImages = [
+  '/ilustracionuno.png',
+  '/ilustraciondos.png',
+  '/ilustraciontres.png'
+];
+
 // Estilos para el PDF
 const pdfStyles = StyleSheet.create({
   page: {
@@ -104,7 +111,79 @@ const initialCategories = [
       { id: 'l6', name: 'Crema', detail: 'Para batir', checked: false, quantity: 0, unit: 'litro' },
     ],
   },
-  // ... (otros grupos de productos se mantienen igual)
+  {
+    name: 'Vegetales',
+    items: [
+      { id: 'v1', name: 'Zanahoria', detail: 'Orgánica', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'v2', name: 'Tomate', detail: 'Maduro para ensalada', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'v3', name: 'Cebolla', detail: 'Blanca', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'v4', name: 'Pepino', detail: 'Verde fresco', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'v5', name: 'Pimiento', detail: 'Rojo', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'v6', name: 'Espinaca', detail: 'Hoja fresca', checked: false, quantity: 0, unit: 'kg' },
+    ],
+  },
+  {
+    name: 'Frutas',
+    items: [
+      { id: 'f1', name: 'Manzana', detail: 'Roja', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'f2', name: 'Banana', detail: 'Fresca', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'f3', name: 'Naranja', detail: 'Para jugo', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'f4', name: 'Uva', detail: 'Sin semilla', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'f5', name: 'Fresa', detail: 'Fresca', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'f6', name: 'Piña', detail: 'Madura', checked: false, quantity: 0, unit: 'unidad' },
+    ],
+  },
+  {
+    name: 'Avícolas',
+    items: [
+      { id: 'a1', name: 'Pollo', detail: 'Pechuga sin piel', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'a2', name: 'Huevos', detail: 'Blancos grandes', checked: false, quantity: 0, unit: 'docena' },
+      { id: 'a3', name: 'Pavo', detail: 'Rebanado para sandwich', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'a4', name: 'Pollo', detail: 'Muslo sin piel', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'a5', name: 'Pollo', detail: 'Entero', checked: false, quantity: 0, unit: 'kg' },
+    ],
+  },
+  {
+    name: 'Plátanos y Tubérculos',
+    items: [
+      { id: 'p1', name: 'Plátano verde', detail: 'Para freír', checked: false, quantity: 0, unit: 'unidad' },
+      { id: 'p2', name: 'Plátano maduro', detail: 'Para cocinar', checked: false, quantity: 0, unit: 'unidad' },
+      { id: 'p3', name: 'Papa', detail: 'Blanca', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'p4', name: 'Yuca', detail: 'Fresca', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'p5', name: 'Batata', detail: 'Naranja', checked: false, quantity: 0, unit: 'kg' },
+    ],
+  },
+  {
+    name: 'Harinas y Cereales',
+    items: [
+      { id: 'h1', name: 'Harina de trigo', detail: 'Todo propósito', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'h2', name: 'Harina de maíz', detail: 'Precocida', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'h3', name: 'Arroz', detail: 'Grano largo', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'h4', name: 'Pasta', detail: 'Espagueti', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'h5', name: 'Avena', detail: 'En hojuelas', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'h6', name: 'Quinoa', detail: 'Orgánica', checked: false, quantity: 0, unit: 'kg' },
+    ],
+  },
+  {
+    name: 'Carnes',
+    items: [
+      { id: 'c1', name: 'Carne molida', detail: 'Res magra', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'c2', name: 'Bistec', detail: 'De res', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'c3', name: 'Costilla', detail: 'De cerdo', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'c4', name: 'Lomo', detail: 'De cerdo', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'c5', name: 'Chorizo', detail: 'Para parrilla', checked: false, quantity: 0, unit: 'kg' },
+    ],
+  },
+  {
+    name: 'Pescados y Mariscos',
+    items: [
+      { id: 'm1', name: 'Filete de pescado', detail: 'Tilapia', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'm2', name: 'Camarones', detail: 'Medianos', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'm3', name: 'Salmón', detail: 'En filete', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'm4', name: 'Atún', detail: 'Fresco', checked: false, quantity: 0, unit: 'kg' },
+      { id: 'm5', name: 'Pulpo', detail: 'Limpio', checked: false, quantity: 0, unit: 'kg' },
+    ],
+  },
 ];
 
 // Componente PDF
@@ -166,8 +245,9 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
   useEffect(() => {
     const generatePdf = async () => {
       try {
+        console.log("Generando PDF con datos:", shoppingListData);
         if (!shoppingListData || shoppingListData.length === 0) {
-          throw new Error("No hay productos seleccionados para generar el PDF");
+          throw new Error("No hay datos para generar el PDF");
         }
         
         const blob = await pdf(<MyDocument selectedProducts={shoppingListData} />).toBlob();
@@ -175,8 +255,8 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
         setPdfUrl(url);
         setError(null);
       } catch (err) {
-        console.error('Error al generar PDF:', err);
-        setError("Error al generar el documento. Por favor intenta nuevamente.");
+        console.error('Error generating PDF:', err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -198,6 +278,7 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-500 mx-auto mb-4"></div>
             <h3 className="text-lg font-medium text-gray-900">Generando PDF...</h3>
+            <p className="mt-2 text-sm text-gray-500">Por favor espera un momento.</p>
           </div>
         </div>
       </div>
@@ -209,11 +290,11 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full">
           <div className="text-center">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Error</h3>
-            <p className="text-red-500 mb-6">{error}</p>
+            <h3 className="text-lg font-medium text-gray-900">Error al generar PDF</h3>
+            <p className="mt-2 text-sm text-red-500">{error}</p>
             <button
               onClick={onClose}
-              className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium"
+              className="mt-4 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors"
             >
               Cerrar
             </button>
@@ -247,7 +328,7 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
         <a
           href={pdfUrl}
           download="lista_compras.pdf"
-          className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium"
+          className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors"
         >
           Descargar PDF
         </a>
@@ -258,67 +339,24 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
 
 // Función para comprimir los datos de la lista
 const compressListData = (selectedProducts) => {
-  if (!selectedProducts || !Array.isArray(selectedProducts)) return null;
+  if (!selectedProducts || !Array.isArray(selectedProducts)) return [];
   
-  // Mapeo de nombres completos a abreviaturas
-  const nameToShort = {
-    // Lácteos
-    'Leche': 'lec',
-    'Queso': 'que',
-    'Yogurt': 'yog',
-    'Mantequilla': 'man',
-    'Crema': 'cre',
-    // Vegetales
-    'Zanahoria': 'zan',
-    'Tomate': 'tom',
-    'Cebolla': 'ceb',
-    'Pepino': 'pep',
-    'Pimiento': 'pim',
-    // ... agregar más según necesidad
-  };
-
-  // Mapeo de unidades a abreviaturas
-  const unitToShort = {
-    'kg': 'k',
-    'litro': 'l',
-    'g': 'g',
-    'docena': 'd',
-    'unidad': 'u'
-  };
-
   return selectedProducts.map(category => ({
-    n: category.name.substring(0, 3).toLowerCase(), // Nombre abreviado de categoría
+    n: category.name.substring(0, 3), // Nombre abreviado a 3 caracteres
     i: category.items.map(item => ({
-      n: nameToShort[item.name] || item.name.substring(0, 3).toLowerCase(),
+      n: item.name.substring(0, 3),  // Nombre abreviado a 3 caracteres
       q: item.quantity,
-      u: unitToShort[item.unit] || item.unit.substring(0, 1).toLowerCase()
+      u: item.unit.substring(0, 1)   // Unidad abreviada a 1 caracter
     }))
   }));
 };
 
 // Función para descomprimir los datos
 const decompressListData = (compressedData) => {
-  if (!compressedData || !Array.isArray(compressedData)) return null;
+  if (!compressedData || !Array.isArray(compressedData)) return [];
   
-  // Mapeo de abreviaturas a nombres completos
-  const shortToName = {
-    // Lácteos
-    'lec': 'Leche',
-    'que': 'Queso',
-    'yog': 'Yogurt',
-    'man': 'Mantequilla',
-    'cre': 'Crema',
-    // Vegetales
-    'zan': 'Zanahoria',
-    'tom': 'Tomate',
-    'ceb': 'Cebolla',
-    'pep': 'Pepino',
-    'pim': 'Pimiento',
-    // ... agregar más según necesidad
-  };
-
-  // Mapeo de abreviaturas a unidades completas
-  const shortToUnit = {
+  // Mapeo de unidades abreviadas
+  const unitMap = {
     'k': 'kg',
     'l': 'litro',
     'g': 'g',
@@ -326,25 +364,28 @@ const decompressListData = (compressedData) => {
     'u': 'unidad'
   };
 
-  // Mapeo de categorías abreviadas a completas
-  const shortToCategory = {
-    'lác': 'Lácteos',
-    'veg': 'Vegetales',
-    'fru': 'Frutas',
-    'aví': 'Avícolas',
-    'plá': 'Plátanos y Tubérculos',
-    'har': 'Harinas y Cereales',
-    'car': 'Carnes',
-    'pes': 'Pescados y Mariscos'
-  };
-
   return compressedData.map(category => ({
-    name: shortToCategory[category.n] || category.n,
+    name: category.n === 'Lác' ? 'Lácteos' :
+           category.n === 'Veg' ? 'Vegetales' :
+           category.n === 'Fru' ? 'Frutas' :
+           category.n === 'Aví' ? 'Avícolas' :
+           category.n === 'Plá' ? 'Plátanos y Tubérculos' :
+           category.n === 'Har' ? 'Harinas y Cereales' :
+           category.n === 'Car' ? 'Carnes' : category.n,
     items: category.i.map(item => ({
-      name: shortToName[item.n] || item.n,
+      name: item.n === 'Lee' ? 'Leche' :
+            item.n === 'Que' ? 'Queso' :
+            item.n === 'Yog' ? 'Yogurt' :
+            item.n === 'Man' ? 'Mantequilla' :
+            item.n === 'Cre' ? 'Crema' :
+            item.n === 'Zan' ? 'Zanahoria' :
+            item.n === 'Tom' ? 'Tomate' :
+            item.n === 'Ceb' ? 'Cebolla' :
+            item.n === 'Pep' ? 'Pepino' :
+            item.n === 'Pim' ? 'Pimiento' : item.n,
       quantity: item.q || 1,
-      unit: shortToUnit[item.u] || item.u,
-      id: `${category.n}-${item.n}-${Math.random().toString(36).substr(2, 9)}`,
+      unit: unitMap[item.u] || item.u,
+      id: `${category.n}-${item.n}`,
       detail: '',
       checked: true
     }))
@@ -357,11 +398,10 @@ const ProductItem = ({ item, onChange, onQuantityChange, onUnitChange }) => {
 
   return (
     <div
-      className={`flex flex-col p-3 rounded-lg border transition-all ${
-        item.checked
-          ? 'bg-white border-amber-200 shadow-sm'
-          : 'bg-white border-gray-200 hover:border-gray-300'
-      }`}
+      className={`flex flex-col p-3 rounded-lg border transition-all ${item.checked
+        ? 'bg-white border-amber-200 shadow-sm'
+        : 'bg-white border-gray-200 hover:border-gray-300'
+        }`}
     >
       <div className="flex items-center mb-2">
         <input
@@ -422,15 +462,11 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
   const hasCheckedItems = category.items.some(item => item.checked);
 
   return (
-    <div
-      className={`border rounded-lg overflow-hidden transition-all ${
-        hasCheckedItems ? 'border-amber-300 bg-amber-50' : 'border-gray-200'
-      }`}
-    >
+    <div className={`border rounded-lg overflow-hidden transition-all ${hasCheckedItems ? 'border-amber-300 bg-amber-50' : 'border-gray-200'
+      }`}>
       <div
-        className={`flex items-center justify-between p-4 cursor-pointer transition-colors ${
-          hasCheckedItems ? 'bg-amber-100' : 'hover:bg-gray-50'
-        }`}
+        className={`flex items-center justify-between p-4 cursor-pointer transition-colors ${hasCheckedItems ? 'bg-amber-100' : 'hover:bg-gray-50'
+          }`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <h3 className="text-lg font-semibold flex items-center">
@@ -466,7 +502,7 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
 };
 
 // Componente SelectedSummary
-const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => {}, onViewPDF = () => {} }) => {
+const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => { }, onViewPDF = () => { } }) => {
   const totalItems = selectedProducts.reduce((acc, cat) => acc + cat.items.length, 0);
 
   return (
@@ -510,19 +546,13 @@ const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => 
             <div className="mt-6 pt-4 border-t border-gray-100">
               <div className="flex flex-col items-center">
                 <p className="text-sm text-gray-500 mb-3">Escanea para ver la lista:</p>
-                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-                  {qrValue ? (
-                    <QRCode
-                      value={qrValue}
-                      size={150}
-                      level="H"
-                      className="h-auto max-w-full"
-                    />
-                  ) : (
-                    <div className="w-40 h-40 flex items-center justify-center bg-gray-100 text-gray-400">
-                      No hay datos
-                    </div>
-                  )}
+                <div className="p-2 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <QRCode
+                    value={qrValue}
+                    size={120}
+                    level="H"
+                    className="h-auto max-w-full"
+                  />
                 </div>
                 <p className="text-xs text-gray-400 mt-2 text-center max-w-xs">
                   Escanea este código con tu cámara para ver la lista completa
@@ -530,7 +560,7 @@ const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => 
                 
                 <button
                   onClick={onViewPDF}
-                  className="mt-4 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium"
+                  className="mt-4 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors"
                 >
                   Ver como PDF
                 </button>
@@ -549,7 +579,7 @@ const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => 
           <PDFDownloadLink
             document={<MyDocument selectedProducts={selectedProducts} />}
             fileName="lista_compras.pdf"
-            className="flex items-center justify-center w-full px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg shadow-md"
+            className="flex items-center justify-center w-full px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-colors shadow-md"
           >
             {({ loading }) => (
               <>
@@ -568,162 +598,160 @@ const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => 
 function App() {
   const [categories, setCategories] = useState(initialCategories);
   const [qrValue, setQrValue] = useState('');
+  const [isClient, setIsClient] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
   const [showPdfViewer, setShowPdfViewer] = useState(false);
   const [shoppingListData, setShoppingListData] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [notification, setNotification] = useState(null);
+  const [qrError, setQrError] = useState(null);
 
-  // Mostrar notificación
-  const showNotification = (message, type = 'info', duration = 5000) => {
-    setNotification({ message, type });
-    if (duration) setTimeout(() => setNotification(null), duration);
-  };
-
-  // Procesar datos del QR al cargar
   useEffect(() => {
+    setIsClient(true);
     const checkIfMobile = () => setIsMobile(window.innerWidth < 1024);
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
-
-    const processQRData = () => {
+    
+    // Verificar parámetros de URL al cargar
+    const params = new URLSearchParams(window.location.search);
+    const listData = params.get('data');
+    
+    if (listData) {
       try {
-        const params = new URLSearchParams(window.location.search);
-        const qrData = params.get('qr');
+        // Decodificar y descomprimir los datos
+        const decodedData = decodeURIComponent(atob(listData));
+        const parsedData = JSON.parse(decodedData);
         
-        if (qrData) {
-          // Decodificar en dos pasos para mayor compatibilidad
-          const decodedData = decodeURIComponent(qrData);
-          const jsonData = JSON.parse(atob(decodedData));
-          
-          const decompressed = decompressListData(jsonData);
-          
-          if (decompressed) {
-            setShoppingListData(decompressed);
-            setShowPdfViewer(true);
-            showNotification("Lista cargada desde QR", "success");
-          } else {
-            showNotification("El QR no contenía datos válidos", "error");
-          }
+        if (!Array.isArray(parsedData)) {
+          throw new Error("Datos del QR no tienen el formato esperado");
         }
+        
+        const decompressedData = decompressListData(parsedData);
+        
+        if (!decompressedData || decompressedData.length === 0) {
+          throw new Error("No se pudieron procesar los datos del QR");
+        }
+        
+        setShoppingListData(decompressedData);
+        setShowPdfViewer(true);
+        setQrError(null);
       } catch (error) {
-        console.error("Error procesando QR:", error);
-        showNotification("Error al leer el código QR", "error");
+        console.error('Error al procesar datos del QR:', error);
+        setQrError(error.message);
       }
-    };
+    }
 
-    // Cargar datos guardados
-    const loadSavedData = () => {
+    const savedData = localStorage.getItem('shoppingList');
+    if (savedData) {
       try {
-        const saved = localStorage.getItem('shoppingList');
-        if (saved) setCategories(JSON.parse(saved));
+        setCategories(JSON.parse(savedData));
       } catch (e) {
-        console.error("Error cargando datos guardados:", e);
+        console.error("Error al cargar datos guardados:", e);
       }
-    };
-
-    processQRData();
-    loadSavedData();
+    }
 
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  // Generar el código QR cuando cambian los productos
   useEffect(() => {
-    const generateQR = () => {
-      try {
-        const selected = categories
-          .map(cat => ({
-            name: cat.name,
-            items: cat.items.filter(item => item.checked && item.quantity > 0)
-          }))
-          .filter(cat => cat.items.length > 0);
-
-        if (selected.length > 0) {
-          const compressed = compressListData(selected);
-          if (compressed) {
-            const jsonStr = JSON.stringify(compressed);
-            const base64 = btoa(jsonStr);
-            const encoded = encodeURIComponent(base64);
-            const url = `${window.location.origin}${window.location.pathname}?qr=${encoded}`;
-            setQrValue(url);
-            return;
-          }
-        }
-        setQrValue('');
-      } catch (error) {
-        console.error("Error generando QR:", error);
-        setQrValue('');
-      }
-    };
-
-    // Guardar en localStorage
     try {
       localStorage.setItem('shoppingList', JSON.stringify(categories));
-      generateQR();
+      updateQRValue();
     } catch (e) {
-      console.error("Error guardando datos:", e);
+      console.error("Error al guardar datos:", e);
     }
   }, [categories]);
 
-  // Manejadores de eventos
-  const handleCheckboxChange = (categoryIndex, itemId) => {
-    setCategories(prev => {
-      const newCategories = [...prev];
-      const itemIndex = newCategories[categoryIndex].items.findIndex(item => item.id === itemId);
-      
-      if (itemIndex !== -1) {
-        newCategories[categoryIndex].items[itemIndex].checked = 
-          !newCategories[categoryIndex].items[itemIndex].checked;
+  const updateQRValue = () => {
+    const selectedProducts = categories
+      .map(category => ({
+        name: category.name,
+        items: category.items.filter(item => item.checked && item.quantity > 0)
+          .map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            unit: item.unit
+          }))
+      }))
+      .filter(category => category.items.length > 0);
+
+    if (selectedProducts.length > 0) {
+      try {
+        // Comprimir los datos para el QR
+        const compressedData = compressListData(selectedProducts);
+        const jsonStr = JSON.stringify(compressedData);
+        const base64Data = btoa(encodeURIComponent(jsonStr));
         
-        if (newCategories[categoryIndex].items[itemIndex].checked && 
-            !newCategories[categoryIndex].items[itemIndex].quantity) {
-          newCategories[categoryIndex].items[itemIndex].quantity = 1;
-        }
+        // Crear URL más corta
+        const url = `${window.location.origin}${window.location.pathname}?data=${base64Data}`;
+        setQrValue(url);
+        setQrError(null);
+      } catch (error) {
+        console.error("Error al generar QR:", error);
+        setQrError("Error al generar el código QR");
       }
-      
-      return newCategories;
-    });
+    } else {
+      setQrValue('');
+    }
+  };
+
+  const handleCheckboxChange = (categoryIndex, itemId) => {
+    const updatedCategories = [...categories];
+    const itemIndex = updatedCategories[categoryIndex].items.findIndex(
+      (item) => item.id === itemId
+    );
+
+    updatedCategories[categoryIndex].items[itemIndex].checked =
+      !updatedCategories[categoryIndex].items[itemIndex].checked;
+
+    if (updatedCategories[categoryIndex].items[itemIndex].checked &&
+      !updatedCategories[categoryIndex].items[itemIndex].quantity) {
+      updatedCategories[categoryIndex].items[itemIndex].quantity = 1;
+    }
+
+    setCategories(updatedCategories);
   };
 
   const handleQuantityChange = (categoryIndex, itemId, value) => {
-    setCategories(prev => {
-      const newCategories = [...prev];
-      const itemIndex = newCategories[categoryIndex].items.findIndex(item => item.id === itemId);
-      
-      if (itemIndex !== -1) {
-        const parsedValue = parseInt(value, 10);
-        newCategories[categoryIndex].items[itemIndex].quantity =
-          isNaN(parsedValue) ? 0 : Math.max(0, parsedValue);
-      }
-      
-      return newCategories;
-    });
+    const updatedCategories = [...categories];
+    const itemIndex = updatedCategories[categoryIndex].items.findIndex(
+      (item) => item.id === itemId
+    );
+
+    const parsedValue = parseInt(value, 10);
+    updatedCategories[categoryIndex].items[itemIndex].quantity =
+      isNaN(parsedValue) ? 0 : Math.max(0, parsedValue);
+
+    setCategories(updatedCategories);
   };
 
   const handleUnitChange = (categoryIndex, itemId, unit) => {
-    setCategories(prev => {
-      const newCategories = [...prev];
-      const itemIndex = newCategories[categoryIndex].items.findIndex(item => item.id === itemId);
-      
-      if (itemIndex !== -1) {
-        newCategories[categoryIndex].items[itemIndex].unit = unit;
-      }
-      
-      return newCategories;
-    });
+    const updatedCategories = [...categories];
+    const itemIndex = updatedCategories[categoryIndex].items.findIndex(
+      (item) => item.id === itemId
+    );
+
+    updatedCategories[categoryIndex].items[itemIndex].unit = unit;
+    setCategories(updatedCategories);
   };
 
   const clearSelection = () => {
-    setCategories(initialCategories);
+    setCategories(prevCategories =>
+      prevCategories.map(category => ({
+        ...category,
+        items: category.items.map(item => ({
+          ...item,
+          checked: false,
+          quantity: 0
+        })),
+      }))
+    );
     setShowSummary(false);
-    showNotification("Lista limpiada correctamente", "success");
   };
 
   const selectedProducts = categories
     .map(category => ({
       name: category.name,
-      items: category.items.filter(item => item.checked && item.quantity > 0)
+      items: category.items.filter(item => item.checked && item.quantity > 0),
     }))
     .filter(category => category.items.length > 0);
 
@@ -736,19 +764,21 @@ function App() {
 
   return (
     <div className="min-h-screen relative font-avenir">
-      {/* Notificación */}
-      {notification && (
-        <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-xs transition-all 
-          ${notification.type === 'error' ? 'bg-red-100 text-red-800 border-l-4 border-red-500' : 
-            notification.type === 'success' ? 'bg-green-100 text-green-800 border-l-4 border-green-500' :
-            'bg-blue-100 text-blue-800 border-l-4 border-blue-500'}`}>
-          <div className="flex justify-between items-start">
-            <div className="flex-1">
-              <p className="font-medium">{notification.message}</p>
+      {qrError && (
+        <div className="fixed top-4 right-4 z-50 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-lg max-w-xs">
+          <div className="flex items-center">
+            <div className="py-1">
+              <svg className="h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <div>
+              <p className="font-bold">Error</p>
+              <p className="text-sm">{qrError}</p>
             </div>
             <button 
-              onClick={() => setNotification(null)}
-              className="ml-4"
+              onClick={() => setQrError(null)}
+              className="ml-4 text-red-700 hover:text-red-900"
             >
               <X className="h-5 w-5" />
             </button>
@@ -756,12 +786,11 @@ function App() {
         </div>
       )}
 
-      {/* Fondo decorativo */}
       <div className="fixed inset-0 w-full h-full pointer-events-none -z-10 grid grid-cols-10 gap-4">
         {[...Array(80)].map((_, index) => (
           <img
             key={index}
-            src={`/ilustracion${(index % 3) + 1}.png`}
+            src={illustrationImages[index % illustrationImages.length]}
             alt="Decoración"
             className="w-40 h-40 object-cover opacity-10"
           />
@@ -781,23 +810,20 @@ function App() {
               <div className="flex flex-col-reverse lg:flex-row gap-4 items-center space-x-3">
                 <button
                   onClick={() => setShowSummary(!showSummary)}
-                  className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
-                    hasSelectedProducts
-                      ? 'bg-amber-100 text-chedar hover:bg-amber-200'
-                      : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  }`}
+                  className={`flex items-center px-4 py-2 rounded-lg font-avenir transition-colors ${hasSelectedProducts
+                    ? 'bg-amber-100 text-chedar hover:bg-amber-100'
+                    : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    }`}
                   disabled={!hasSelectedProducts}
                 >
                   <ShoppingBag className="h-5 w-5 mr-2 text-chedar/80" />
                   <span>Ver selección</span>
-                  <span className='ml-2 font-semibold bg-white/70 px-3 py-1 rounded-full'>
-                    {totalSelectedItems}
-                  </span>
+                  <span className='ml-2 font-semibold bg-white/70 px-3 py-1 rounded-full'>{totalSelectedItems}</span>
                 </button>
 
                 <button
                   onClick={clearSelection}
-                  className="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg"
+                  className="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-medium transition-colors"
                 >
                   <RefreshCw className="h-4 w-4 mr-2" />
                   <span>Limpiar</span>
@@ -807,9 +833,7 @@ function App() {
 
             <div className="flex flex-col lg:flex-row gap-6">
               <div className={`${showSummary && !isMobile ? 'lg:w-1/2' : 'w-full'}`}>
-                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">
-                  Lista de Compras
-                </h2>
+                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">Lista de Compras</h2>
 
                 <div className="space-y-4 md:space-y-6">
                   {categories.map((category, categoryIndex) => (
@@ -844,10 +868,10 @@ function App() {
         </div>
       </div>
 
-      {/* Panel lateral para mobile */}
-      {showSummary && isMobile && (
+      {/* Panel lateral para mobile (aparece como overlay) */}
+      {(showSummary && isMobile) && (
         <div className="fixed inset-0 z-50 flex justify-end bg-black bg-opacity-50">
-          <div className="w-full sm:w-4/5 h-full bg-white shadow-xl">
+          <div className="w-full sm:w-4/5 h-full bg-white shadow-xl transform transition-transform">
             <SelectedSummary
               selectedProducts={selectedProducts}
               qrValue={qrValue}
@@ -859,6 +883,14 @@ function App() {
             />
           </div>
         </div>
+      )}
+
+      {/* Visor de PDF */}
+      {showPdfViewer && shoppingListData && (
+        <PDFViewer 
+          shoppingListData={shoppingListData} 
+          onClose={() => setShowPdfViewer(false)}
+        />
       )}
     </div>
   );

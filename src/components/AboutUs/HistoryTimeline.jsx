@@ -6,36 +6,36 @@ import { IoMdAirplane } from 'react-icons/io';
 const HistoryTimeline = () => {
   const milestones = [
     {
-      year: "1952",
-      title: "Fundación Familiar",
-      description: "Nuestra historia comenzó en una pequeña granja familiar donde perfeccionamos nuestras primeras recetas.",
+      year: "2018",
+      title: "Fundación",
+      description: "Nuestra historia comenzó con una idea sencilla: ofrecer productos de calidad a buen precio.",
       Icon: FaHome,
       image: "https://images.pexels.com/photos/7433853/pexels-photo-7433853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      testimonial: "Los quesos de esta familia siempre fueron los mejores de la región. - Juan Pérez, cliente desde 1955"
+      testimonial: "El servicio que recibí la primera vez me impactó’. Esa conexión sincera con los clientes es lo que nos gusta. Juan Pérez, cliente desde 2018"
     },
     {
-      year: "1978",
-      title: "Primer Establecimiento",
-      description: "Nuestros quesos cruzaron fronteras llegando a los mercados europeos más exigentes.",
+      year: "2022",
+      title: "Segundo Establecimiento",
+      description: "Nuestros productos cruzaron fronteras, algo que alguna vez solo imaginamos como un sueño lejano.",
       Icon: IoMdAirplane,
       image: "https://images.pexels.com/photos/31845770/pexels-photo-31845770/free-photo-of-barista-preparando-bebidas-en-un-cafe-vietnamita.jpeg?auto=compress&cs=tinysrgb&w=600",
-      testimonial: "El sabor auténtico que introdujeron revolucionó nuestro mercado. - François Leclerc, importador francés"
+      testimonial: "El sabor auténtico que trajeron no solo conquistó paladares, revolucionó nuestro mercado."
     },
     {
-      year: "2005",
+      year: "2024",
       title: "Certificación",
       description: "Obtuvimos la certificación que avala nuestros procesos 100% naturales y sostenibles.",
       Icon: FaLeaf,
       image: "https://images.pexels.com/photos/8297652/pexels-photo-8297652.jpeg?auto=compress&cs=tinysrgb&w=600",
-      testimonial: "Un ejemplo de producción responsable con el medio ambiente. - Green Food Certification"
+      testimonial: "Un ejemplo de producción responsable con el medio ambiente."
     },
     {
-      year: "2020",
+      year: "2025",
       title: "Innovación",
       description: "Ampliamos nuestra línea con nuevos productos manteniendo la esencia tradicional.",
       Icon: GiMilkCarton,
       image: "https://images.pexels.com/photos/8636604/pexels-photo-8636604.jpeg?auto=compress&cs=tinysrgb&w=600",
-      testimonial: "Han sabido innovar sin perder su identidad. - Revista Gourmet"
+      testimonial: "Han sabido innovar sin perder su identidad. - Clientes"
     }
   ];
 
@@ -55,9 +55,9 @@ const HistoryTimeline = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-20 px-4"
         >
-          <h2 className="text-3xl md:text-6xl font-play text-rock mb-3">Nuestra Trayectoria</h2>
+          <h2 className="text-3xl md:text-6xl mb-3 bg-gradient-to-r from-chedar to-chedarlow bg-clip-text font-play text-transparent">Nuestra Trayectoria</h2>
           <p className="text-base md:text-lg font-avenir text-gray-600 max-w-2xl mx-auto">
-            70 años de pasión por la tradición láctea, innovación constante y compromiso con la calidad.
+            Años de pasión por lo que hacemos, impulsados por la innovación y guiados siempre por nuestro compromiso con la calidad.
           </p>
           <div className="flex justify-center mt-4 md:mt-6">
             <div className="w-12 md:w-16 h-0.5 md:h-1 bg-chedar"></div>

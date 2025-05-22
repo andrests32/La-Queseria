@@ -60,7 +60,7 @@ export default function HeroContent() {
 
 
                 <p className="mt-6 text-gray-500 text-sm font-avenir tracking-wide">
-                    Hechos con amor desde 1987
+                    Hechos con amor desde 2018
                 </p>
             </div>
         </motion.div>

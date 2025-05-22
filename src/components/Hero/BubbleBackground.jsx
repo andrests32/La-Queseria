@@ -119,7 +119,7 @@ export default function BubbleBackground({ images, currentImageIndex, showBubble
                 }`}
                 style={{
                   filter: "drop-shadow(0 4px 8px rgba(251, 191, 36, 0.1))",
-                  opacity: 0.3
+                  opacity: 0.6
                 }}
               />
             </motion.div>

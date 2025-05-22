@@ -16,7 +16,7 @@ const locations = [
   {
     icon: <Phone size={26} />,
     title: "Contáctanos",
-    desc: "+593 98 765 4321\ninfo@quesosartesanales.com",
+    desc: "+593 98 088 3299\nlaqueserianacional.ec@gmail.com",
   },
 ];
 

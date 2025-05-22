@@ -45,12 +45,12 @@ const ProductCard = ({ name, price, image, description, badge, categoryLabel, bu
       <div className="p-5 flex-grow flex flex-col">
         <div className="flex items-center gap-2 mb-2">
           <Award className="w-4 h-4 text-chedar" />
-          <span className="text-xs font-semibold text-chedarlow uppercase tracking-wider">
+          <span className="text-xs font-avenir font-semibold text-chedarlow uppercase tracking-wider">
             {categoryLabel}
           </span>
         </div>
 
-        <h3 className="text-xl font-play text-rock mb-2 line-clamp-1">
+        <h3 className="text-xl font-play text-rock mb-2 line-clamp-1 tracking-wide">
           {name}
         </h3>
 
@@ -64,12 +64,12 @@ const ProductCard = ({ name, price, image, description, badge, categoryLabel, bu
                 exit={{ height: 0 }}
                 className="overflow-hidden"
               >
-                <div className="text-gray-600 text-sm">
+                <div className="text-gray-600 text-sm font-avenir">
                   {documentToReactComponents(description)}
                 </div>
               </motion.div>
             ) : (
-              <div className="text-gray-600 text-sm line-clamp-3">
+              <div className="text-gray-600 text-sm font-avenir line-clamp-3">
                 {documentToReactComponents(description)}
               </div>
             )}
@@ -77,7 +77,7 @@ const ProductCard = ({ name, price, image, description, badge, categoryLabel, bu
 
           <button 
             onClick={() => setExpanded(!expanded)}
-            className="text-chedar text-xs font-semibold mt-1 flex items-center hover:text-chedarlow transition-colors"
+            className="text-chedar text-xs font-avenir mt-1 flex items-center hover:text-chedarlow transition-colors"
           >
             {expanded ? 'Ver menos' : 'Ver más'} 
             <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${expanded ? 'rotate-180' : ''}`} />
@@ -89,7 +89,7 @@ const ProductCard = ({ name, price, image, description, badge, categoryLabel, bu
           <div className="flex items-center justify-between">
             <div className="flex items-baseline">
               <TbCurrencyDollar className="text-chedarlow w-5 h-5 mr-1" />
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-avenir text-rock">
                 {price.toFixed(2)}
               </span>
             </div>
@@ -100,7 +100,7 @@ const ProductCard = ({ name, price, image, description, badge, categoryLabel, bu
                 backgroundColor: '#4CAF50', // Verde para el hover
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-chedar to-chedarlow text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-md hover:shadow-chedar/20 transition-all"
+              className="bg-gradient-to-r from-chedar to-chedarlow hover:bg-gradient-to-r hover:from-verde hover:to-verde text-white px-4 py-2 rounded-lg text-sm font-avenir font-semibold tracking-wide shadow-md hover:shadow-chedar/20 transition-all cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 window.open(buyLink, "_blank");
