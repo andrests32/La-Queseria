@@ -13,7 +13,7 @@ const HomeButton = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Home size={24} />
+      <Home size={34} />
     </motion.a>
   );
 };

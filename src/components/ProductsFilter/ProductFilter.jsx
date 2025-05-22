@@ -70,7 +70,10 @@ const ProductFilterPage = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <div className="max-w-7xl mx-auto">
-                        <LogoQueseria />
+                        <div className="flex items-center">
+                            <LogoQueseria />
+                            <span className="relative -left-1 text-chedar font-play text-6xl">uesería</span>
+                        </div>
                         <h1 className="text-3xl md:text-4xl font-play text-rock mb-4">
                             Catálogo de Productos
                         </h1>

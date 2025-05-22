@@ -3,6 +3,7 @@ import HistoryTimeline from './HistoryTimeline';
 import TeamGallery from './TeamGallery';
 import ValuesSection from './ValuesSection';
 import Testimonials from './Testimonials';
+import HomeButton from '../ProductsFilter/HomeButton';
 
 const AboutUsPage = () => {
     return (
@@ -12,6 +13,7 @@ const AboutUsPage = () => {
             <TeamGallery />
             <ValuesSection />
             <Testimonials />
+            <HomeButton />
         </div>
     );
 };

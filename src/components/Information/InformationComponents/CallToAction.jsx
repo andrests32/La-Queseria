@@ -6,12 +6,12 @@ const locations = [
   {
     icon: <Building2 size={26} />,
     title: "Sucursal",
-    desc: "Av. Principal 123, Centro\nLunes a Sábado: 9:00 - 18:00",
+    desc: "Unión y Progreso - calle Cuenca y 3 de Julio\nLunes a Sábado: 6:00 - 19:00",
   },
   {
     icon: <Store size={26} />,
     title: "Matriz",
-    desc: "Av. Norte 456, Sector Comercio\nLunes a Sábado: 9:00 - 18:00",
+    desc: "Mercado 17 de Diciembre, Via Bellavista, Santo Domingo 260303\nLunes a Sábado: 6:00 - 19:00",
   },
   {
     icon: <Phone size={26} />,
@@ -54,7 +54,7 @@ const CallToAction = () => {
         {locations.map((loc, i) => (
           <motion.div
             key={i}
-            className={`relative bg-white rounded-2xl shadow-md p-8 transition-all group hover:-translate-y-2 ${i === 1 ? "md:scale-105 z-20 bg-gradient-to-br from-chedar to-chedarlow text-white" : "text-gray-800"
+            className={`relative bg-white rounded-2xl shadow-md p-8 transition-all group hover:-translate-y-2 ${i === 1 ? "md:scale-105 z-20 bg-gradient-to-br from-chedar to-chedar text-white" : "text-gray-800"
               }`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,16 +62,12 @@ const CallToAction = () => {
 
             transition={{ delay: i * 0.15 }}
           >
-            {/* Solapa diagonal decorativa para la tarjeta central */}
-            {i === 1 && (
-              <div className="absolute -top-5 -left-5 w-20 h-20 bg-white/10 rotate-45 rounded-md shadow-inner"></div>
-            )}
-
+           
             {/* Ícono */}
             <div className="mb-4 flex justify-center">
-              <div className={`p-4 rounded-full ${i === 1 ? "bg-white/10" : "bg-chedar/10"} shadow-inner`}>
+              <div className={`p-4 rounded-full ${i === 1 ? "bg-white" : "bg-chedar"} shadow-inner`}>
                 {React.cloneElement(loc.icon, {
-                  className: `${i === 1 ? "text-white" : "text-chedardark"}`,
+                  className: `${i === 1 ? "text-chedar" : "text-white"}`,
                 })}
               </div>
             </div>
@@ -88,17 +84,23 @@ const CallToAction = () => {
 
       {/* Botón CTA */}
       <div className="mt-16 text-center z-10 relative">
-        <a
-          href="https://wa.me/593987654321"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-10 py-4 rounded-full text-chedar font-avenir tracking-wide font-semibold bg-chedardark hover:bg-chedar hover:text-white transition duration-300 shadow-md"
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="inline-block bg-gradient-to-r from-chedar to-chedarlow p-0.5 rounded-full shadow-xl"
         >
-          <ArrowRight size={18} />
-          Contáctanos por WhatsApp
-        </a>
+          <motion.a
+            href="https://wa.me/1XXXXXXXXXX"
+            className="group relative block bg-white text-chedar font-normal tracking-wide py-4 px-8 rounded-full hover:bg-transparent hover:text-white transition-all duration-300"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-3">
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <span className="text-lg font-play">Contáctanos por WhatsApp</span>
+            </span>
+          </motion.a>
+        </motion.div>
 
-        <div className="mt-12 text-xl tracking-wide text-rock font-play max-w-lg mx-auto">
+        <div className="mt-12 text-xl md:text-2xl tracking-wide text-rock font-play max-w-xl mx-auto">
           “Cada producto cuenta una historia hecha a mano.”
         </div>
       </div>

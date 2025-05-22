@@ -3,25 +3,25 @@ import { memo } from 'react';
 
 const data = [
   {
-    image: 'https://www.amazonicaep.ec/web/v2/wp-content/uploads/2024/01/como-hacer-queso-con-1-litro-de-leche.jpg',
-    title: 'Quesos Frescos',
+    image: '/cafegrape.webp',
+    title: 'Café Grapé',
     icon: <Instagram size={18} />,
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/p/DJUV7qIJkY8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
     span: 'col-span-2 row-span-2',
   },
   {
-    image: 'https://previews.123rf.com/images/peopleimages12/peopleimages122305/peopleimages12230565590/207313937-manteniendo-viva-la-tradici%C3%B3n-familiar-del-almuerzo-dominical-una-familia-disfrutando-de-una-comida.jpg',
-    title: 'Tradición Familiar',
-    icon: <Facebook size={18} />,
-    link: 'https://facebook.com',
+    image: '/laqueseria.webp',
+    title: 'La Queseria',
+    icon: <Instagram size={18} />,
+    link: 'https://www.instagram.com/p/DJNSuA4JYPK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
     span: '',
   },
   // Esta es la nueva imagen que va justo al lado de "Tradición Familiar"
   {
-    image: 'https://images.pexels.com/photos/5971874/pexels-photo-5971874.jpeg?auto=compress&cs=tinysrgb&w=600',
-    title: 'Sabores Naturales',
-    icon: <Twitter size={18} />,
-    link: 'https://twitter.com',
+    image: '/cafe.webp',
+    title: 'Café',
+    icon: <Instagram size={18} />,
+    link: 'https://www.instagram.com/reel/DHbetivuWy8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
     span: '',
   },
   {
@@ -32,52 +32,52 @@ const data = [
     span: 'col-span-2',
   },
   {
-    image: 'https://images.pexels.com/photos/306801/pexels-photo-306801.jpeg',
-    title: 'Selección Premium',
-    icon: <Twitter size={18} />,
-    link: 'https://twitter.com',
-    span: '',
-  },
-  {
-    image: 'https://images.pexels.com/photos/302457/pexels-photo-302457.jpeg?auto=compress&cs=tinysrgb&w=600',
-    title: 'Experiencia Gourmet',
-    icon: <Instagram size={18} />,
-    link: 'https://instagram.com',
-    span: '',
-  },
-  {
-    image: 'https://images.pexels.com/photos/1200354/pexels-photo-1200354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    title: 'Catas Sensoriales',
+    image: '/salprieta.webp',
+    title: 'Sal Prieta',
     icon: <Facebook size={18} />,
-    link: 'https://facebook.com',
+    link: 'https://www.facebook.com/share/1DCmDe4v3n/',
+    span: '',
+  },
+  {
+    image: '/quesocrema.jpg',
+    title: 'Queso Crema',
+    icon: <Facebook size={18} />,
+    link: 'https://www.facebook.com/share/p/1Af2Qw83qY/',
+    span: '',
+  },
+  {
+    image: '/quesochicloso.webp',
+    title: 'Queso Chicloso',
+    icon: <Instagram size={18} />,
+    link: 'https://www.instagram.com/p/DJJywJCOiul/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
     span: 'row-span-2',
   },
   {
-    image: 'https://images.pexels.com/photos/3943189/pexels-photo-3943189.jpeg?auto=compress&cs=tinysrgb&w=600',
-    title: 'Día en la Granja',
-    icon: <Youtube size={18} />,
-    link: 'https://youtube.com',
-    span: '',
-  },
-  {
-    image: 'https://images.pexels.com/photos/8093862/pexels-photo-8093862.jpeg?auto=compress&cs=tinysrgb&w=600',
-    title: 'Degustaciones Locales',
-    icon: <Twitter size={18} />,
-    link: 'https://twitter.com',
-    span: '',
-  },
-  {
-    image: 'https://images.pexels.com/photos/7234653/pexels-photo-7234653.jpeg?auto=compress&cs=tinysrgb&w=300',
-    title: 'Elaboración Diaria',
-    icon: <Instagram size={18} />,
-    link: 'https://instagram.com',
-    span: '',
-  },
-  {
-    image: 'https://images.pexels.com/photos/6659616/pexels-photo-6659616.jpeg?auto=compress&cs=tinysrgb&w=300',
-    title: 'Cultura Quesera',
+    image: '/tazaqueseria.webp',
+    title: 'Queseria',
     icon: <Facebook size={18} />,
-    link: 'https://facebook.com',
+    link: 'https://www.facebook.com/share/p/1DZLNNZFoD/',
+    span: '',
+  },
+  {
+    image: '/huevos.webp',
+    title: 'Huevos',
+    icon: <Facebook size={18} />,
+    link: 'https://www.facebook.com/share/p/1DbLJe9jhr/',
+    span: '',
+  },
+  {
+    image: '/queseriaproducts.webp',
+    title: 'La Queseria Ec',
+    icon: <Facebook size={18} />,
+    link: 'https://www.facebook.com/QuesoosymaS',
+    span: '',
+  },
+  {
+    image: '/phonequeseria.webp',
+    title: 'Contáctanos',
+    icon: <Facebook size={18} />,
+    link: 'https://api.whatsapp.com/send?phone=%2B593980883299&context=AfdfetdF08vaB0CfpW9k9gWRX1CoRI6OPGK0YjCwl4R3OKQoQAANWcZkPfdq_zAM-RSgBy5h6ZuNSyBmnfXu21NazYi2yedBBfV5lOjbWuVCqwbztUXL9idLjFF5goK-ZmeE3QkwbQIOXP6CKegsQe_9tg&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawKa3ctleHRuA2FlbQIxMABicmlkETAxQ1B5Vm5INnNuc0hzeDJoAR78ZHwFJkwRN1cW6hHFlsFtRhs78QOR83xksKABHyb21mRzAdq-3AdG-VcrvA_aem_KezFNi2YSjKy33yN3OoZTw',
     span: '',
   },
 ];
@@ -94,9 +94,9 @@ const BentoSocialGrid = () => {
             src={item.image}
             alt={item.title}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            className="w-full h-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center p-3">
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center p-3 cursor-pointer">
             <h3 className="text-base font-semibold mb-2">{item.title}</h3>
             <a
               href={item.link}

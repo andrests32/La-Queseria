@@ -1,40 +1,63 @@
 ---
-import { Facebook, Instagram, Mail, Phone, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone, Youtube } from "lucide-react";
 import { RiTiktokFill } from "react-icons/ri";
-import LogoQueseria from '../LogoQueseria/LogoQueseria';
+import LogoQueseria from "../LogoQueseria/LogoQueseria";
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-white text-gray-800 border-t border-gray-200 mt-16">
-  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-    
+<footer
+  class="relative bg-white text-gray-800 border-t border-gray-200 mt-16 z-[999]"
+>
+  <div
+    class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8"
+  >
     <!-- Logo y descripción -->
     <div>
-      <LogoQueseria client:load/>
+      <LogoQueseria client:load />
       <p class="mt-4 text-sm text-rock/80 font-avenir">
-        Productos artesanales de calidad, elaborados con pasión y tradición. Disfruta el sabor auténtico del campo.
+        Productos artesanales de calidad, elaborados con pasión y tradición.
+        Disfruta el sabor auténtico del campo.
       </p>
     </div>
 
     <!-- Navegación -->
     <div>
-      <h3 class="text-md font-play tracking-wide text-chedar mb-4">Navegación</h3>
-      <ul class="space-y-2 text-sm lg:text-md tracking-wide text-verde font-avenir">
-        <li><a href="/" class="hover:text-chedar transition">Inicio</a></li>
-        <li><a href="/productos" class="hover:text-chedar transition">Productos</a></li>
-        <li><a href="/nosotros" class="hover:text-chedar transition">Nosotros</a></li>
-        <li><a href="/contacto" class="hover:text-chedar transition">Contacto</a></li>
+      <h3 class="text-md font-play tracking-wide text-chedar mb-4">
+        Navegación
+      </h3>
+      <ul
+        class="space-y-2 text-md lg:text-md tracking-wide text-rock font-avenir"
+      >
+        <li><a href="/" class="hover:text-chedar hover:font-semibold transition duration-300 antialiased">Inicio</a></li>
+        <li>
+          <a href="/productos" class="hover:text-chedar hover:font-semibold transition duration-300 antialiased"
+            >Productos</a>
+        </li>
+        <li>
+          <a href="/nosotros" class="hover:text-chedar hover:font-semibold transition duration-300 antialiased">Nosotros</a>
+        </li>
+        <li>
+          <a href="/contacto" class="hover:text-chedar hover:font-semibold transition duration-300 antialiased">Contacto</a>
+        </li>
       </ul>
     </div>
 
     <!-- Contacto -->
     <div>
       <h3 class="text-md font-play text-chedar mb-4">Contáctanos</h3>
-      <ul class="space-y-3 text-sm text-verde">
+      <ul class="space-y-3 text-md text-rock">
         <li class="flex items-center gap-2">
-          <Phone className="w-4 h-4 text-chedar" /> +593 987 654 321
+          <Phone className="w-4 h-4 text-chedar" />
+          +593 98 088 3299
         </li>
-        <li class="flex items-center gap-2">
-          <Mail className="w-4 h-4 text-chedar" /> contacto@laqueseria.com
+        <li>
+          <a
+            href="mailto:laqueserianacional.ec@gmail.com"
+            class="flex items-center gap-2 hover:text-chedar"
+          >
+            <Mail className="w-4 h-4 text-chedar" />
+            laqueserianacional.ec@gmail.com
+          </a>
         </li>
       </ul>
     </div>
@@ -42,24 +65,44 @@ import LogoQueseria from '../LogoQueseria/LogoQueseria';
     <!-- Redes sociales -->
     <div>
       <h3 class="text-md font-play text-chedar mb-4">Síguenos</h3>
-      <div class="flex gap-4">
-        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-chedar transition">
-          <Facebook className="w-5 h-5 text-verde" />
+      <div class="flex items-center gap-4">
+        <a
+          href="https://www.facebook.com/QuesoosymaS?mibextid=wwXIfr&rdid=wa5YI1WHAWUuELim#"
+          target="_blank"
+          aria-label="Facebook"
+          class="hover:text-chedar transition"
+        >
+          <Facebook
+            className="w-5 h-5 text-rock hover:text-chedar transition duration-300"
+          />
         </a>
-        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-chedar transition">
-          <Instagram className="w-5 h-5 text-verde" />
+        <a
+          href="https://www.instagram.com/laqueseria.ec"
+          target="_blank"
+          aria-label="Instagram"
+          class="hover:text-chedar transition"
+        >
+          <Instagram
+            className="w-5 h-5 text-rock hover:text-chedar transition duration-300"
+          />
         </a>
-        <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="hover:text-chedar transition">
-          <Youtube className="w-5 h-5 text-verde" />
-        </a>
-        <a href="https://tiktok.com" target="_blank" aria-label="TikTok" class="hover:text-chedar transition">
-          <RiTiktokFill className="w-5 h-5 text-verde" />
+        <a
+          href="https://www.tiktok.com/@laqueseria.ec"
+          target="_blank"
+          aria-label="TikTok"
+          class="hover:text-chedar transition"
+        >
+          <RiTiktokFill
+            className="w-5 h-5 text-rock hover:text-chedar transition duration-300"
+          />
         </a>
       </div>
     </div>
   </div>
-
-  <div class="text-center font-inter text-md text-gray-500 py-6 border-t border-gray-100">
-    © {new Date().getFullYear()} La Quesería. Todos los derechos reservados.
+  <!-- Footer inferior -->
+  <div
+    class="text-center font-inter text-md text-gray-500 py-6 border-t border-gray-100"
+  >
+    © {currentYear} La Quesería. Todos los derechos reservados.
   </div>
 </footer>

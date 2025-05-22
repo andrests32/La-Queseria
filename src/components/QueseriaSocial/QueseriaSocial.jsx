@@ -74,21 +74,21 @@ const QueseriaSocial = () => {
             icon={<Instagram strokeWidth={1.2} className="w-9 h-9" />}
             name="Instagram"
             username="@laqueseria.ec"
-            link="https://instagram.com"
+            link="https://www.instagram.com/laqueseria.ec/"
             description="Día a día entre hornos, campos y manos que crean con amor."
           />
           <SocialCard
             icon={<Facebook strokeWidth={1.2} className="w-9 h-9" />}
             name="Facebook"
-            username="@saboresconhistoria"
-            link="https://facebook.com"
+            username="@laqueseria.ec"
+            link="https://www.facebook.com/QuesoosymaS?mibextid=wwXIfr&rdid=RiiJciBSX6Khz1td#"
             description="Eventos, ferias, comunidad. Un espacio donde compartimos en familia."
           />
           <SocialCard
             icon={<PiTiktokLogoLight className="w-9 h-9" />}
             name="TikTok"
-            username="@hechoamano"
-            link="https://tiktok.com"
+            username="@laqueseria.ec"
+            link="https://www.tiktok.com/@laqueseria.ec"
             description="Historias visuales que revelan el alma de lo que hacemos."
           />
         </div>
@@ -110,14 +110,14 @@ const SocialCard = ({ icon, name, username, link, description }) => {
       target="_blank"
       rel="noopener noreferrer"
       className="relative flex flex-col items-center bg-white rounded-2xl p-6 
-                 border-b-4 border-chedar transition-all duration-300 hover:shadow-lg"
+                 border-b-4 border-chedar transition-all duration-300 hover:shadow-lg hover:bg-chedar group"
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.96 }}
     >
-      <div className="text-chedar mb-2">{icon}</div>
-      <h4 className="text-lg font-play text-rock tracking-wide">{name}</h4>
-      <p className="text-sm text-chedar font-avenir">{username}</p>
-      <p className="mt-3 text-center text-gray-600 font-avenir text-sm">{description}</p>
+      <div className="text-chedar mb-2 group-hover:text-white">{icon}</div>
+      <h4 className="text-lg font-play text-rock tracking-wide group-hover:text-white">{name}</h4>
+      <p className="text-sm text-chedar font-avenir group-hover:text-white">{username}</p>
+      <p className="mt-3 text-center text-gray-600 font-avenir text-sm group-hover:text-white transition">{description}</p>
     </motion.a>
   );
 };
