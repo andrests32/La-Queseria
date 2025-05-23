@@ -26,25 +26,25 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
       whileHover={{ y: -5 }}
       layout
     >
       {/* Imagen */}
       <div className="relative">
-        <img 
-          src={product.image} 
-          alt={product.name} 
+        <img
+          src={product.image}
+          alt={product.name}
           className="w-full h-48 object-cover"
         />
-        
+
         {product.badge && (
           <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-semibold ${badgeColors[product.badge] || 'bg-gray-100 text-gray-800'}`}>
             {product.badge}
           </div>
         )}
-        
+
         <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-semibold ${categoryColors[product.category] || 'bg-gray-100 text-gray-800'}`}>
           {product.category}
         </div>
@@ -63,15 +63,15 @@ const ProductCard = ({ product }) => {
 
         {/* Botón de expandir */}
         <div>
-          <div 
-            className="flex items-center justify-between cursor-pointer mb-2" 
+          <div
+            className="flex items-center justify-between cursor-pointer mb-2"
             onClick={toggleExpand}
           >
             <span className="text-sm font-medium text-primary-600">
               {isExpanded ? 'Ver menos' : 'Ver más detalles'}
             </span>
-            {isExpanded ? 
-              <ChevronUp size={18} className="text-primary-600" /> : 
+            {isExpanded ?
+              <ChevronUp size={18} className="text-primary-600" /> :
               <ChevronDown size={18} className="text-primary-600" />
             }
           </div>
@@ -79,7 +79,7 @@ const ProductCard = ({ product }) => {
           {/* Área expandible */}
           <AnimatePresence>
             {isExpanded && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
@@ -99,17 +99,6 @@ const ProductCard = ({ product }) => {
             )}
           </AnimatePresence>
 
-          {/* Botón de agregar */}
-          <div className="flex justify-center mt-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-primary-500 text-white py-2 px-4 rounded-lg font-medium"
-            >
-              <ShoppingBag size={16} />
-              Agregar al carrito
-            </motion.button>
-          </div>
         </div>
       </div>
     </motion.div>
