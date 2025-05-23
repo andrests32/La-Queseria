@@ -255,7 +255,7 @@ export const products = [
       benefits: "La pimienta dulce, también conocida como pimienta de Jamaica(Se le llama pimienta de Jamaica porque su sabor es una combinación de canela, clavo de olor y nuez moscada). Ofrece varios beneficios para la salud y la cocina.",
       vitamins: "Vitamina C, vitamina A, vitamina K, y minerales como potasio, calcio, hierro y magnesio. Además, es una fuente de fibra y contiene compuestos bioactivos con propiedades antioxidantes y antiinflamatorias.",
       badge: "Orgánico",
-      category: "Especia"
+      category: "Especias"
     },
     {
       id: "especia-9",
@@ -266,7 +266,7 @@ export const products = [
       benefits: "La sal prieta ofrece diversos beneficios nutricionales, especialmente gracias a sus ingredientes principales: maíz y maní. El maíz proporciona saciedad debido a sus carbohidratos y fibra, además de ácido fólico, antioxidantes y vitaminas. El maní aporta proteínas, aminoácidos, ácido fólico, vitamina E, potasio y fósforo.",
       vitamins: "La sal prieta aporta una variedad de minerales esenciales para el cuerpo como sodio, calcio, hierro, fósforo y magnesio, además de algunas vitaminas.",
       badge: "Orgánico",
-      category: "Especia"
+      category: "Especias"
     },
     {
       id: "embutido-2",
