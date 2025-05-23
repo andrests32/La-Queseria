@@ -14,7 +14,10 @@ const ProductCard = ({ product }) => {
     "Harinas": "bg-amber-100 text-amber-800",
     "Quesos": "bg-blue-100 text-blue-800",
     "Plátanos": "bg-green-100 text-green-800",
+    "Embutido": "bg-amber-700 text-white",
+    "Carbohidrato": "bg-blue-400 text-white",
     "Lácteos": "bg-indigo-100 text-indigo-800",
+    "Especias": "bg-indigo-100 text-indigo-800",
   };
 
   const badgeColors = {
@@ -39,11 +42,11 @@ const ProductCard = ({ product }) => {
           className="w-full h-48 object-cover"
         />
 
-        {product.badge && (
+        {/* {product.badge && (
           <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-semibold ${badgeColors[product.badge] || 'bg-gray-100 text-gray-800'}`}>
             {product.badge}
           </div>
-        )}
+        )} */}
 
         <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-semibold ${categoryColors[product.category] || 'bg-gray-100 text-gray-800'}`}>
           {product.category}
@@ -55,7 +58,7 @@ const ProductCard = ({ product }) => {
         <div className="flex flex-col gap-2 mb-4">
           <div className="flex justify-between items-start">
             <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
-            <span className="text-lg font-bold text-gray-900">${product.price.toFixed(2)}</span>
+            {/* <span className="text-lg font-bold text-gray-900">${product.price.toFixed(2)}</span> */}
           </div>
 
           <p className="text-gray-600 text-sm flex-1">{product.shortDescription}</p>

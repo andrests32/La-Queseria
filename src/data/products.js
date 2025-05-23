@@ -17,7 +17,7 @@ export const products = [
       id: "especias-1",
       name: "Ajo Macho",
       price: 19.99,
-      image: "public/products/ajos/ajos.webp",
+      image: "/products/ajos/ajos.webp",
       shortDescription: "El ajo un alimento versátil y popular.",
       description: "Elaborado con leche pasteurizada de vacas alimentadas con pasto. Su textura cremosa y sus vetas azules lo hacen perfecto para ensaladas gourmet.",
       benefits: "Ofrece una amplia gama de beneficios para la salud, incluyendo propiedades antioxidantes, antiinflamatorias, antibacterianas y antivirales.",
@@ -52,7 +52,7 @@ export const products = [
       category: "Avícola"
     },
     {
-      id: "Carbohidrate-0",
+      id: "carbohidrate-0",
       name: "Azúcar Blanca",
       price: 9.99,
       image: "/products/azucar/azúcar.webp",
@@ -66,7 +66,7 @@ export const products = [
     
     // Harinas (Flours)
     {
-      id: "Carbohidrate-1",
+      id: "carbohidrate-1",
       name: "Avena",
       price: 5.99,
       image: "/products/avena/avena.webp",
@@ -78,7 +78,7 @@ export const products = [
       category: "Carbohidrato"
     },
     {
-      id: "Carbohidrate-2",
+      id: "carbohidrate-2",
       name: "Café Grapé",
       price: 14.99,
       image: "/products/cafe/café.webp",
@@ -146,7 +146,150 @@ export const products = [
       vitamins: "El comino es una excelente fuente de vitaminas y nutrientes, incluyendo vitaminas A, C, E, K y B6, así como minerales como potasio, fósforo, magnesio, calcio y hierro.",
       badge: "Orgánico",
       category: "Especias"
-    }
+    },
+    {
+      id: "carbohidrate-5",
+      name: "Crema de maní",
+      price: 8.99,
+      image: "/products/cremademani/cremademaní.webp",
+      shortDescription: "Crema de maní 100% artesanal.",
+      benefits: "La crema de maní, o mantequilla de maní, ofrece varios beneficios para la salud, incluyendo la regulación del colesterol, la mejora de la digestión y la prevención de enfermedades cardiovasculares.",
+      vitamins: "Es rica en proteínas, fibra, grasas saludables y vitamina E, lo que contribuye a la salud general. Puede ayudar a controlar la presión arterial, fortalecer los huesos y músculos, y contribuir a una buena circulación de la sangre.",
+      badge: "Orgánico",
+      category: "Carbohidrato"
+    },
+    {
+      id: "flour-5",
+      name: "Harina blanca",
+      price: 8.99,
+      image: "/products/harina/harina.webp",
+      shortDescription: "Harian fina para creación de postres deliciosos.",
+      benefits: "La harina blanca, puede ser más fácil de digerir debido a que se ha eliminado el salvado y el germen, que contienen más fibra. Además, la harina blanca es versátil para repostería, ofreciendo una textura fina y ligereza en productos como panes blancos, pasteles, bizcochos y masa para pizza.",
+      vitamins: "La harina blanca, a pesar de ser un alimento procesado, aún contiene vitaminas y nutrientes importantes. Principalmente, aporta vitaminas del grupo B, como la tiamina (B1), riboflavina (B2), niacina (B3) y vitamina B6. También contiene hierro, folato, magnesio y otros minerales.",
+      badge: "Orgánico",
+      category: "Harinas"
+    },
+    {
+      id: "poultry-2",
+      name: "Huevos frescos",
+      price: 8.99,
+      image: "/products/huevos/huevosfrescos.webp",
+      shortDescription: "Huevos frescos usados en la elaboración de todo plato.",
+      benefits: "Los huevos, ofrecen varios beneficios para la salud. También pueden ayudar a fortalecer el sistema inmunológico, mejorar la salud ocular y el metabolismo, y tener efectos antiinflamatorios. ",
+      vitamins: "Aportan una mayor cantidad de proteínas, vitaminas, minerales y aminoácidos esenciales. Los huevos criollos suelen tener mayor contenido de vitamina A, vitamina E y ácidos grasos omega-3.",
+      badge: "Orgánico",
+      category: "Avícola"
+    },
+    {
+      id: "poultry-2",
+      name: "Huevos Crillos",
+      price: 8.99,
+      image: "/products/huevos/huevoscriollos.webp",
+      shortDescription: "Huevos crillos fuente rica en proteínas.",
+      benefits: "Los huevos criollos, ofrecen varios beneficios para la salud. También pueden ayudar a fortalecer el sistema inmunológico, mejorar la salud ocular y el metabolismo, y tener efectos antiinflamatorios.",
+      vitamins: "Aportan una mayor cantidad de proteínas, vitaminas, minerales y aminoácidos esenciales. Los huevos criollos suelen tener mayor contenido de vitamina A, vitamina E y ácidos grasos omega-3.",
+      badge: "Orgánico",
+      category: "Avícola"
+    },
+    {
+      id: "carbohidrate-6",
+      name: "Lenteja",
+      price: 8.99,
+      image: "/products/lentejas/lentejas.webp",
+      shortDescription: "Lentejas productos ecuatoriano de alta calidad.",
+      benefits: "Las lentejas ofrecen varios beneficios para la salud, incluyendo la reducción del riesgo de enfermedades cardiovasculares, mejoría de la digestión, control de peso y aporte de nutrientes esenciales.",
+      vitamins: "Además, son una buena fuente de proteínas, hierro, ácido fólico y fibra, lo que las convierte en un alimento versátil y nutritivo. Destacan por su aporte (vitamina B9), magnesio, zinc, potasio y fósforo. También contienen vitaminas del grupo B, como la tiamina (B1), la niacina (B3) y la piridoxina (B6).",
+      badge: "Orgánico",
+      category: "Carbohidrato"
+    },
+    {
+      id: "carbohidrate-7",
+      name: "Mani en polvo",
+      price: 8.99,
+      image: "/products/manienpolvo/manienpolvo.webp",
+      shortDescription: "Maní secado, triturado haste tener consistencia en polvo.",
+      benefits: "El maní en polvo, ya sea en forma de harina de maní o mantequilla de maní en polvo, ofrece una serie de beneficios para la salud, incluyendo ser una fuente de proteínas, fibra y minerales.",
+      vitamins: "El maní en polvo, especialmente la harina de maní, es rico en proteínas, fibra, vitaminas y minerales, incluyendo zinc, magnesio, fósforo y potasio.",
+      badge: "Orgánico",
+      category: "Carbohidrato"
+    },
+    {
+      id: "carbohidrate-7",
+      name: "Mani granulado",
+      price: 8.99,
+      image: "/products/manienpolvo/manigranulado.png",
+      shortDescription: "Maní granulado, como botana fuente de energia natural.",
+      benefits: "El maní, ya sea en forma de harina de maní o mantequilla de maní en polvo, ofrece una serie de beneficios para la salud, incluyendo ser una fuente de proteínas, fibra y minerales.",
+      vitamins: "El maní en polvo, especialmente la harina de maní, es rico en proteínas, fibra, vitaminas y minerales, incluyendo zinc, magnesio, fósforo y potasio.",
+      badge: "Orgánico",
+      category: "Carbohidrato"
+    },
+    {
+      id: "carbohidrate-7",
+      name: "Miel de abeja",
+      price: 8.99,
+      image: "/products/mieldeabeja/mieldeabeja.webp",
+      shortDescription: "Miel de abeja natural sin conservantes.",
+      benefits: "La miel de abeja ofrece varios beneficios culinarios, desde mejorar el sabor y aroma de los alimentos hasta actuar como un endulzante natural y conservador. Además, puede ser utilizada en glaseados, salsas y recetas de repostería.",
+      vitamins: "Contiene vitaminas B (B1, B2, B3, B5), vitamina C, así como minerales como potasio, fósforo, hierro, magnesio y zinc, entre otros. Estas vitaminas y minerales desempeñan un papel importante en el funcionamiento del cuerpo, desde el metabolismo hasta el sistema inmunológico.",
+      badge: "Orgánico",
+      category: "Carbohidrato"
+    },
+    {
+      id: "carbohidrate-8",
+      name: "Pasas secas",
+      price: 8.99,
+      image: "/products/pasas/pasas.webp",
+      shortDescription: "Pasas dulces secas elaboradas a base de las mejores uvas.",
+      benefits: "Las pasas, uvas secas, ofrecen diversos beneficios para la salud, incluyendo el aporte de energía, minerales, fibra y antioxidantes. Ayudan a prevenir la anemia, mejoran la digestión y el tránsito intestinal, y pueden contribuir a la salud dental y cardiovascular.",
+      vitamins: "Contienen vitaminas del complejo B, como la B1, B2, B3, B6, B9 y B12. También aportan vitamina K y C. A nivel de minerales, son ricas en potasio, calcio, hierro, magnesio y fósforo.",
+      badge: "Orgánico",
+      category: "Carbohidrato"
+    },
+    {
+      id: "especia-9",
+      name: "Pimienta dulce",
+      price: 8.99,
+      image: "/products/pimientadulce/pimientadulce.webp",
+      shortDescription: "Pimienta Dulce usada en la tradicional colada morada.",
+      benefits: "La pimienta dulce, también conocida como pimienta de Jamaica(Se le llama pimienta de Jamaica porque su sabor es una combinación de canela, clavo de olor y nuez moscada). Ofrece varios beneficios para la salud y la cocina.",
+      vitamins: "Vitamina C, vitamina A, vitamina K, y minerales como potasio, calcio, hierro y magnesio. Además, es una fuente de fibra y contiene compuestos bioactivos con propiedades antioxidantes y antiinflamatorias.",
+      badge: "Orgánico",
+      category: "Especia"
+    },
+    {
+      id: "especia-9",
+      name: "Sal prieta",
+      price: 8.99,
+      image: "/products/salprieta/salprieta.webp",
+      shortDescription: "Sal prieta culinaria tradicional de la provincia de Manabí, Ecuador, que se utiliza como condimento.",
+      benefits: "La sal prieta ofrece diversos beneficios nutricionales, especialmente gracias a sus ingredientes principales: maíz y maní. El maíz proporciona saciedad debido a sus carbohidratos y fibra, además de ácido fólico, antioxidantes y vitaminas. El maní aporta proteínas, aminoácidos, ácido fólico, vitamina E, potasio y fósforo.",
+      vitamins: "La sal prieta aporta una variedad de minerales esenciales para el cuerpo como sodio, calcio, hierro, fósforo y magnesio, además de algunas vitaminas.",
+      badge: "Orgánico",
+      category: "Especia"
+    },
+    {
+      id: "embutido-2",
+      name: "Salchicas de carne",
+      price: 8.99,
+      image: "/products/salchichas/salchicha.webp",
+      shortDescription: "Producto elaborado con pura carne seleccionada, rico en proteínas. Empacado al vacío para garantizar la frescura del producto.",
+      benefits: "Son fuente de proteínas, hierro y fósforo. La salchicha de pollo, por ejemplo, ofrece una alternativa magra, con menos sodio y grasa",
+      vitamins: "Contiene vitaminas y minerales esenciales como hierro y vitaminas del grupo B (si están hechas de carne).",
+      badge: "Betseller",
+      category: "Embutido"
+    },
+    {
+      id: "embutido-2",
+      name: "Salchicas de pollo",
+      price: 8.99,
+      image: "/products/salchichas/salchicha.webp",
+      shortDescription: "Producto elaborado con pura carne seleccionada, rico en proteínas.",
+      benefits: "Son fuente de proteínas, hierro y fósforo. La salchicha de pollo, por ejemplo, ofrece una alternativa magra, con menos sodio y grasa",
+      vitamins: "Salchicha de pollo contiene 17.6g de proteína, que es aproximadamente lo mismo que 2.9 eggs, 0.7 pechugas de pollo.",
+      badge: "Betseller",
+      category: "Embutido"
+    },
   ];
   
   // Get unique categories from products
