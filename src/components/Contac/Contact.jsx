@@ -1,236 +1,179 @@
-import { useState } from 'react';
+import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Linkedin, Truck, Smile } from 'lucide-react';
+import { RiTiktokFill } from "react-icons/ri";
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, ExternalLink, Instagram, Facebook, Linkedin } from 'lucide-react';
 import LogoQueseria from '../LogoQueseria/LogoQueseria';
+import HomeButton from '../ProductsFilter/HomeButton';
+
+const faqs = [
+  {
+    icon: <Truck size={20} />,
+    question: '¿Hacen entregas a domicilio?',
+    answer: 'Sí, entregamos en toda la ciudad y zonas rurales cercanas. Realiza tu pedido por WhatsApp y te lo llevamos.'
+  },
+  {
+    icon: <Clock size={20} />,
+    question: '¿Cuáles son sus horarios?',
+    answer: 'Abrimos de lunes a sábado de 9AM a 7PM. Domingos de 10AM a 4PM.'
+  },
+  {
+    icon: <Smile size={20} />,
+    question: '¿Ofrecen degustaciones?',
+    answer: '¡Claro! Puedes visitarnos y probar nuestros quesos artesanales sin compromiso.'
+  }
+];
+
+const locations = [
+  {
+    id: 1,
+    name: 'Matriz',
+    address: 'Mercado 17 de Diciembre, Via Bellavista, Santo Domingo 260303',
+    phone: '+593 98 088 3299',
+    email: 'laqueserianacional.ec@gmail.com',
+    hours: 'Lun-Sáb: 6AM-7PM, Dom: 6AM-6PM',
+    iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1248.1043947342434!2d-79.18521672563035!3d-0.257445050323827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d54782565df337%3A0x409e2c54c2149d31!2sLaqueseria!5e1!3m2!1ses-419!2sec!4v1747848908876!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade'
+  },
+  {
+    id: 2,
+    name: 'Sucursal',
+    address: 'Unión y Progreso - calle Cuenca y 3 de Julio ',
+    phone: '+593 96 713 5647',
+    email: 'laqueserianacional.ec@gmail.com',
+    hours: 'Lun-Sáb: 6AM-7PM, Dom: 6AM-6PM',
+    iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2496.209434038807!2d-79.17425024490882!3d-0.2541310582823793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d5471dd06b74e5%3A0x6566cbaf7abf5525!2sLa%20Queseria!5e1!3m2!1ses-419!2sec!4v1747849178531!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade'
+  }
+];
+
+const socialLinks = [
+  { icon: <Instagram size={20} />, href: 'https://www.instagram.com/laqueseria.ec/' },
+  { icon: <Facebook size={20} />, href: 'https://www.facebook.com/QuesoosymaS?mibextid=wwXIfr&rdid=RiiJciBSX6Khz1td#' },
+  { icon: <RiTiktokFill size={20} />, href: 'https://www.tiktok.com/@laqueseria.ec' },
+];
 
 const ContactSection = () => {
-    const [hoveredLocation, setHoveredLocation] = useState(null);
-
-    const locations = [
-        {
-            id: 1,
-            name: 'Sucursal Centro',
-            address: 'Calle Principal 123, Centro Histórico, Ciudad, 10001',
-            phone: '+52 (555) 123-4567',
-            email: 'centro@laqueseria.com',
-            hours: 'Lun-Sáb: 9AM-7PM, Dom: 10AM-4PM',
-            map: 'https://maps.google.com/?q=Centro+Historico+Ciudad+10001',
-            image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-        },
-        {
-            id: 2,
-            name: 'Sucursal Norte',
-            address: 'Avenida Reforma 456, Zona Norte, Ciudad, 10002',
-            phone: '+52 (555) 987-6543',
-            email: 'norte@laqueseria.com',
-            hours: 'Lun-Sáb: 10AM-8PM, Dom: 11AM-5PM',
-            map: 'https://maps.google.com/?q=Zona+Norte+Ciudad+10002',
-            image: 'https://images.unsplash.com/photo-1486485764572-92b96f21882a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-        }
-    ];
-
-    const container = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2
-            }
-        }
-    };
-
-    const item = {
-        hidden: { y: 20, opacity: 0 },
-        show: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                ease: "easeOut",
-                duration: 0.6
-            }
-        }
-    };
-
-    const contactInfo = [
-        {
-            id: 'general',
-            title: 'Información General',
-            icon: <Mail size={18} />,
-            value: 'info@laqueseria.com',
-            link: 'mailto:info@laqueseria.com'
-        },
-        {
-            id: 'orders',
-            title: 'Pedidos y Entregas',
-            icon: <Phone size={18} />,
-            value: '+52 (555) 789-0123',
-            link: 'tel:+525557890123'
-        }
-    ];
-
-    const socialLinks = [
-        { id: 'instagram', icon: <Instagram size={20} />, link: 'https://instagram.com/laqueseria' },
-        { id: 'facebook', icon: <Facebook size={20} />, link: 'https://facebook.com/laqueseria' },
-        { id: 'linkedin', icon: <Linkedin size={20} />, link: 'https://linkedin.com/company/laqueseria' }
-    ];
-
-    return (
-        <section className="py-16 bg-rock-50">
-            <div className="container mx-auto px-4 max-w-6xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12 flex flex-col items-center justify-center"
-                >
-
-                    <a href="/" class="flex items-center mb-6 cursor-pointer">
-                        <LogoQueseria className="h-30" />
-                        <span class="relative top-4 -left-1 font-play text-chedar text-4xl"
-                        >uesería</span
-                        >
-                    </a>
-                    <h2 className="text-3xl md:text-4xl text-rock-800 font-play mb-4">Contáctanos</h2>
-                    <p className="text-rock-600 max-w-2xl mx-auto font-avenir">
-                        Visita cualquiera de nuestras ubicaciones o ponte en contacto con nosotros. Nos encantaría atenderte y resolver todas tus dudas sobre nuestros productos.
-                    </p>
-                </motion.div>
-
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
-                >
-                    {locations.map((location) => (
-                        <motion.div
-                            key={location.id}
-                            variants={item}
-                            onMouseEnter={() => setHoveredLocation(location.id)}
-                            onMouseLeave={() => setHoveredLocation(null)}
-                            className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
-                        >
-                            <div className="h-48 relative overflow-hidden">
-                                <img
-                                    src={location.image}
-                                    alt={location.name}
-                                    className="w-full h-full object-cover"
-                                />
-                                <motion.div
-                                    className="absolute inset-0 bg-chedar-600 bg-opacity-70 flex items-center justify-center"
-                                    initial={{ opacity: 0 }}
-                                    animate={{
-                                        opacity: hoveredLocation === location.id ? 0.8 : 0
-                                    }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <a
-                                        href={location.map}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-white font-medium flex items-center px-4 py-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all"
-                                    >
-                                        Ver en Mapa <ExternalLink size={16} className="ml-2" />
-                                    </a>
-                                </motion.div>
-                            </div>
-                            <div className="p-6">
-                                <h3 className="text-xl text-rock-800 font-play mb-3">{location.name}</h3>
-
-                                <div className="space-y-3 text-rock-700 font-avenir">
-                                    <div className="flex items-start">
-                                        <MapPin size={18} className="text-chedar-600 mt-1 mr-3 flex-shrink-0" />
-                                        <p>{location.address}</p>
-                                    </div>
-
-                                    <div className="flex items-start">
-                                        <Phone size={18} className="text-chedar-600 mt-1 mr-3 flex-shrink-0" />
-                                        <a href={`tel:${location.phone.replace(/\D/g, '')}`} className="hover:text-chedar-600 transition-colors">
-                                            {location.phone}
-                                        </a>
-                                    </div>
-
-                                    <div className="flex items-start">
-                                        <Mail size={18} className="text-chedar-600 mt-1 mr-3 flex-shrink-0" />
-                                        <a href={`mailto:${location.email}`} className="hover:text-chedar-600 transition-colors">
-                                            {location.email}
-                                        </a>
-                                    </div>
-
-                                    <div className="flex items-start">
-                                        <Clock size={18} className="text-chedar-600 mt-1 mr-3 flex-shrink-0" />
-                                        <p>{location.hours}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="bg-white rounded-lg shadow-sm p-8"
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="col-span-1 md:col-span-2">
-                            <h3 className="text-xl text-rock-800 font-play mb-5">Información Adicional</h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                {contactInfo.map(item => (
-                                    <motion.div
-                                        key={item.id}
-                                        whileHover={{ y: -4 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                        className="flex items-start"
-                                    >
-                                        <div className="h-10 w-10 rounded-full bg-chedar-100 flex items-center justify-center mr-4 flex-shrink-0">
-                                            <span className="text-chedar-600">{item.icon}</span>
-                                        </div>
-                                        <div>
-                                            <h4 className="font-medium text-rock-800 font-play">{item.title}</h4>
-                                            <a
-                                                href={item.link}
-                                                className="text-rock-600 hover:text-chedar-600 transition-colors font-avenir"
-                                            >
-                                                {item.value}
-                                            </a>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 className="text-xl text-rock-800 font-play mb-5">Síguenos</h3>
-                            <p className="text-rock-600 mb-5 font-avenir">
-                                Síguenos en redes sociales para conocer nuestras novedades, ofertas especiales y más.
-                            </p>
-
-                            <div className="flex space-x-4">
-                                {socialLinks.map(social => (
-                                    <motion.a
-                                        key={social.id}
-                                        href={social.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="h-10 w-10 rounded-full bg-rock-100 flex items-center justify-center text-rock-700 hover:bg-chedar-600 hover:text-white transition-colors duration-300"
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
-                                        {social.icon}
-                                    </motion.a>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
+  return (
+    <section className="relative py-16 md:py-28 px-4 sm:px-6 overflow-hidden">
+      {/* Capa de fondo gradiente */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-white z-0"></div>
+      
+      {/* Capa de imagen con opacidad */}
+      <div className="absolute inset-0 bg-[url('/queseria.webp')] bg-cover bg-center opacity-5 z-10"></div>
+      
+      {/* Contenido principal */}
+      <div className="relative z-20">
+        <HomeButton />
+        
+        <div className="max-w-7xl mx-auto">
+          {/* Branding y título */}
+          <div className="text-center mb-16 md:mb-20">
+            <div className="flex justify-center items-center mb-4">
+              <LogoQueseria className="h-16 md:h-22" />
+              <span className="text-4xl md:text-5xl font-play text-chedar">uesería</span>
             </div>
-        </section>
-    );
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-play text-rock mb-4">¿Necesitas algo? Estamos para ti.</h2>
+            <p className="text-base md:text-lg text-gray-600 font-avenir max-w-2xl mx-auto leading-relaxed">
+              Escríbenos, visítanos o simplemente ven a degustar. Queremos que vivas la experiencia de lo artesanal, lo real y lo humano.
+            </p>
+          </div>
+
+          {/* Preguntas frecuentes */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16 md:mb-20 px-4">
+            {faqs.map((faq, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div className="flex items-center gap-3 text-chedar mb-3">
+                  <span className="bg-amber-50 p-2 rounded-full">{faq.icon}</span>
+                  <h4 className="font-play tracking-wide text-lg">{faq.question}</h4>
+                </div>
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed font-avenir">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Ubicaciones */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 px-4">
+            {locations.map(loc => (
+              <motion.div
+                key={loc.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="bg-white/70 backdrop-blur-lg border border-[#ebdfc9] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow"
+              >
+                <iframe
+                  src={loc.iframe}
+                  width="100%"
+                  height="250"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  className="rounded-t-3xl"
+                  aria-label={`Mapa de ${loc.name}`}
+                ></iframe>
+                <div className="p-6 space-y-4">
+                  <h3 className="text-xl md:text-2xl font-play text-rock">{loc.name}</h3>
+                  <div className="flex items-start text-rock font-avenir">
+                    <MapPin className="mr-3 text-chedar mt-0.5" size={18} />
+                    <span className="font-avenir text-sm md:text-base">{loc.address}</span>
+                  </div>
+                  <div className="flex items-start">
+                    <Phone className="mr-3 text-chedar mt-0.5" size={18} />
+                    <a href={`tel:${loc.phone.replace(/\D/g, '')}`} className="text-rock hover:text-chedar transition-colors font-avenir text-sm md:text-base">
+                      {loc.phone}
+                    </a>
+                  </div>
+                  <div className="flex items-start">
+                    <Mail className="mr-3 text-chedar mt-0.5" size={18} />
+                    <a href={`mailto:${loc.email}`} className="text-rock hover:text-chedar transition-colors font-avenir text-sm md:text-base">
+                      {loc.email}
+                    </a>
+                  </div>
+                  <div className="flex items-start">
+                    <Clock className="mr-3 text-chedar mt-0.5" size={18} />
+                    <span className="text-rock font-avenir text-sm md:text-base">{loc.hours}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Redes sociales */}
+          <div className="mt-16 md:mt-24 text-center px-4">
+            <h3 className="text-xl md:text-2xl font-play text-chedar mb-2">Síguenos en redes</h3>
+            <p className="text-gray-600 font-avenir mb-6 text-sm md:text-base">
+              Historias, fotos del día y descuentos únicos solo para nuestra comunidad.
+            </p>
+            <div className="flex justify-center gap-4">
+              {socialLinks.map((s, i) => (
+                <motion.a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 md:w-11 md:h-11 rounded-full text-chedar bg-white hover:bg-chedar hover:text-white cursor-pointer flex items-center justify-center shadow-sm hover:shadow-md transition-all"
+                  aria-label={`Enlace a ${s.href}`}
+                >
+                  {s.icon}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Decoración artística (capa superior) */}
+      <div className="absolute -bottom-20 -left-20 w-64 h-64 md:w-96 md:h-96 bg-chedar/10 rounded-full blur-[80px] md:blur-[120px] z-30"></div>
+      <div className="absolute -top-20 -right-20 w-64 h-64 md:w-96 md:h-96 bg-white/10 rounded-full blur-[80px] md:blur-[120px] z-30"></div>
+    </section>
+  );
 };
 
 export default ContactSection;

@@ -80,7 +80,7 @@ export default function BubbleBackground({ images, currentImageIndex, showBubble
       className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
       ref={containerRef}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-amber-50/70 to-white/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-amber-50/50 to-white" />
 
       <AnimatePresence>
         {showBubbles &&
@@ -119,7 +119,7 @@ export default function BubbleBackground({ images, currentImageIndex, showBubble
                 }`}
                 style={{
                   filter: "drop-shadow(0 4px 8px rgba(251, 191, 36, 0.1))",
-                  opacity: 0.2
+                  opacity: 0.6
                 }}
               />
             </motion.div>

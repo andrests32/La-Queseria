@@ -1,13 +1,11 @@
-import { motion, useScroll } from 'framer-motion';
-import { Instagram, Facebook, Twitter, Youtube, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Instagram, Facebook, HeartHandshake } from 'lucide-react';
+import { PiTiktokLogoLight } from "react-icons/pi";
 import BentoSocialGrid from './SocialSection/Bento';
 import { useRef } from 'react';
 
 const QueseriaSocial = () => {
   const containerRef = useRef(null);
-
-
-  
 
   return (
     <motion.div
@@ -15,86 +13,114 @@ const QueseriaSocial = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8"
+      className="relative max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8"
     >
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-play text-rock md:text-5xl">
-          Descubra el Arte de la Quesería
+      {/* Fondo artesanal sutil */}
+      <div className="absolute inset-0 bg-[url('/textura-papel.jpg')] bg-cover opacity-10 pointer-events-none" />
+
+      {/* Título */}
+      <div className="relative text-center mb-24 px-4">
+
+
+        {/* Título artístico con subrayado dinámico */}
+        <h2 className="relative inline-block text-5xl md:text-6xl font-play text-rock leading-tight tracking-tight">
+          <span className="relative z-10">
+            Lo nuestro no es solo producto <br />
+            <span className="text-chedar font-avenir font-light">
+              es arte que se comparte
+            </span>
+          </span>
+          {/* Decoración visual suave */}
+          <span className="absolute opacity-20 rounded-3xl blur-sm -z-10"></span>
         </h2>
-        <p className="mt-4 text-lg text-gray-600 font-avenir max-w-2xl mx-auto">
-          Cada pieza cuenta una historia de tradición, pasión y sabor. Únase a nuestra comunidad de amantes del queso artesanal.
-        </p>
+
+        {/* Detalle inferior elegante en línea curva */}
+        <div className="mt-10 flex justify-center">
+          <svg
+            className="w-40 h-6 text-chedar"
+            fill="none"
+            viewBox="0 0 200 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 10 Q50 0 100 10 T200 10"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="transparent"
+            />
+          </svg>
+        </div>
       </div>
 
+
+      {/* Galería tipo Bento */}
       <BentoSocialGrid />
 
-      <div className="mt-16 bg-white rounded-2xl shadow-xl p-8">
-        <h3 className="text-3xl font-play text-rock mb-8 text-center">Conéctese con Quesería</h3>
+      {/* Cita emocional */}
+      <div className="relative mt-24 mb-20 text-center px-6">
+        <blockquote className="italic text-xl md:text-2xl text-chedar max-w-3xl mx-auto font-play border-l-4 border-verde pl-6">
+          “No se trata solo de productos, se trata de personas, historias, gestos. Todo lo que hacemos lo compartimos, con orgullo y con alma.”
+        </blockquote>
+      </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <SocialButton
-            icon={<Instagram />}
+      {/* Redes sociales destacadas */}
+      <div className="relative bg-white rounded-2xl shadow-lg p-10 md:p-14">
+        <h3 className="text-center text-3xl font-play text-rock mb-10 tracking-tight">
+          Síguenos & forme parte de nuestra historia
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <SocialCard
+            icon={<Instagram strokeWidth={1.2} className="w-9 h-9" />}
             name="Instagram"
-            username="@queseria.artesanal"
-            link="https://instagram.com"
-            followers="25.3K"
+            username="@laqueseria.ec"
+            link="https://www.instagram.com/laqueseria.ec/"
+            description="Día a día entre hornos, campos y manos que crean con amor."
           />
-          <SocialButton
-            icon={<Facebook />}
+          <SocialCard
+            icon={<Facebook strokeWidth={1.2} className="w-9 h-9" />}
             name="Facebook"
-            username="@queseriaoficial"
-            link="https://facebook.com"
-            followers="18.5K"
+            username="@laqueseria.ec"
+            link="https://www.facebook.com/QuesoosymaS?mibextid=wwXIfr&rdid=RiiJciBSX6Khz1td#"
+            description="Eventos, ferias, comunidad. Un espacio donde compartimos en familia."
           />
-          <SocialButton
-            icon={<Twitter />}
-            name="Twitter"
-            username="@queseria"
-            link="https://twitter.com"
-            followers="12.1K"
-          />
-          <SocialButton
-            icon={<Youtube />}
-            name="YouTube"
-            username="Quesería TV"
-            link="https://youtube.com"
-            followers="8.2K"
+          <SocialCard
+            icon={<PiTiktokLogoLight className="w-9 h-9" />}
+            name="TikTok"
+            username="@laqueseria.ec"
+            link="https://www.tiktok.com/@laqueseria.ec"
+            description="Historias visuales que revelan el alma de lo que hacemos."
           />
         </div>
 
-        <div className="mt-12 text-center">
-          <motion.a
-            href="#subscribe"
-            className="inline-flex items-center px-6 py-3 text-lg font-avenir font-semibold tracking-wide text-white bg-chedar rounded-full hover:bg-chedarlow transition"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Suscríbase a nuestro boletín
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </motion.a>
-          <p className="mt-4 text-sm text-chedar font-avenir font-semibold tracking-wider">Reciba recetas exclusivas y ofertas especiales</p>
+        {/* Frase decorativa con ícono */}
+        <div className="mt-14 text-center text-amber-800 flex justify-center items-center gap-3 font-light text-lg">
+          <HeartHandshake className="w-7 h-7 text-verde" />
+          <span className='font-avenir text-chedar'>Gracias por acompañarnos en este viaje artesanal</span>
         </div>
       </div>
     </motion.div>
   );
 };
 
-const SocialButton = ({ icon, name, username, link }) => {
+const SocialCard = ({ icon, name, username, link, description }) => {
   return (
     <motion.a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col items-center p-6 rounded-xl hover:bg-amber-50 transition-colors border border-amber-100"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className="relative flex flex-col items-center bg-white rounded-2xl p-6 
+                 border-b-4 border-chedar transition-all duration-300 hover:shadow-lg hover:bg-chedar group"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.96 }}
     >
-      <div className="mb-3 text-chedar">{icon}</div>
-      <h4 className="font-inter text-verde">{name}</h4>
-      <p className="text-sm text-chedar">{username}</p>
-      {/* <p className="mt-2 text-xs font-medium text-amber-500">{followers} seguidores</p> */}
+      <div className="text-chedar mb-2 group-hover:text-white">{icon}</div>
+      <h4 className="text-lg font-play text-rock tracking-wide group-hover:text-white">{name}</h4>
+      <p className="text-sm text-chedar font-avenir group-hover:text-white">{username}</p>
+      <p className="mt-3 text-center text-gray-600 font-avenir text-sm group-hover:text-white transition">{description}</p>
     </motion.a>
   );
 };
+
 
 export default QueseriaSocial;

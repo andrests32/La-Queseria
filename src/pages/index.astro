@@ -2,19 +2,27 @@
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar/NavBar";
 import HeroSection from "../components/Hero/HeroSection";
-import AboutUs from "../components/AboutUs/AboutUs";
+import AboutUs from "../components/Information/AboutUs";
 import Product from "../components/Product/Product";
 import QueseriaSocial from "../components/QueseriaSocial/QueseriaSocial";
-import Footer from "../components/Footer/Footer.astro"
-import Bento from "../components/QueseriaSocial/bento.astro"
+import Footer from "../components/Footer/Footer.astro";
+// import { fetchProducts } from "../utils/contentful";
+import { fetchProductsDirectly } from "../utils/contentful";
+import ButtonWhatsapp from '../components/ButtonWhatsapp/buttonWhatsapp'
+
+const { products, lastUpdated } = await fetchProductsDirectly();
 ---
 
 <Layout>
-  <NavBar client:load />
   <HeroSection client:load />
-  <Product client:visible />
+  <ButtonWhatsapp client:load />
+  <Product 
+  initialProducts={products} 
+  initialLastUpdated={lastUpdated}
+  client:load />
   <AboutUs client:visible />
   <QueseriaSocial client:load />
-  <!-- <Bento client:load /> -->
   <Footer />
 </Layout>
+
+

@@ -20,8 +20,9 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto">
                 {/* Navbar Container */}
                 <div className={`relative rounded-2xl px-4 py-2 transition-all duration-300
-                    ${hasScrolled ? 'bg-white/80 backdrop-blur-lg shadow-md' : ''}`}>
-                    
+                    ${hasScrolled ? 'bg-white/90 backdrop-blur-lg shadow-md' : 'bg-gradient-to-b from-white/10 to-gray-50/50'} 
+                    ${hasScrolled ? 'border-b-2 border-transparent bg-white via-chedar to-transparent' : 'border-b-2 border-chedar transition duration-300'}`}>
+
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <a href="/" className="flex items-center gap-2 text-rock">
@@ -33,7 +34,7 @@ const Navbar = () => {
                             <NavLink href="/products" icon={<ShoppingBag className="w-5.5 h-5.5" />}>
                                 Productos
                             </NavLink>
-                            <NavLink href="#about" icon={<Users className="w-5.5 h-5.5" />}>
+                            <NavLink href="/about" icon={<Users className="w-5.5 h-5.5" />}>
                                 Quiénes Somos
                             </NavLink>
                             <NavLink href="/contact" icon={<PhoneCall className="w-5.5 h-5.5" />}>
@@ -63,7 +64,7 @@ const Navbar = () => {
                             <MobileNavLink href="/products" icon={<ShoppingBag className="w-5 h-5" />}>
                                 Productos
                             </MobileNavLink>
-                            <MobileNavLink href="#about" icon={<Users className="w-5 h-5" />}>
+                            <MobileNavLink href="/about" icon={<Users className="w-5 h-5" />}>
                                 Quiénes Somos
                             </MobileNavLink>
                             <MobileNavLink href="/contact" icon={<PhoneCall className="w-5 h-5" />}>
