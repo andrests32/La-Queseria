@@ -1,7 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaSearch, FaEgg, FaBreadSlice, FaCheese, FaAppleAlt } from 'react-icons/fa';
-import { TbMilkFilled } from "react-icons/tb";
+import { FaSearch, FaEgg, FaBreadSlice, FaCheese } from 'react-icons/fa';
+import { FaBowlFood } from "react-icons/fa6";
+import { GiBananaPeeled } from "react-icons/gi";
+import { PiPiggyBankFill } from "react-icons/pi";
+import { GiGarlic } from "react-icons/gi";
+
+
 
 const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) => {
     // Icons for categories using only React Icons
@@ -10,8 +15,10 @@ const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) =
         "Avícola": <FaEgg />,
         "Harinas": <FaBreadSlice />,
         "Quesos": <FaCheese />,
-        "Plátanos": <FaAppleAlt />,
-        "Lácteos": <TbMilkFilled /> // Usando FaGlassCheers para Lácteos
+        "Plátanos": <GiBananaPeeled />,
+        "Carbohidrato": <FaBowlFood />,
+        "Embutido": <PiPiggyBankFill />,
+        "Especias": <GiGarlic />,
     };
 
     return (
@@ -22,7 +29,7 @@ const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) =
                         <motion.button
                             key={category}
                             onClick={() => setSelectedCategory(category)}
-                            className={`px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-avenir font-semibold tracking-wide transition-colors ${selectedCategory === category
+                            className={`px-4 py-2 cursor-pointer rounded-full flex items-center space-x-2 text-sm font-avenir font-semibold tracking-wide transition-colors ${selectedCategory === category
                                 ? 'bg-primary-500 text-chedar shadow-md'
                                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
