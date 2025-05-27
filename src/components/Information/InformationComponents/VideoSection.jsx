@@ -33,27 +33,29 @@ const VideoSection = () => {
   }, [hasPlayed]);
 
   return (
-    <motion.div
-      className="relative rounded-2xl overflow-hidden shadow-xl mb-20 lg:h-[450px]"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
-      }}
-    >
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        playsInline
-        className="w-full h-full lg:object-cover"
+    <div className='px-4'>
+      <motion.div
+        className="relative rounded-2xl overflow-hidden shadow-xl mb-20 lg:h-[370px]"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          hidden: { opacity: 0, y: 40 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+        }}
       >
-        <source src="/videoquesos.webm" type="video/webm" />
-        Tu navegador no soporta el video.
-      </video>
-    </motion.div>
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          className="w-full h-[300px] object-cover lg:h-full lg:object-cover"
+        >
+          <source src="/videoquesos.webm" type="video/webm" />
+          Tu navegador no soporta el video.
+        </video>
+      </motion.div>
+    </div>
   );
 };
 

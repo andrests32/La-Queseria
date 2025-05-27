@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, pdf } from '@react-pdf/renderer';
-import QRCode from 'react-qr-code';
 import { UserCheck as ShoppingBag, Download, RefreshCw, ChevronDown, ChevronUp, ShoppingCart, X } from 'lucide-react';
 import LogoQueseria from '../LogoQueseria/LogoQueseria';
 import HomeButton from '../ProductsFilter/HomeButton';
@@ -72,21 +71,6 @@ const pdfStyles = StyleSheet.create({
     paddingTop: 10,
     borderTop: '1 solid #F0F0F0',
     fontSize: 10,
-    color: '#9CA3AF',
-    textAlign: 'center',
-  },
-  qrSection: {
-    marginTop: 30,
-    alignItems: 'center',
-  },
-  qrLabel: {
-    fontSize: 12,
-    marginBottom: 10,
-    color: '#6B7280',
-  },
-  qrNote: {
-    fontSize: 9,
-    marginTop: 5,
     color: '#9CA3AF',
     textAlign: 'center',
   },
@@ -236,7 +220,7 @@ const MyDocument = ({ selectedProducts }) => {
   );
 };
 
-// Componente para mostrar el PDF desde el QR
+// Componente para mostrar el PDF
 const PDFViewer = ({ shoppingListData, onClose }) => {
   const [pdfUrl, setPdfUrl] = useState('');
   const [loading, setLoading] = useState(true);
@@ -245,7 +229,6 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
   useEffect(() => {
     const generatePdf = async () => {
       try {
-        console.log("Generando PDF con datos:", shoppingListData);
         if (!shoppingListData || shoppingListData.length === 0) {
           throw new Error("No hay datos para generar el PDF");
         }
@@ -335,61 +318,6 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
       </div>
     </div>
   );
-};
-
-// Función para comprimir los datos de la lista
-const compressListData = (selectedProducts) => {
-  if (!selectedProducts || !Array.isArray(selectedProducts)) return [];
-  
-  return selectedProducts.map(category => ({
-    n: category.name.substring(0, 3), // Nombre abreviado a 3 caracteres
-    i: category.items.map(item => ({
-      n: item.name.substring(0, 3),  // Nombre abreviado a 3 caracteres
-      q: item.quantity,
-      u: item.unit.substring(0, 1)   // Unidad abreviada a 1 caracter
-    }))
-  }));
-};
-
-// Función para descomprimir los datos
-const decompressListData = (compressedData) => {
-  if (!compressedData || !Array.isArray(compressedData)) return [];
-  
-  // Mapeo de unidades abreviadas
-  const unitMap = {
-    'k': 'kg',
-    'l': 'litro',
-    'g': 'g',
-    'd': 'docena',
-    'u': 'unidad'
-  };
-
-  return compressedData.map(category => ({
-    name: category.n === 'Lác' ? 'Lácteos' :
-           category.n === 'Veg' ? 'Vegetales' :
-           category.n === 'Fru' ? 'Frutas' :
-           category.n === 'Aví' ? 'Avícolas' :
-           category.n === 'Plá' ? 'Plátanos y Tubérculos' :
-           category.n === 'Har' ? 'Harinas y Cereales' :
-           category.n === 'Car' ? 'Carnes' : category.n,
-    items: category.i.map(item => ({
-      name: item.n === 'Lee' ? 'Leche' :
-            item.n === 'Que' ? 'Queso' :
-            item.n === 'Yog' ? 'Yogurt' :
-            item.n === 'Man' ? 'Mantequilla' :
-            item.n === 'Cre' ? 'Crema' :
-            item.n === 'Zan' ? 'Zanahoria' :
-            item.n === 'Tom' ? 'Tomate' :
-            item.n === 'Ceb' ? 'Cebolla' :
-            item.n === 'Pep' ? 'Pepino' :
-            item.n === 'Pim' ? 'Pimiento' : item.n,
-      quantity: item.q || 1,
-      unit: unitMap[item.u] || item.u,
-      id: `${category.n}-${item.n}`,
-      detail: '',
-      checked: true
-    }))
-  }));
 };
 
 // Componente ProductItem
@@ -502,7 +430,7 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
 };
 
 // Componente SelectedSummary
-const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => { }, onViewPDF = () => { } }) => {
+const SelectedSummary = ({ selectedProducts = [], onClose = () => { }, onViewPDF = () => { } }) => {
   const totalItems = selectedProducts.reduce((acc, cat) => acc + cat.items.length, 0);
 
   return (
@@ -543,28 +471,13 @@ const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => 
               ))}
             </div>
 
-            <div className="mt-6 pt-4 border-t border-gray-100">
-              <div className="flex flex-col items-center">
-                <p className="text-sm text-gray-500 mb-3">Escanea para ver la lista:</p>
-                <div className="p-2 bg-white border border-gray-200 rounded-lg shadow-sm">
-                  <QRCode
-                    value={qrValue}
-                    size={120}
-                    level="H"
-                    className="h-auto max-w-full"
-                  />
-                </div>
-                <p className="text-xs text-gray-400 mt-2 text-center max-w-xs">
-                  Escanea este código con tu cámara para ver la lista completa
-                </p>
-                
-                <button
-                  onClick={onViewPDF}
-                  className="mt-4 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors"
-                >
-                  Ver como PDF
-                </button>
-              </div>
+            <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col items-center">
+              <button
+                onClick={onViewPDF}
+                className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors"
+              >
+                Ver como PDF
+              </button>
             </div>
           </>
         ) : (
@@ -597,48 +510,17 @@ const SelectedSummary = ({ selectedProducts = [], qrValue = '', onClose = () => 
 // Componente principal App
 function App() {
   const [categories, setCategories] = useState(initialCategories);
-  const [qrValue, setQrValue] = useState('');
   const [isClient, setIsClient] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
   const [showPdfViewer, setShowPdfViewer] = useState(false);
   const [shoppingListData, setShoppingListData] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [qrError, setQrError] = useState(null);
 
   useEffect(() => {
     setIsClient(true);
     const checkIfMobile = () => setIsMobile(window.innerWidth < 1024);
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
-    
-    // Verificar parámetros de URL al cargar
-    const params = new URLSearchParams(window.location.search);
-    const listData = params.get('data');
-    
-    if (listData) {
-      try {
-        // Decodificar y descomprimir los datos
-        const decodedData = decodeURIComponent(atob(listData));
-        const parsedData = JSON.parse(decodedData);
-        
-        if (!Array.isArray(parsedData)) {
-          throw new Error("Datos del QR no tienen el formato esperado");
-        }
-        
-        const decompressedData = decompressListData(parsedData);
-        
-        if (!decompressedData || decompressedData.length === 0) {
-          throw new Error("No se pudieron procesar los datos del QR");
-        }
-        
-        setShoppingListData(decompressedData);
-        setShowPdfViewer(true);
-        setQrError(null);
-      } catch (error) {
-        console.error('Error al procesar datos del QR:', error);
-        setQrError(error.message);
-      }
-    }
 
     const savedData = localStorage.getItem('shoppingList');
     if (savedData) {
@@ -655,44 +537,19 @@ function App() {
   useEffect(() => {
     try {
       localStorage.setItem('shoppingList', JSON.stringify(categories));
-      updateQRValue();
     } catch (e) {
       console.error("Error al guardar datos:", e);
     }
   }, [categories]);
 
-  const updateQRValue = () => {
-    const selectedProducts = categories
+  const selectedProducts = useMemo(() => {
+    return categories
       .map(category => ({
         name: category.name,
-        items: category.items.filter(item => item.checked && item.quantity > 0)
-          .map(item => ({
-            name: item.name,
-            quantity: item.quantity,
-            unit: item.unit
-          }))
+        items: category.items.filter(item => item.checked && item.quantity > 0),
       }))
       .filter(category => category.items.length > 0);
-
-    if (selectedProducts.length > 0) {
-      try {
-        // Comprimir los datos para el QR
-        const compressedData = compressListData(selectedProducts);
-        const jsonStr = JSON.stringify(compressedData);
-        const base64Data = btoa(encodeURIComponent(jsonStr));
-        
-        // Crear URL más corta
-        const url = `${window.location.origin}${window.location.pathname}?data=${base64Data}`;
-        setQrValue(url);
-        setQrError(null);
-      } catch (error) {
-        console.error("Error al generar QR:", error);
-        setQrError("Error al generar el código QR");
-      }
-    } else {
-      setQrValue('');
-    }
-  };
+  }, [categories]);
 
   const handleCheckboxChange = (categoryIndex, itemId) => {
     const updatedCategories = [...categories];
@@ -748,13 +605,6 @@ function App() {
     setShowSummary(false);
   };
 
-  const selectedProducts = categories
-    .map(category => ({
-      name: category.name,
-      items: category.items.filter(item => item.checked && item.quantity > 0),
-    }))
-    .filter(category => category.items.length > 0);
-
   const hasSelectedProducts = selectedProducts.length > 0;
   const totalSelectedItems = selectedProducts.reduce((acc, cat) => acc + cat.items.length, 0);
 
@@ -764,28 +614,6 @@ function App() {
 
   return (
     <div className="min-h-screen relative font-avenir">
-      {qrError && (
-        <div className="fixed top-4 right-4 z-50 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-lg max-w-xs">
-          <div className="flex items-center">
-            <div className="py-1">
-              <svg className="h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-            </div>
-            <div>
-              <p className="font-bold">Error</p>
-              <p className="text-sm">{qrError}</p>
-            </div>
-            <button 
-              onClick={() => setQrError(null)}
-              className="ml-4 text-red-700 hover:text-red-900"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      )}
-
       <div className="fixed inset-0 w-full h-full pointer-events-none -z-10 grid grid-cols-10 gap-4">
         {[...Array(80)].map((_, index) => (
           <img
@@ -854,7 +682,6 @@ function App() {
                 <div className="lg:w-1/2">
                   <SelectedSummary
                     selectedProducts={selectedProducts}
-                    qrValue={qrValue}
                     onClose={() => setShowSummary(false)}
                     onViewPDF={() => {
                       setShoppingListData(selectedProducts);
@@ -874,7 +701,6 @@ function App() {
           <div className="w-full sm:w-4/5 h-full bg-white shadow-xl transform transition-transform">
             <SelectedSummary
               selectedProducts={selectedProducts}
-              qrValue={qrValue}
               onClose={() => setShowSummary(false)}
               onViewPDF={() => {
                 setShoppingListData(selectedProducts);

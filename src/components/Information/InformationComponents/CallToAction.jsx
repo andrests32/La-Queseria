@@ -1,110 +1,140 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Building2, Store, Phone, ArrowRight, Compass } from "lucide-react";
-
-const locations = [
-  {
-    icon: <Building2 size={26} />,
-    title: "Sucursal",
-    desc: "Unión y Progreso - calle Cuenca y 3 de Julio\nLunes a Sábado: 6:00 - 19:00",
-  },
-  {
-    icon: <Store size={26} />,
-    title: "Matriz",
-    desc: "Mercado 17 de Diciembre, Via Bellavista, Santo Domingo 260303\nLunes a Sábado: 6:00 - 19:00",
-  },
-  {
-    icon: <Phone size={26} />,
-    title: "Contáctanos",
-    desc: "+593 98 088 3299\nlaqueserianacional.ec@gmail.com",
-  },
-];
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Building2, Store, Phone, Compass } from 'lucide-react';
+import LogoQueseriaBlanco from '../../LogoQueseria/LogoQueseriaBlanco';
 
 const CallToAction = () => {
-  return (
-    <motion.section
-      className="relative bg-white p-10 md:p-20 rounded-2xl shadow-md overflow-hidden"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={{
-        hidden: { opacity: 0, y: 60 },
-        visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-      }}
-    >
-      {/* Decoración de fondo */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-chedar/10 via-transparent to-transparent pointer-events-none"></div>
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'center center']
+  });
 
-      {/* Encabezado */}
-      <div className="text-center mb-20 z-10 relative">
-        <div className="inline-flex items-center justify-center gap-2 text-chedar mb-4 font-avenir font-semibold uppercase tracking-widest animate-pulse">
-          <Compass size={18} />
-          Ubícanos
-        </div>
-        <h2 className="text-5xl font-play text-rock leading-tight mb-4">
-          Visítanos y conecta con lo artesanal
-        </h2>
-        <p className="text-lg text-gray-600 max-w-xl mx-auto font-avenir">
-          Estamos en puntos estratégicos para que sientas la experiencia de nuestros quesos hechos con tradición.
-        </p>
-      </div>
+  const scaleBackground = useTransform(scrollYProgress, [0, 0.4], [0, 6]);
+  const opacityBackground = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
-      {/* Cards con diseño asimétrico */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch z-10 relative">
-        {locations.map((loc, i) => (
-          <motion.div
-            key={i}
-            className={`relative bg-white rounded-2xl shadow-md p-8 transition-all group hover:-translate-y-2 ${i === 1 ? "md:scale-105 z-20 bg-gradient-to-br from-chedar to-chedar text-white" : "text-gray-800"
-              }`}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+  const locations = [
+    {
+      icon: <Building2 size={26} />,
+      title: 'Sucursal',
+      desc: 'Unión y Progreso - calle Cuenca y 3 de Julio\nLunes a Sábado: 6:00 - 19:00',
+    },
+    {
+      icon: <Store size={26} />,
+      title: 'Matriz',
+      desc: 'Mercado 17 de Diciembre, Via Bellavista, Santo Domingo\nLunes a Sábado: 6:00 - 19:00',
+    },
+    {
+      icon: <Phone size={26} />,
+      title: 'Contáctanos',
+      desc: '+593 98 088 3299\nlaqueserianacional.ec@gmail.com',
+    },
+  ];
 
-            transition={{ delay: i * 0.15 }}
-          >
-           
-            {/* Ícono */}
-            <div className="mb-4 flex justify-center">
-              <div className={`p-4 rounded-full ${i === 1 ? "bg-white" : "bg-chedar"} shadow-inner`}>
-                {React.cloneElement(loc.icon, {
-                  className: `${i === 1 ? "text-chedar" : "text-white"}`,
-                })}
-              </div>
-            </div>
+  // Generador de múltiples logos con posiciones y tamaños aleatorios
+  const renderBackgroundLogos = () => {
+    const logos = Array.from({ length: 15 });
+    return logos.map((_, i) => {
+      const size = Math.floor(Math.random() * 100) + 100; // entre 20px y 60px
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const opacity = Math.random() * 0.70 + 0.05;
 
-            <h4 className={`text-xl font-play text-center ${i === 1 ? "text-white" : "text-chedar"}`}>
-              {loc.title}
-            </h4>
-            <p className={`text-sm whitespace-pre-line text-center mt-2 font-avenir ${i === 1 ? "text-white/90" : "text-gray-600"}`}>
-              {loc.desc}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Botón CTA */}
-      <div className="mt-16 text-center z-10 relative">
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="inline-block bg-gradient-to-r from-chedar to-chedarlow p-0.5 rounded-full shadow-xl"
+      return (
+        <div
+          key={i}
+          className="absolute"
+          style={{
+            top: `${top}%`,
+            left: `${left}%`,
+            width: `${size}px`,
+            height: `${size}px`,
+            opacity: opacity,
+            zIndex: 0,
+          }}
         >
-          <motion.a
-            href="https://wa.me/1XXXXXXXXXX"
-            className="group relative block bg-white text-chedar font-normal tracking-wide py-4 px-8 rounded-full hover:bg-transparent hover:text-white transition-all duration-300"
-          >
-            <span className="relative z-10 flex items-center justify-center gap-3">
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              <span className="text-lg font-play">Contáctanos por WhatsApp</span>
+          <LogoQueseriaBlanco />
+        </div>
+      );
+    });
+  };
+
+  return (
+    <section ref={sectionRef} className="relative overflow-hidden py-32 bg-chedar">
+      {/* Logos repetidos en el fondo */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {renderBackgroundLogos()}
+      </div>
+
+      {/* Círculo animado tipo gota */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 w-24 h-24 bg-chedar rounded-full z-0"
+        style={{
+          scale: scaleBackground,
+          opacity: opacityBackground,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+      />
+
+      {/* Contenido principal */}
+      <div className="relative z-10 container mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="inline-flex items-center justify-center gap-3 mb-6">
+            <Compass size={24} className="text-verde" />
+            <span className="uppercase font-avenir text-verde tracking-wider text-chedar-dark">
+              Ubícanos
             </span>
-          </motion.a>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-play text-white">
+            Visítanos y <span className="text-verde">conecta</span> con lo artesanal
+          </h2>
+          <p className="mt-4 text-lg lg:text-2xl text-verde font-avenir max-w-xl mx-auto">
+            Estamos en puntos estratégicos para que sientas la experiencia de nuestros quesos hechos con tradición.
+          </p>
         </motion.div>
 
-        <div className="mt-12 text-xl md:text-2xl tracking-wide text-rock font-play max-w-xl mx-auto">
-          “Cada producto cuenta una historia hecha a mano.”
+        {/* Tarjetas */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+          {locations.map((loc, index) => (
+            <motion.div
+              key={index}
+              className="p-8 rounded-3xl bg-white shadow-xl border border-chedar/10"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 * index }}
+              viewport={{ once: true }}
+            >
+              <div className="flex justify-center mb-6">
+                <div className="bg-chedar text-white p-4 rounded-full">
+                  {loc.icon}
+                </div>
+              </div>
+              <h4 className="text-xl font-play text-verde mb-2">{loc.title}</h4>
+              <p className="text-verde/70 font-avenir whitespace-pre-line">{loc.desc}</p>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Botón */}
+        <motion.a
+          href="https://wa.me/593980883299"
+          className="mt-16 inline-flex items-center gap-2 bg-chedar-dark text-white font-avenir font-bold tracking-wide px-8 py-4 rounded-full hover:scale-105 transition-transform shadow-md bg-transparent border-white border-4 hover:bg-verde"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          Escríbenos en WhatsApp
+        </motion.a>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

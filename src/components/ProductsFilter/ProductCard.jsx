@@ -22,8 +22,8 @@ const ProductCard = ({ product }) => {
     "Harinas": "bg-amber-100 text-amber-800",
     "Quesos": "bg-blue-100 text-blue-800",
     "Plátanos": "bg-green-100 text-green-800",
-    "Embutido": "bg-amber-700 text-white",
-    "Carbohidrato": "bg-blue-400 text-white",
+    "Embutidos": "bg-amber-700 text-white",
+    "Carbohidratos": "bg-blue-400 text-white",
     "Lácteos": "bg-indigo-100 text-indigo-800",
     "Especias": "bg-indigo-100 text-indigo-800",
   };

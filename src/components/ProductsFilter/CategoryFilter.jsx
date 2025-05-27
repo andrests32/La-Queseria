@@ -16,8 +16,8 @@ const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) =
         "Harinas": <FaBreadSlice />,
         "Quesos": <FaCheese />,
         "Plátanos": <GiBananaPeeled />,
-        "Carbohidrato": <FaBowlFood />,
-        "Embutido": <PiPiggyBankFill />,
+        "Carbohidratos": <FaBowlFood />,
+        "Embutidos": <PiPiggyBankFill />,
         "Especias": <GiGarlic />,
     };
 

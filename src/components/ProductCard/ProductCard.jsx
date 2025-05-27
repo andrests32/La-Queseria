@@ -88,7 +88,7 @@ const ProductCard = ({ name, price, image, description, badge, categoryLabel, bu
         <div className="mt-auto pt-4 border-t border-gray-100">
           <div className="flex items-center justify-between">
             <div className="flex items-baseline">
-              <TbCurrencyDollar className="text-chedarlow w-5 h-5 mr-1" />
+              <TbCurrencyDollar className="text-verde w-5 h-5 mr-1" />
               <span className="text-2xl font-avenir text-rock">
                 {price.toFixed(2)}
               </span>

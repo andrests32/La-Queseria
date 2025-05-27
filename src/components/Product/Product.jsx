@@ -176,7 +176,7 @@ export default function ProductsOfTheWeek({
 
   // Renderizado normal con productos
   return (
-    <section id="products-section" className="relative py-24 overflow-hidden bg-white">
+    <section className="relative py-24 overflow-hidden bg-white">
       {/* Fondo elegante con puntos animados */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -238,11 +238,11 @@ export default function ProductsOfTheWeek({
                 repeat: Infinity,
                 repeatDelay: 3
               }}
-              className="bg-gradient-to-r from-chedar to-chedarlow text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center"
+              className="bg-verde text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center"
             >
-              <Zap className="w-4 h-4 mr-2 fill-chedar" />
+              <Zap className="w-4 h-4 mr-2 fill-verde" />
               <span className="tracking-wider font-avenir">OFERTA SEMANAL</span>
-              <Zap className="w-4 h-4 ml-2 fill-chedarlow" />
+              <Zap className="w-4 h-4 ml-2 fill-verde" />
             </motion.div>
           </motion.div>
 
@@ -259,7 +259,7 @@ export default function ProductsOfTheWeek({
               </span>
             </span>
             <br />
-            <span className="text-2xl md:text-3xl font-avenir bg-gradient-to-r from-gray-600 to-rock bg-clip-text text-transparent">
+            <span className="text-2xl md:text-3xl font-avenir text-verde">
               de esta Semana
             </span>
           </motion.h2>
@@ -272,7 +272,7 @@ export default function ProductsOfTheWeek({
             className="max-w-2xl mx-auto relative"
           >
             <motion.p
-              className="text-lg md:text-xl font-avenir text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl font-avenir text-verde leading-relaxed"
             >
               Descubre nuestra selecciòn elegidas cuidadosamente por nuestro equipo de expertos.
               <span className="block mt-2 font-medium font-avenir text-chedar">¡Solo disponibles por tiempo limitado!</span>
@@ -286,7 +286,7 @@ export default function ProductsOfTheWeek({
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, type: "spring" }}
-          className="bg-gradient-to-r from-chedar/20 to-chedarlow/15 border border-chedar/10 rounded-xl p-6 mb-16 max-w-4xl mx-auto text-center relative overflow-hidden font-avenir"
+          className="bg-gradient-to-r from-chedar/40 to-chedarlow/20 border border-chedar/10 rounded-xl p-6 mb-16 max-w-4xl mx-auto text-center relative overflow-hidden font-avenir"
         >
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iI2NoZWRhciIgY3g9IjIwIiBjeT0iMjAiIHI9IjAuNSIvPjwvZz48L3N2Zz4=')] opacity-10" />
           <motion.h3 className="text-xl md:text-2xl font-normal antialiased text-rock mb-4 flex items-center justify-center gap-2">
@@ -328,14 +328,14 @@ export default function ProductsOfTheWeek({
               </motion.div>
             ))}
           </motion.div>
-          <div className="absolute top-22 left-[405px]  font-extrabold text-xl text-gray-500 text-center">:</div>
-          <div className="absolute top-22 left-[485px]  font-extrabold text-xl text-gray-500 text-center">:</div>
+          <div className="absolute top-22 left-[405px]  font-play text-xl text-gray-500 text-center">:</div>
+          <div className="absolute top-22 left-[485px]  font-avenir text-xl text-gray-500 text-center">:</div>
 
         </motion.div>
 
         {/* Grid de productos */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative px-2 lg:px-0"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -430,7 +430,7 @@ export default function ProductsOfTheWeek({
           </motion.div>
 
           <motion.p
-            className="mt-6 text-gray-500 flex items-center justify-center gap-2 font-avenir"
+            className="mt-6 text-verde flex items-center justify-center gap-2 font-avenir"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}

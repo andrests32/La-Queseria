@@ -1,73 +1,80 @@
 import { motion } from 'framer-motion';
-import LogoQueseria from '../LogoQueseria/LogoQueseria';
+import LogoQueseriaBlanco from '../LogoQueseria/LogoQueseriaBlanco';
 
 const AboutHero = () => {
   return (
-    <section className="relative h-screen overflow-hidden bg-gradient-to-b from-amber-50 to-white ">
+    <section className="relative min-h-screen bg-chedar flex items-center justify-center px-6 sm:px-10 overflow-hidden">
+
+      {/* Blob animado */}
+      <motion.div
+        className="absolute w-[600px] h-[600px] bg-white opacity-20 blur-3xl rounded-full z-0"
+        style={{ top: '10%', left: '50%', transform: 'translate(-50%, -50%)' }}
+        animate={{
+          borderRadius: ['40% 60% 60% 40% / 40% 40% 60% 60%', '60% 40% 40% 60% / 50% 60% 40% 50%', '40% 60% 60% 40% / 40% 40% 60% 60%'],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+
       {/* Contenido principal */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
-        {/* Logo o icono decorativo */}
+      <div className="relative z-10 max-w-2xl text-center">
+
+        {/* Logo */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="mb-6"
         >
-          <LogoQueseria className='h-52 w-auto' />
+          <LogoQueseriaBlanco className="h-50 lg:h-60 w-auto mx-auto" />
         </motion.div>
 
         {/* Título */}
         <motion.h1
-          className="text-4xl md:text-6xl font-play text-rock mb-4 tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <span className="block font-avenir italic text-chedar mb-2 text-xl">Desde 1952</span>
-          ¿Quiénes somos?
-        </motion.h1>
-
-        {/* Subtítulo */}
-        <motion.p
-          className="text-lg md:text-xl text-gray-600 max-w-md mb-8"
+          className="text-4xl md:text-5xl font-play text-white leading-tight mb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          Tres generaciones transformando leche en experiencias memorables
-        </motion.p>
+          ¿Quiénes somos?
+        </motion.h1>
 
-        {/* Línea decorativa */}
-        <motion.div
-          className="w-24 h-px bg-amber-400 mb-8"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
+        {/* Subtítulo */}
+        <motion.p
+          className="text-sm md:text-lg text-verde/90 leading-relaxed font-avenir"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-        ></motion.div>
+        >
+          Antes de conocernos, baja un poco… Queremos compartir contigo una historia hecha a mano.
+        </motion.p>
+
+        {/* Línea simple */}
+        <motion.div
+          className="w-26 h-[2px] bg-white mx-auto mt-10"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          viewport={{ once: true }}
+        />
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
+          className="absolute top-[580px] lg:top-[640px] left-1/2 transform -translate-x-1/2 opacity-50"
+          animate={{ y: [0, 12, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut'
+          }}
         >
-          <motion.div
-            className="w-1.5 h-16 rounded-full bg-gradient-to-b from-chedar to-white opacity-60"
-            animate={{
-              height: ["4rem", "3rem", "4rem"],
-              opacity: [0.7, 0.4, 0.7]
-            }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut"
-            }}
-          />
+          <div className="w-1.5 h-12 bg-white rounded-full" />
         </motion.div>
 
       </div>

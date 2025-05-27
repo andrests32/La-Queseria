@@ -9,12 +9,13 @@ import Footer from "../components/Footer/Footer.astro";
 // import { fetchProducts } from "../utils/contentful";
 import { fetchProductsDirectly } from "../utils/contentful";
 import ButtonWhatsapp from '../components/ButtonWhatsapp/buttonWhatsapp'
+import HeroSeccion from "../components/Hero/HeroSeccion"
 
 const { products, lastUpdated } = await fetchProductsDirectly();
 ---
 
 <Layout>
-  <HeroSection client:load />
+  <HeroSeccion client:load />
   <ButtonWhatsapp client:load />
   <Product 
   initialProducts={products} 

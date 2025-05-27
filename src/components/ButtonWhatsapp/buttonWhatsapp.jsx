@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogoQueseria from '../LogoQueseria/LogoQueseria';
+import LogoQueseriaBlanco from '../LogoQueseria/LogoQueseriaBlanco';
 
 const mensajes = [
   "¿Necesitas ayuda con un pedido?",
@@ -14,6 +15,15 @@ const ButtonWhatsapp = () => {
   const [tooltipIndex, setTooltipIndex] = useState(0);
   const [showTooltip, setShowTooltip] = useState(true);
   const intervalRef = useRef(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 50)
+    };
+
+    window.addEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     // Mostrar tooltip con mensajes rotativos cada 7 segundos
@@ -65,15 +75,15 @@ const ButtonWhatsapp = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3 }}
-            className="bg-white text-gray-700 text-sm px-4 py-2 font-avenir rounded-lg shadow-md max-w-xs"
+            className={`font-semibold text-sm px-4 py-2 font-avenir rounded-lg shadow-md max-w-xs transition duration-300 ${hasScrolled ? 'bg-chedar text-white' : 'bg-white text-verde'}`}
           >
             {mensajes[tooltipIndex]}
           </motion.div>
         )}
       </AnimatePresence>
 
-      <motion.a
-        href="/"
+      <motion.div
+        // href="/"
         className="text-chedar rounded-full flex items-center justify-center"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -81,8 +91,15 @@ const ButtonWhatsapp = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <LogoQueseria className="w-14 h-14 md:w-auto px-1 md:h-18 shadow-lg rounded-full bg-white" />
-      </motion.a>
+        <a href="">
+          {hasScrolled ? (
+            <LogoQueseria className="w-14 h-14 md:w-auto px-1 md:h-18 shadow-lg rounded-full bg-white transition duration-300" />
+          ) : (
+            <LogoQueseriaBlanco className="w-14 h-14 md:w-auto px-1 md:h-18 shadow-2xl rounded-full bg-chedar transition duration-300" />
+          )}
+        </a>
+
+      </motion.div>
     </div>
   );
 };
