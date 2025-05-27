@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ShoppingBag, Users, PhoneCall } from 'lucide-react';
 import LogoQueseria from '../LogoQueseria/LogoQueseria';
 import LogoQueseriaBlanco from '../LogoQueseria/LogoQueseriaBlanco';
@@ -6,14 +6,32 @@ import LogoQueseriaBlanco from '../LogoQueseria/LogoQueseriaBlanco';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
+    const heroRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
-            setHasScrolled(window.scrollY > 890);
+            if (heroRef.current) {
+                // Calculamos la posición del final del hero
+                const heroHeight = heroRef.current.offsetHeight;
+                setHasScrolled(window.scrollY > heroHeight);
+            } else {
+                // Fallback para cuando no se encuentra el hero
+                setHasScrolled(window.scrollY > (window.innerWidth > 768 ? 890 : 840));
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        // Agregamos un pequeño delay para asegurar que el DOM esté cargado
+        const timer = setTimeout(() => {
+            heroRef.current = document.getElementById('hero-section');
+            window.addEventListener('scroll', handleScroll);
+            // Ejecutamos una vez al inicio para el estado inicial
+            handleScroll();
+        }, 100);
+
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     return (
@@ -83,7 +101,7 @@ const Navbar = () => {
     );
 };
 
-// Componente NavLink actualizado
+// Componentes NavLink y MobileNavLink se mantienen igual
 const NavLink = ({ href, children, icon, hasScrolled }) => (
     <a
         href={href}
@@ -97,7 +115,6 @@ const NavLink = ({ href, children, icon, hasScrolled }) => (
     </a>
 );
 
-// Componente MobileNavLink actualizado
 const MobileNavLink = ({ href, children, icon, hasScrolled }) => (
     <a
         href={href}

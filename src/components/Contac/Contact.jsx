@@ -89,7 +89,7 @@ const ContactSection = () => {
       >
         <HomeButton />
       </motion.button>
-      
+
       {/* Fondo artístico */}
       <div className="absolute inset-0">
         {/* Gradiente principal */}
@@ -250,45 +250,53 @@ const ContactSection = () => {
                   </div>
 
                   {/* Información */}
-                  <div className="p-8 space-y-6">
-                    <div className="flex items-start gap-4 group/item hover:bg-gray-50/50 rounded-xl p-3 -m-3 transition-colors">
-                      <div className="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                        <MapPin className="w-5 h-5 text-gray-600" />
+                  <div className="w-full h-auto flex flex-col items-start justify-between gap-1 p-4 md:p-8">
+                    {/* Elemento de dirección */}
+                    <div className="flex items-center gap-4 w-full group/item hover:bg-gray-50/50 rounded-xl px-2 py-1 transition-colors">
+                      <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                        <MapPin className="w-5 h-5 md:w-5 md:h-5 text-gray-600" />
                       </div>
                       <div>
-                        <p className="text-gray-800 font-medium leading-relaxed">{loc.address}</p>
+                        <p className="text-gray-800 font-medium leading-relaxed text-sm md:text-base">
+                          {loc.address}
+                        </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4 group/item hover:bg-gray-50/50 rounded-xl p-3 -m-3 transition-colors">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-emerald-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                        <Phone className="w-5 h-5 text-green-600" />
+                    {/* Elemento de teléfono */}
+                    <div className="flex items-center gap-4 w-full group/item hover:bg-gray-50/50 rounded-xl p-3 transition-colors">
+                      <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-gradient-to-br from-green-100 to-emerald-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                        <Phone className="w-5 h-5 md:w-5 md:h-5 text-green-600" />
                       </div>
                       <a
                         href={`tel:${loc.phone.replace(/\D/g, "")}`}
-                        className="text-gray-800 font-medium hover:text-green-600 transition-colors text-lg"
+                        className="text-gray-800 font-medium hover:text-green-600 transition-colors text-sm md:text-base"
                       >
                         {loc.phone}
                       </a>
                     </div>
 
-                    <div className="flex items-center gap-4 group/item hover:bg-gray-50/50 rounded-xl p-3 -m-3 transition-colors">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                        <Mail className="w-5 h-5 text-blue-600" />
+                    {/* Elemento de email */}
+                    <div className="flex items-center gap-4 w-full group/item hover:bg-gray-50/50 rounded-xl p-3 transition-colors">
+                      <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                        <Mail className="w-5 h-5 md:w-5 md:h-5 text-blue-600" />
                       </div>
                       <a
                         href={`mailto:${loc.email}`}
-                        className="text-gray-800 font-medium hover:text-blue-600 transition-colors"
+                        className="text-gray-800 font-medium hover:text-blue-600 transition-colors text-sm md:text-base"
                       >
                         {loc.email}
                       </a>
                     </div>
 
-                    <div className="flex items-center gap-4 group/item hover:bg-gray-50/50 rounded-xl p-3 -m-3 transition-colors">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                        <Clock className="w-5 h-5 text-purple-600" />
+                    {/* Elemento de horario */}
+                    <div className="flex items-center gap-4 w-full group/item hover:bg-gray-50/50 rounded-xl p-3 transition-colors">
+                      <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                        <Clock className="w-5 h-5 md:w-5 md:h-5 text-purple-600" />
                       </div>
-                      <span className="text-gray-800 font-medium">{loc.hours}</span>
+                      <span className="text-gray-800 font-medium text-sm md:text-base">
+                        {loc.hours}
+                      </span>
                     </div>
                   </div>
                 </div>
