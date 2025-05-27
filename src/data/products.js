@@ -9,17 +9,19 @@ export const products = [
       shortDescription: "El queso fresco ofrece varios beneficios para la salud",
       description: "Este queso manchego de reserva especial ha sido añejado durante 12 meses para alcanzar un sabor intenso y refinado.",
       benefits: "El queso fresco es una excelente fuente de proteínas de alta calidad, esenciales para la construcción y reparación de tejidos, la producción de enzimas y hormonas, y muchas otras funciones corporales.",
-      vitamins: "El queso fresco es una excelente fuente de proteínas, calcio, fósforo, vitaminas A, D y B12, además de minerales como el zinc. También contiene vitaminas del grupo B, como B1, B2 y B6.",
+      vitamins: "El queso fresco es una excelente fuente de proteínas, calcio, fósforo, vitaminas A, D y B12, además de minerales como el zinc. También contiene vitaminas del grupo B, como B1, B2 y B9 (ácido fólico).",
+      badge: "Premium",
       category: "Quesos"
     },
     {
       id: "spices-1",
       name: "Ajo Macho",
       price: 19.99,
-      image: "public/products/ajos/ajos.webp",
+      image: "/products/ajos/ajos.webp",
       shortDescription: "El ajo un alimento versátil y popular.",
       benefits: "Ofrece una amplia gama de beneficios para la salud, incluyendo propiedades antioxidantes, antiinflamatorias, antibacterianas y antivirales.",
-      vitamins: "Es rico en vitaminas C y B6, así como en minerales como el manganeso, selenio, yodo, fósforo y potasio. También contiene otros nutrientes como aminoácidos, enzimas, lípidos y antioxidantes.",
+      vitamins: "Es rico en vitaminas C y B6, así como en minerales como el manganeso, selenio, yodo, fósforo y potasio. También contiene otros nutrientes como aminoácidos, enzimas, lípidos y sales minerales. ",
+      badge: "Orgánico",
       category: "Especias"
     },
     {
@@ -30,6 +32,7 @@ export const products = [
       shortDescription: "Especia de aroma y sabor unico.",
       benefits: "El anís estrellado, además de su sabor, ofrece varios beneficios para la salud, especialmente relacionados con el sistema digestivo y respiratorio.",
       vitamins: "Aportan vitaminas A, C y del grupo B. Contiene calcio, fósforo, zinc, magnesio y potasio, minerales que mejoran el rendimiento muscular y refuerzan los huesos.",
+      badge: "Orgánico",
       category: "Especias"
     },
     
@@ -40,7 +43,6 @@ export const products = [
       price: 12.99,
       image: "/products/huevoscodorniz/huevosdecodorniz.webp",
       shortDescription: "Huevos de codorniz 100% naturales.",
-      description: "Pechuga de pollo orgánica de aves criadas en libertad, alimentadas con granos orgánicos sin antibióticos ni hormonas.",
       benefits: "Son una fuente rica en hierro, vitamina B12, vitamina A, vitamina D y ácido fólico, lo que ayuda a prevenir la anemia, fortalece el sistema inmunológico y contribuye a la salud ósea. ",
       vitamins: "El alto contenido de hierro y vitamina B12 ayuda a combatir y prevenir la anemia, condiciones que pueden causar fatiga y debilidad. También contienen fósforo, calcio, ácidos grasos omega-3 y la lecitina contribuyen a la salud del corazón y ayudan a reducir el colesterol malo.",
       badge: "Orgánico",
@@ -52,8 +54,7 @@ export const products = [
       price: 9.99,
       image: "/products/azucar/azúcar.webp",
       shortDescription: "Azúcar de alta calidad.",
-      description: "Muslos de pollo seleccionados de aves criadas con los más altos estándares de bienestar animal.",
-      benefits: "El azúcar tiene beneficios en el cuerpo, como fuente rápida de energía. Proporciona combustible para el cerebro y los músculos. También ayuda a reponer depósitos de glucógeno en los músculos después del ejercicio prolongado.",
+      benefits: "El azúcar tiene beneficios en el cuerpo, como fuente rápida de energía. Proporciona combustible para el cerebro y los músculos. También ayuda a reponer depósitos de glucógeno.",
       vitamins: "El azúcar contiene vitaminas B1, B2 y A, así como sacarosa, glucosa (dextrosa), fructosa (levulosa) y antioxidante.",
       badge: "Premium",
       category: "Carbohidratos"
@@ -91,7 +92,8 @@ export const products = [
       image: "/products/canela/canela.webp",
       shortDescription: "Especia de aroma y sabor que encanta a todos.",
       benefits: "La canela ofrece diversos beneficios para la salud, como mejorar la digestión, regular el azúcar en sangre, reducir la inflamación y proteger contra enfermedades cardíacas",
-      vitamins: "La canela es una especia rica en vitaminas y nutrientes, incluyendo vitaminas A y C, así como minerales como calcio, hierro y magnesio. También contiene antioxidantes, fibra y aceites esenciales.",
+      vitamins: "La canela es una especia rica en vitaminas y nutrientes, incluyendo vitaminas A y C, así como minerales como calcio, hierro y magnesio. También contiene antioxidantes, fibra y compuestos fitoquímicos.",
+      badge: "Orgánico",
       category: "Especias"
     },
     {
@@ -102,6 +104,7 @@ export const products = [
       shortDescription: "Chifles de platano verde naturales.",
       benefits: "La botana o chifle, pueden tener algunos beneficios dependiendo de cómo se preparan y se consumen. Además proporcionan una fuente rápida de energía gracias a sus carbohidratos.",
       vitamins: "También contiene algunas proteínas y algunos minerales como potasio y vitamina C.",
+      badge: "Orgánico",
       category: "Plátanos"
     },
     
@@ -125,6 +128,7 @@ export const products = [
       shortDescription: "Clavo de olor unico para bebidas con arto sabor.",
       benefits: "El clavo de olor ofrece varios beneficios para la cocina, como la creación de sabores complejos, la mejora de la digestión y la posibilidad de usarlo en preparaciones tanto dulces como saladas.",
       vitamins: "El clavo de olor es una rica fuente de vitaminas y nutrientes, incluyendo vitaminas A, C, D, E, K, minerales como el calcio, manganeso, magnesio y potasio, y ácidos grasos omega-3.",
+      badge: "Orgánico",
       category: "Especias"
     },
     {
@@ -135,6 +139,7 @@ export const products = [
       shortDescription: "Comino en grano, ideal para platos tipicos.",
       benefits: "El comino en grano, ofrece diversos beneficios para la salud, incluyendo la mejora de la digestión, el apoyo al sistema inmunológico y la reducción de la inflamación.",
       vitamins: "El comino es una excelente fuente de vitaminas y nutrientes, incluyendo vitaminas A, C, E, K y B6, así como minerales como potasio, fósforo, magnesio, calcio y hierro.",
+      badge: "Orgánico",
       category: "Especias"
     },
     {
@@ -208,7 +213,77 @@ export const products = [
       price: 8.99,
       image: "/products/manienpolvo/manigranulado.png",
       shortDescription: "Maní granulado, como botana fuente de energia natural.",
-      benefits: "El maní, ya sea en forma de harina de maní o mantequilla de maní en pol
+      benefits: "El maní, ya sea en forma de harina de maní o mantequilla de maní en polvo, ofrece una serie de beneficios para la salud, incluyendo ser una fuente de proteínas, fibra y minerales.",
+      vitamins: "El maní en polvo, especialmente la harina de maní, es rico en proteínas, fibra, vitaminas y minerales, incluyendo zinc, magnesio, fósforo y potasio.",
+      badge: "Orgánico",
+      category: "Carbohidratos"
+    },
+    {
+      id: "carb-8",
+      name: "Miel de abeja",
+      price: 8.99,
+      image: "/products/mieldeabeja/mieldeabeja.webp",
+      shortDescription: "Miel de abeja natural sin conservantes.",
+      benefits: "La miel de abeja ofrece varios beneficios culinarios, desde mejorar el sabor y aroma de los alimentos hasta actuar como un endulzante natural y conservador. Además, puede ser utilizada en glaseados, salsas y recetas de repostería.",
+      vitamins: "Contiene vitaminas B (B1, B2, B3, B5), vitamina C, así como minerales como potasio, fósforo, hierro, magnesio y zinc, entre otros. Estas vitaminas y minerales desempeñan un papel importante en el funcionamiento del cuerpo, desde el metabolismo hasta el sistema inmunológico.",
+      badge: "Orgánico",
+      category: "Carbohidratos"
+    },
+    {
+      id: "carb-9",
+      name: "Pasas secas",
+      price: 8.99,
+      image: "/products/pasas/pasas.webp",
+      shortDescription: "Pasas dulces secas elaboradas a base de las mejores uvas.",
+      benefits: "Las pasas, uvas secas, ofrecen diversos beneficios para la salud, incluyendo el aporte de energía, minerales, fibra y antioxidantes. Ayudan a prevenir la anemia, mejoran la digestión y el tránsito intestinal, y pueden contribuir a la salud dental y cardiovascular.",
+      vitamins: "Contienen vitaminas del complejo B, como la B1, B2, B3, B6, B9 y B12. También aportan vitamina K y C. A nivel de minerales, son ricas en potasio, calcio, hierro, magnesio y fósforo.",
+      badge: "Orgánico",
+      category: "Carbohidratos"
+    },
+    {
+      id: "spices-6",
+      name: "Pimienta dulce",
+      price: 8.99,
+      image: "/products/pimientadulce/pimientadulce.webp",
+      shortDescription: "Pimienta Dulce usada en la tradicional colada morada.",
+      benefits: "La pimienta dulce, también conocida como pimienta de Jamaica(Se le llama pimienta de Jamaica porque su sabor es una combinación de canela, clavo de olor y nuez moscada). Ofrece varios beneficios para la salud y la cocina.",
+      vitamins: "Vitamina C, vitamina A, vitamina K, y minerales como potasio, calcio, hierro y magnesio. Además, es una fuente de fibra y contiene compuestos bioactivos con propiedades antioxidantes y antiinflamatorias.",
+      badge: "Orgánico",
+      category: "Especias"
+    },
+    {
+      id: "spices-7",
+      name: "Sal prieta",
+      price: 8.99,
+      image: "/products/salprieta/salprieta.webp",
+      shortDescription: "Sal prieta culinaria tradicional de la provincia de Manabí, Ecuador, que se utiliza como condimento.",
+      benefits: "La sal prieta ofrece diversos beneficios nutricionales, especialmente gracias a sus ingredientes principales: maíz y maní. El maíz proporciona saciedad debido a sus carbohidratos y fibra, además de ácido fólico, antioxidantes y vitaminas. El maní aporta proteínas, aminoácidos, ácido fólico, vitamina E, potasio y fósforo.",
+      vitamins: "La sal prieta aporta una variedad de minerales esenciales para el cuerpo como sodio, calcio, hierro, fósforo y magnesio, además de algunas vitaminas.",
+      badge: "Orgánico",
+      category: "Especias"
+    },
+    {
+      id: "embutido-1",
+      name: "Salchicas de carne",
+      price: 8.99,
+      image: "/products/salchichas/salchicha.webp",
+      shortDescription: "Producto elaborado con pura carne seleccionada, rico en proteínas. Empacado al vacío para garantizar la frescura del producto.",
+      benefits: "Son fuente de proteínas, hierro y fósforo. La salchicha de pollo, por ejemplo, ofrece una alternativa magra, con menos sodio y grasa",
+      vitamins: "Contiene vitaminas y minerales esenciales como hierro y vitaminas del grupo B (si están hechas de carne).",
+      badge: "Betseller",
+      category: "Embutidos"
+    },
+    {
+      id: "embutido-2",
+      name: "Salchicas de pollo",
+      price: 8.99,
+      image: "/products/salchichas/salchichapollo.webp",
+      shortDescription: "Producto elaborado con pura carne seleccionada, rico en proteínas.",
+      benefits: "Son fuente de proteínas, hierro y fósforo. La salchicha de pollo, por ejemplo, ofrece una alternativa magra, con menos sodio y grasa",
+      vitamins: "Salchicha de pollo contiene 17.6g de proteína, que es aproximadamente lo mismo que 2.9 eggs, 0.7 pechugas de pollo.",
+      badge: "Betseller",
+      category: "Embutidos"
+    },
   ];
   
   // Get unique categories from products
