@@ -16,7 +16,7 @@ const Navbar = () => {
                 setHasScrolled(window.scrollY > heroHeight);
             } else {
                 // Fallback para cuando no se encuentra el hero
-                setHasScrolled(window.scrollY > (window.innerWidth > 768 ? 890 : 840));
+                setHasScrolled(window.scrollY > (window.innerWidth > 868 ? 890 : 700));
             }
         };
 
