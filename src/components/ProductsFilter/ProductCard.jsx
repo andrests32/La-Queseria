@@ -27,11 +27,11 @@ const ProductCard = ({ product, index }) => {
   };
 
   // Lógica de fondo según el índice
-  const getCardBackground = (index) => {
-    return index % 2 === 0
-      ? 'bg-gradient-to-r from-chedar to-chedarlow md:bg-gradient-to-r from-chedar to-chedarlow text-white'
-      : 'bg-chedar md:bg-white md:text-chedar text-white';
-  };
+ const getCardBackground = (index) => {
+  return index % 2 === 0
+    ? 'bg-gradient-to-r from-chedar to-chedarlow text-white md:text-white'
+    : 'bg-gradient-to-r from-chedar to-chedarlow card-even md:bg-white text-white md:text-chedar';
+};
 
   return (
     <motion.div
