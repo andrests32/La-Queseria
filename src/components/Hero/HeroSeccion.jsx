@@ -63,7 +63,7 @@ const HeroSection = () => {
             />
 
             {/* Overlay with subtle blur */}
-            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-chedar/10 backdrop-blur-xs"></div>
 
             {/* Main content */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
@@ -93,7 +93,7 @@ const HeroSection = () => {
 
                 {/* Slogan */}
                 <motion.p
-                    className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 max-w-lg font-avenir mb-6"
+                    className="mt-4 text-lg md:text-xl lg:text-2xl text-white/90 max-w-lg font-avenir font-semibold mb-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 1 }}
@@ -109,7 +109,7 @@ const HeroSection = () => {
                 >
                     <a
                         href="/products"
-                        className="inline-flex items-center gap-2 border-white border-2 text-white px-8 py-3.5 rounded-full md:text-md font-avenir font-semibold tracking-wide hover:scale-105 active:scale-95 hover:bg-white hover:text-chedar hover:border-none transition hover:py-3.7 duration-300"
+                        className="inline-flex items-center gap-2 border-white border-2 text-white px-8 py-3.5 rounded-full md:text-md font-avenir font-semibold tracking-wide hover:scale-105 active:scale-95 hover:bg-white hover:text-chedar hover:border-none transition hover:py-3.7 duration-300 backdrop-blur-lg"
                     >
                         Ver Productos
                         <motion.div
@@ -139,12 +139,12 @@ const HeroSection = () => {
 
                 {/* Footer text */}
                 <motion.p
-                    className="mt-8 text-white/90 font-avenir text-sm tracking-wide"
+                    className="mt-8 text-white font-avenir font-semibold text-sm tracking-wide"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2, duration: 1 }}
                 >
-                    Hechos con amor desde 2018
+                    Hechos con amor desde 2017
                 </motion.p>
             </div>
 

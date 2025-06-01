@@ -140,7 +140,7 @@ const ContactSection = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-5xl md:text-6xl font-play text-verde ml-4 tracking-tight"
+                className="text-5xl md:text-7xl font-play text-chedar ml-4 tracking-tight"
               >
                 uesería
               </motion.span>
@@ -154,7 +154,7 @@ const ContactSection = () => {
               className="space-y-6"
             >
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-play text-verde leading-tight">
-                <span className="block">Conecta con</span>
+                <span className="block leading-11">Conecta con</span>
                 <span className="block bg-gradient-to-r from-chedar to-chedarlow bg-clip-text text-transparent font-medium">
                   nuestra pasión
                 </span>

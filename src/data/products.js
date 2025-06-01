@@ -211,7 +211,7 @@ export const products = [
       id: "carb-7",
       name: "Mani granulado",
       price: 8.99,
-      image: "/products/manienpolvo/manigranulado.png",
+      image: "/products/manienpolvo/manigranulado.webp",
       shortDescription: "Maní granulado, como botana fuente de energia natural.",
       benefits: "El maní, ya sea en forma de harina de maní o mantequilla de maní en polvo, ofrece una serie de beneficios para la salud, incluyendo ser una fuente de proteínas, fibra y minerales.",
       vitamins: "El maní en polvo, especialmente la harina de maní, es rico en proteínas, fibra, vitaminas y minerales, incluyendo zinc, magnesio, fósforo y potasio.",

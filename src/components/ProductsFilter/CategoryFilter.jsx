@@ -30,7 +30,7 @@ const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) =
                             key={category}
                             onClick={() => setSelectedCategory(category)}
                             className={`px-4 py-2 cursor-pointer rounded-full flex items-center space-x-2 text-sm font-avenir font-semibold tracking-wide transition-colors ${selectedCategory === category
-                                ? 'bg-primary-500 text-chedar shadow-md'
+                                ? 'bg-white text-chedar shadow-md'
                                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
                             whileHover={{ scale: 1.05 }}
