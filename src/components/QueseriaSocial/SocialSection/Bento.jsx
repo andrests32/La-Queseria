@@ -39,7 +39,7 @@ const data = [
     span: '',
   },
   {
-    image: '/quesocrema.jpg',
+    image: '/quesocrema.webp',
     title: 'Queso Crema',
     icon: <Facebook size={18} />,
     link: 'https://www.facebook.com/share/p/1Af2Qw83qY/',

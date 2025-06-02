@@ -159,7 +159,7 @@ export default function ProductsOfTheWeek({
               className="inline-block bg-gradient-to-r from-chedar to-chedarlow p-0.5 rounded-full shadow-xl"
             >
               <motion.a
-                href="https://wa.me/1XXXXXXXXXX"
+                href="https://wa.me/+593980883299"
                 className="group relative block bg-white text-chedar font-normal tracking-wide py-4 px-8 rounded-full hover:bg-transparent hover:text-white transition-all duration-300"
               >
                 <span className="relative z-10 flex items-center justify-center gap-3">

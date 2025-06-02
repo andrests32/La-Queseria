@@ -7,7 +7,6 @@ import NavBar from "../components/NavBar/NavBar";
 const currentPath = Astro.url.pathname;
 const showNavBar = currentPath === "/" || currentPath === "/about";
 ---
-
 <!doctype html>
 <html lang="es">
   <head>
@@ -15,42 +14,95 @@ const showNavBar = currentPath === "/" || currentPath === "/about";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Título y Descripción SEO -->
-    <title>La Quesería EC | Quesos artesanales y productos naturales en Santo Domingo, Ecuador</title>
-    <meta name="description" content="Compra quesos artesanales, productos del plátano verde, huevos frescos y más en Santo Domingo, Ecuador. Entrega local y calidad garantizada." />
+    <!-- Título y Descripción SEO optimizados para multiproductos -->
+    <title>La Quesería EC | Tienda de Alimentos Naturales en Santo Domingo - Quesos, Plátano, Huevos y Más</title>
+    <meta name="description" content="La Quesería EC - Tu tienda de confianza en Santo Domingo. Quesos artesanales, productos de plátano verde, huevos frescos, lácteos y alimentos naturales. Calidad garantizada y delivery local." />
     
+    <!-- Palabras clave estratégicas ampliadas -->
+    <meta name="keywords" content="quesería, la quesería, laqueseriaec,la queseria ec, tienda de alimentos Santo Domingo, quesos artesanales Ecuador, productos de plátano, huevos criollos, abarrotes naturales, tienda de lácteos, delivery de alimentos Santo Domingo, tienda de productos naturales, alimentos frescos Ecuador" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/queseriaicono.ico" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.laqueseriaec.com/" />
 
-    <!-- Open Graph (para compartir en redes sociales) -->
-    <meta property="og:title" content="La Quesería EC | Quesos artesanales y productos naturales en Santo Domingo" />
-    <meta property="og:description" content="Quesos frescos, plátano verde, huevos y más. Calidad garantizada desde Santo Domingo, Ecuador. ¡Compra directo del productor!" />
+    <!-- Open Graph optimizado para multiproductos -->
+    <meta property="og:title" content="La Quesería EC | Tienda de Alimentos Naturales en Santo Domingo" />
+    <meta property="og:description" content="Descubre en La Quesería EC: quesos artesanales, productos de plátano, huevos frescos y más alimentos naturales. Tu tienda de confianza en Santo Domingo, Ecuador." />
     <meta property="og:image" content="https://www.laqueseriaec.com/images/og-image.jpg" />
     <meta property="og:url" content="https://www.laqueseriaec.com/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="La Quesería EC" />
+    <meta property="og:locale" content="es_EC" />
+
+    <!-- Twitter Card actualizado -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="La Quesería EC | Tienda de Alimentos Naturales en Santo Domingo" />
+    <meta name="twitter:description" content="Quesos, plátano, huevos y más productos naturales. Tu tienda de alimentos de confianza en Santo Domingo, Ecuador. ¡Visítanos!" />
+    <meta name="twitter:image" content="https://www.laqueseriaec.com/images/og-image.jpg" />
 
     <!-- Meta móviles y tema -->
     <meta name="theme-color" content="#f7f7f7" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- Schema.org (SEO estructurado para Google) -->
+    <!-- Schema.org para tienda de alimentos -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "GroceryStore",
         "name": "La Quesería EC",
+        "description": "Tienda de alimentos naturales en Santo Domingo, Ecuador. Quesos artesanales, productos de plátano, huevos frescos y más.",
+        "image": "https://www.laqueseriaec.com/logo.webp",
+        "@id": "https://www.laqueseriaec.com/",
         "url": "https://www.laqueseriaec.com/",
-        "logo": "https://www.laqueseriaec.com/logo.webp",
-        "description": "Quesos artesanales, productos del plátano, huevos frescos y más en Santo Domingo, Ecuador.",
+        "telephone": "+593980883299",
+        "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Dirección completa aquí",
           "addressLocality": "Santo Domingo",
           "addressRegion": "Santo Domingo de los Tsáchilas",
+          "postalCode": "EC230150",
           "addressCountry": "EC"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-0.252778",
+          "longitude": "-79.171944"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        "department": [
+          {
+            "@type": "GroceryStoreDepartment",
+            "name": "Lácteos y Quesos"
+          },
+          {
+            "@type": "GroceryStoreDepartment",
+            "name": "Productos de Plátano"
+          },
+          {
+            "@type": "GroceryStoreDepartment",
+            "name": "Huevos Frescos"
+          },
+          {
+            "@type": "GroceryStoreDepartment",
+            "name": "Abarrotes Naturales"
+          }
+        ],
         "sameAs": [
           "https://www.facebook.com/laqueseriaec",
           "https://www.instagram.com/laqueseriaec"
