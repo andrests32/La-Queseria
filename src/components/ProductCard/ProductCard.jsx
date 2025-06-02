@@ -1,119 +1,151 @@
-import { Award, ShoppingBasket, ChevronDown } from "lucide-react";
-import { TbCurrencyDollar } from "react-icons/tb";
-import { motion, AnimatePresence } from "framer-motion";
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { useState } from 'react';
+"use client"
 
-const ProductCard = ({ name, price, image, description, badge, categoryLabel, buyLink }) => {
-  const [expanded, setExpanded] = useState(false);
+import { ShoppingCart, Star, Heart, Eye, Zap } from "lucide-react"
+import { motion } from "framer-motion"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { FaWhatsapp } from "react-icons/fa"
+
+// Número de WhatsApp que debes cambiar por el tuyo
+const WHATSAPP_NUMBER = "+593980883299"
+
+const ProductCard = ({
+  name,
+  price,
+  image,
+  description,
+  badge,
+  discount,
+  categoryLabel,
+  buyLink,
+  stockLeft,
+  originalPrice,
+  rating = 4.8,
+}) => {
+  // Función para crear el enlace de WhatsApp con el mensaje personalizado
+  const createWhatsAppLink = (productName) => {
+    const message = `Hola, me interesa este producto: ${productName}`
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+  }
+
+  const finalOriginalPrice = originalPrice || (discount ? (price * (100 + discount)) / 100 : null)
+  const savings = finalOriginalPrice ? (finalOriginalPrice - price).toFixed(2) : 0
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="group bg-white rounded-xl overflow-hidden cursor-pointer h-full flex flex-col border border-gray-100 hover:border-chedar/30 transition-all duration-300 shadow-sm hover:shadow-md"
+      whileHover={{ y: -12 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className="group relative bg-gray-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-indigo-200 max-w-sm mx-auto"
     >
-      {/* Badge animado */}
-      {badge && (
-        <motion.div 
-          initial={{ scale: 0.8, rotate: -5 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", delay: 0.3 }}
-          className="absolute top-4 right-4 bg-gradient-to-r from-chedar to-chedarlow text-white px-3 py-1 rounded-full text-xs font-bold font-play shadow-lg z-10"
-        >
-          {badge}
-        </motion.div>
-      )}
+      {/* Gradient overlay for premium feel */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 via-transparent to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      {/* Imagen con efecto parallax */}
-      <motion.div 
-        className="relative overflow-hidden h-52"
-        whileHover={{ scale: 1.03 }}
-        transition={{ type: "spring" }}
-      >
-        <img 
-          src={image} 
-          alt={name} 
-          className="w-full h-full object-cover absolute inset-0"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-      </motion.div>
+      {/* Top section with image */}
+      <div className="relative h-72 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+        {/* Floating badges */}
+        <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
 
-      {/* Contenido de la card */}
-      <div className="p-5 flex-grow flex flex-col">
-        <div className="flex items-center gap-2 mb-2">
-          <Award className="w-4 h-4 text-chedar" />
-          <span className="text-xs font-avenir font-semibold text-chedarlow uppercase tracking-wider">
-            {categoryLabel}
-          </span>
-        </div>
-
-        <h3 className="text-xl font-play text-rock mb-2 line-clamp-1 tracking-wide">
-          {name}
-        </h3>
-
-        {/* Descripción con expand */}
-        <div className="relative mb-4 flex-grow">
-          <AnimatePresence>
-            {expanded ? (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: 'auto' }}
-                exit={{ height: 0 }}
-                className="overflow-hidden"
-              >
-                <div className="text-gray-600 text-sm font-avenir">
-                  {documentToReactComponents(description)}
-                </div>
-              </motion.div>
-            ) : (
-              <div className="text-gray-600 text-sm font-avenir line-clamp-3">
-                {documentToReactComponents(description)}
-              </div>
-            )}
-          </AnimatePresence>
-
-          <button 
-            onClick={() => setExpanded(!expanded)}
-            className="text-chedar text-xs font-avenir mt-1 flex items-center hover:text-chedarlow transition-colors"
-          >
-            {expanded ? 'Ver menos' : 'Ver más'} 
-            <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${expanded ? 'rotate-180' : ''}`} />
-          </button>
-        </div>
-
-        {/* Precio y CTA */}
-        <div className="mt-auto pt-4 border-t border-gray-100">
-          <div className="flex items-center justify-between">
-            <div className="flex items-baseline">
-              <TbCurrencyDollar className="text-verde w-5 h-5 mr-1" />
-              <span className="text-2xl font-avenir text-rock">
-                {price.toFixed(2)}
-              </span>
-            </div>
-
+          <div className="flex items-center space-x-2">
             <motion.button
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: '#4CAF50', // Verde para el hover
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-chedar to-chedarlow hover:bg-gradient-to-r hover:from-verde hover:to-verde text-white px-4 py-2 rounded-lg text-sm font-avenir font-semibold tracking-wide shadow-md hover:shadow-chedar/20 transition-all cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(buyLink, "_blank");
-              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-lg hover:bg-white transition-all"
             >
-              <ShoppingBasket className="inline mr-2 w-4 h-4" />
-              Comprar
+              <Heart className="w-4 h-4 text-chedar stroke-3 fill-chedar hover:text-red-500 transition-colors" />
             </motion.button>
           </div>
         </div>
+
+        {/* Product image */}
+        <div className="relative w-full h-full">
+          <img
+            src={image || "/placeholder.svg"}
+            alt={name}
+            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+          />
+
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+          {/* Category badge */}
+          {categoryLabel && (
+            <div className="absolute bottom-4 left-4 bg-verde/50 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-avenir font-semibold tracking-wide shadow-md">
+              {categoryLabel}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Content section */}
+      <div className="p-6 space-y-4">
+        {/* Rating and title */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className={`w-4 h-4 ${i < Math.floor(rating) ? "text-amber-400 fill-chedar" : "text-chedar fill-chedar"}`}
+                />
+              ))}
+              <span className="text-sm text-verde font-avenir ml-2">({rating})</span>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-play text-verde line-clamp-2 leading-tight group-hover:text-chedar transition-colors duration-300">
+            {name}
+          </h3>
+        </div>
+
+        {/* Description */}
+        <div className="text-rock/80 font-avenir text-sm leading-relaxed line-clamp-2">
+          {documentToReactComponents(description)}
+        </div>
+
+        {/* Price section */}
+        <div className="relative">
+          <div className="bg-amber-50/30 rounded-2xl p-4 border border-chedarlow">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-baseline space-x-2">
+                  <span className="text-3xl font-play text-chedar">${price.toFixed(2)}</span>
+                  {finalOriginalPrice && (
+                    <span className="text-lg text-gray-400 line-through">${finalOriginalPrice.toFixed(2)}</span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Action buttons */}
+        <div className="space-y-3 pt-2">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-green-100/50 border-2 border-green-500 hover:bg-green-50 text-green-600 py-3 px-6 rounded-2xl font-semibold text-sm tracking-wide shadow-md hover:shadow-green-500/20 transition-all duration-300 flex items-center justify-center space-x-2"
+            onClick={(e) => {
+              e.stopPropagation()
+              window.open(createWhatsAppLink(name), "_blank")
+            }}
+          >
+            <FaWhatsapp className="w-5 h-5" />
+            <span className="font-avenir">Comprar ahora</span>
+          </motion.button>
+        </div>
+
+        {/* Trust indicators */}
+        {/* <div className="flex items-center justify-center space-x-6 pt-3 border-t border-gray-100">
+          <div className="text-center">
+            <div className="text-xs text-gray-500">Envío</div>
+            <div className="text-xs font-semibold text-gray-700">Gratis</div>
+          </div>
+        </div> */}
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard

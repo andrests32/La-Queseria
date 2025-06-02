@@ -412,25 +412,10 @@ export default function ProductsOfTheWeek({
         >
           <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-chedar/10 rounded-full blur-xl"></div>
 
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-block bg-gradient-to-r from-chedar to-chedarlow p-0.5 rounded-full shadow-xl"
-          >
-            <motion.a
-              href="https://wa.me/1XXXXXXXXXX"
-              className="group relative block bg-white text-chedar font-normal tracking-wide py-4 px-8 rounded-full hover:bg-transparent hover:text-white transition-all duration-300"
-            >
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                <ShoppingBasket className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span className="text-lg font-play">¡Quiero mi oferta ahora!</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </motion.a>
-          </motion.div>
+     
 
           <motion.p
-            className="mt-6 text-verde flex items-center justify-center gap-2 font-avenir"
+            className="mt-6 text-emerald-600 flex items-center justify-center gap-2 font-avenir text-lg font-semibold tracking-wide"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
