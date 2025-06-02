@@ -176,13 +176,13 @@ const HelpButton = () => {
             transition={{ duration: 0.2 }}
             className="absolute bottom-full right-0 mb-3 w-56 bg-white rounded-lg shadow-lg p-4 border border-gray-100"
           >
-            <p className="text-sm text-gray-600 mb-3">¿Cómo podemos ayudarte?</p>
+            <p className="text-sm text-rock mb-3">¿Cómo podemos ayudarte?</p>
             <div className="space-y-2">
               <a
                 href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent("Consulta sobre productos")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center bg-green-50 hover:bg-green-100 text-green-800 text-sm py-2 px-3 rounded transition-colors"
+                className="block w-full text-center bg-green-50 hover:bg-green-100 text-verde text-sm py-2 px-3 rounded transition-colors"
               >
                 Preguntar por productos
               </a>
@@ -190,7 +190,7 @@ const HelpButton = () => {
                 href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent("Consulta sobre mi pedido")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center bg-blue-50 hover:bg-blue-100 text-blue-800 text-sm py-2 px-3 rounded transition-colors"
+                className="block w-full text-center bg-amber-100 hover:bg-amber-100 text-chedar text-sm py-2 px-3 rounded transition-colors"
               >
                 Seguimiento de pedido
               </a>
