@@ -66,7 +66,7 @@ const AboutHero = () => {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute top-[580px] lg:top-[640px] left-1/2 transform -translate-x-1/2 opacity-50"
+          className="absolute top-[500px] lg:top-[640px] left-1/2 transform -translate-x-1/2 opacity-50"
           animate={{ y: [0, 12, 0] }}
           transition={{
             duration: 2,
