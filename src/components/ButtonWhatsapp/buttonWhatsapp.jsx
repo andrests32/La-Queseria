@@ -215,7 +215,7 @@ const HelpButton = () => {
         onTouchEnd={handleTouchEnd}
         whileHover={{ scale: isMobile ? 1 : 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`rounded-full px-1 shadow-md focus:outline-none flex items-center justify-center ${
+        className={`rounded-full px-1 shadow-md focus:outline-none flex items-center justify-center cursor-pointer ${
           hasScrolled ? 'bg-chedar' : 'bg-white'
         }`}
         aria-label="Botón de ayuda"
