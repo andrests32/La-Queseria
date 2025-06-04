@@ -335,7 +335,7 @@ export default function ProductsOfTheWeek({
 
         {/* Grid de productos */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative px-2 lg:px-0"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative px-2 lg:px-0"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -383,19 +383,6 @@ export default function ProductsOfTheWeek({
                 )}
               </AnimatePresence>
 
-              {index < 3 && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="absolute -top-3 -left-3 z-10"
-                >
-                  <div className="bg-gradient-to-r from-chedar to-chedarlow text-white text-xs font-avenir font-semibold px-3 py-1 rounded-full shadow-lg flex items-center">
-                    <Star className="w-3 h-3 mr-1 fill-white" />
-                    TOP {index + 1}
-                  </div>
-                </motion.div>
-              )}
 
               <ProductCard {...product} />
             </motion.div>
@@ -412,7 +399,7 @@ export default function ProductsOfTheWeek({
         >
           <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-chedar/10 rounded-full blur-xl"></div>
 
-     
+
 
           <motion.p
             className="mt-6 text-emerald-600 flex items-center justify-center gap-2 font-avenir text-lg font-semibold tracking-wide"

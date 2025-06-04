@@ -17,12 +17,6 @@ const FoodProductCard = ({
   discount,
   originalPrice,
   rating = 4.8,
-  prepTime = "15-20 min",
-  servings = 1,
-  isSpicy = false,
-  isVegetarian = false,
-  ingredients = [],
-  isPopular = false,
 }) => {
   // Función para crear el enlace de WhatsApp con el mensaje personalizado
   const createWhatsAppLink = (productName) => {
@@ -38,24 +32,16 @@ const FoodProductCard = ({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
-      className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-orange-100 max-w-sm mx-auto"
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-orange-100 max-w-sm mx-auto"
     >
       {/* Top section with image */}
       <div className="relative h-56 overflow-hidden bg-gradient-to-br from-orange-50 to-red-50">
-        {/* Badges */}
         <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
-          <div className="flex flex-col space-y-2">
-            {isPopular && (
-              <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center space-x-1">
+          <div className="flex items-center justify-center gap-2 space-y-2">
+              <div className="bg-chedar text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center space-x-1">
                 <Flame className="w-3 h-3" />
                 <span>Popular</span>
               </div>
-            )}
-            {discount && (
-              <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                -{discount}% OFF
-              </div>
-            )}
           </div>
 
           <motion.button
@@ -74,27 +60,6 @@ const FoodProductCard = ({
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
         />
-
-        {/* Category badge */}
-        {category && (
-          <div className="absolute bottom-4 left-4 bg-orange-500/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold">
-            {category}
-          </div>
-        )}
-
-        {/* Food characteristics */}
-        <div className="absolute bottom-4 right-4 flex space-x-1">
-          {isSpicy && (
-            <div className="bg-red-500/90 backdrop-blur-sm text-white p-1.5 rounded-full shadow-md">
-              <Flame className="w-3 h-3" />
-            </div>
-          )}
-          {isVegetarian && (
-            <div className="bg-green-500/90 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium shadow-md">
-              🌱
-            </div>
-          )}
-        </div>
       </div>
 
       {/* Content section */}

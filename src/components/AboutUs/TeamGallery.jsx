@@ -5,7 +5,7 @@ export default function TeamSection() {
     {
       name: "Jonathan Valdivieso",
       role: "Fundador & CEO",
-      bio: "Hombre de negocios con raíces firmes. Con respeto por la tradición familiar, proyectó su legado al mundo sin perder la humildad del origen.",
+      bio: "Hombre de negocios con raíces firmes, priorizando la dignidad humana. Proyecta su legado al mundo con base firme en los valores, la sostenibilidad y nuevas oportunidades.",
       image: "/ceo.webp",
       years: "8 años liderando la empresa",
     },
@@ -173,8 +173,7 @@ export default function TeamSection() {
               </div>
 
               <blockquote className="text-xl lg:text-2xl text-white mb-8 leading-relaxed font-avenir italic relative">
-                "No solo creamos productos; construimos un legado. Cada artículo lleva el nombre de nuestra familia y la
-                pasión que nos impulsó a transformar un sueño en realidad."
+                "No solo creamos productos; construimos un legado. Cada artículo lleva la esencia de la <strong className="text-chedar">queseria</strong> y la pasión que nos inpulsó a transformar un sueño en realidad."
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-orange-400/30 to-transparent" />
               </blockquote>
 
