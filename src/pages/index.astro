@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import AboutUs from "../components/Information/AboutUs";
 import Product from "../components/Product/Product";
 import QueseriaSocial from "../components/QueseriaSocial/QueseriaSocial";
-import Footer from "../components/Footer/Footer.astro";
+import Footer from "../components/Footer/Footer";
 import ButtonWhatsapp from '../components/ButtonWhatsapp/buttonWhatsapp'
 import HeroSeccion from "../components/Hero/HeroSeccion"
 import { fetchProductsDirectly } from "../utils/contentful";
@@ -20,5 +20,5 @@ const { products, lastUpdated } = await fetchProductsDirectly();
   client:load />
   <AboutUs client:visible />
   <QueseriaSocial client:load />
-  <Footer />
+  <Footer client:load />
 </Layout>
