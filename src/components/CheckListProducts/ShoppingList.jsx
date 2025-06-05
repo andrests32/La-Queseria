@@ -656,32 +656,60 @@ function App() {
   const [shoppingListData, setShoppingListData] = useState(null)
   const [isMobile, setIsMobile] = useState(false)
   const [activeCategory, setActiveCategory] = useState(null)
+  const STORAGE_KEY = "shoppingList";
 
-  useEffect(() => {
-    setIsClient(true)
-    const checkIfMobile = () => setIsMobile(window.innerWidth < 1024)
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
 
-    const savedData = localStorage.getItem("shoppingList")
-    if (savedData) {
+ useEffect(() => {
+  setIsClient(true);
+
+  const checkIfMobile = () => setIsMobile(window.innerWidth < 1024);
+  checkIfMobile();
+  window.addEventListener("resize", checkIfMobile);
+
+  if (typeof window !== "undefined") {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
       try {
-        setCategories(JSON.parse(savedData))
+        const parsed = JSON.parse(saved);
+
+        const merged = initialCategories.map((cat) => {
+          const oldCat = parsed.find((c) => c.name === cat.name) ?? { items: [] };
+
+          return {
+            ...cat,
+            items: cat.items.map((item) => {
+              const oldItem = oldCat.items.find((i) => i.id === item.id) ?? {};
+              return {
+                ...item,
+                checked: oldItem.checked ?? false,
+                quantity: oldItem.quantity ?? 0,
+              };
+            }),
+          };
+        });
+
+        setCategories(merged);
       } catch (e) {
-        console.error("Error al cargar datos guardados:", e)
+        console.error("Error al fusionar datos:", e);
       }
     }
+  }
 
-    return () => window.removeEventListener("resize", checkIfMobile)
-  }, [])
+  return () => window.removeEventListener("resize", checkIfMobile);
+}, []);
+
 
   useEffect(() => {
+  if (isClient && typeof window !== "undefined") {
     try {
-      localStorage.setItem("shoppingList", JSON.stringify(categories))
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(categories));
     } catch (e) {
-      console.error("Error al guardar datos:", e)
+      console.error("Error al guardar datos:", e);
     }
-  }, [categories])
+  }
+}, [categories, isClient]);
+
 
   const selectedProducts = useMemo(() => {
     return categories
