@@ -6,18 +6,19 @@ import QueseriaSocial from "../components/QueseriaSocial/QueseriaSocial";
 import Footer from "../components/Footer/Footer.astro";
 import ButtonWhatsapp from '../components/ButtonWhatsapp/buttonWhatsapp'
 import HeroSeccion from "../components/Hero/HeroSeccion"
+import { fetchProductsDirectly } from "../utils/contentful";
 
-// const { products, lastUpdated } = await fetchProductsDirectly();
+const { products, lastUpdated } = await fetchProductsDirectly();
 ---
 
 <Layout>
   <HeroSeccion client:load />
   <ButtonWhatsapp client:load />
   <Product 
+  initialProducts={products}
+  initialLastUpdated={lastUpdated}
   client:load />
-  <AboutUs client:load />
+  <AboutUs client:visible />
   <QueseriaSocial client:load />
-  <Footer />
+  <Footer client:visible />
 </Layout>
-
-

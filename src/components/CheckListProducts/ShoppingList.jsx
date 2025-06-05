@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect, useMemo } from "react"
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, pdf } from "@react-pdf/renderer"
 import {
@@ -75,6 +73,20 @@ const pdfStyles = StyleSheet.create({
     color: "#6B7280",
     fontWeight: "bold",
   },
+  productPrice: {
+    fontSize: 12,
+    color: "#10B981",
+    fontWeight: "bold",
+  },
+  totalRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+    paddingTop: 10,
+    borderTop: "1 solid #E5E7EB",
+    fontSize: 14,
+    fontWeight: "bold",
+  },
   footer: {
     marginTop: 30,
     paddingTop: 10,
@@ -91,96 +103,116 @@ const pdfStyles = StyleSheet.create({
   },
 })
 
-// Datos iniciales
+// Función para formatear moneda en dólares
+const formatCurrency = (amount) => {
+  if (amount === undefined || amount === null) return "$0.00"
+  const value = typeof amount === 'number' ? amount : parseFloat(amount) || 0
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(value)
+}
+
+// Función para calcular el precio total del producto (corregida)
+const calculateProductPrice = (quantity, price) => {
+  const qty = parseFloat(quantity) || 0
+  const prc = parseFloat(price) || 0
+  const total = qty * prc
+  return Math.round(total * 100) / 100 // Redondeo a 2 decimales para evitar errores de punto flotante
+}
+
+// Datos iniciales con precios en dólares y unidades fijas (actualizados con precios reales)
 const initialCategories = [
   {
     name: "Lácteos",
     items: [
-      { id: "l1", name: "Leche", detail: "Entera pasteurizada", checked: false, quantity: 0, unit: "litro" },
-      { id: "l2", name: "Queso fresco", detail: "Blanco pasteurizado", checked: false, quantity: 0, unit: "kg" },
-      { id: "l3", name: "Queso mozzarella", detail: "Para pizza", checked: false, quantity: 0, unit: "kg" },
-      { id: "l4", name: "Yogurt natural", detail: "Sin azúcar", checked: false, quantity: 0, unit: "litro" },
-      { id: "l5", name: "Mantequilla", detail: "Sin sal", checked: false, quantity: 0, unit: "g" },
-      { id: "l6", name: "Crema", detail: "Para batir", checked: false, quantity: 0, unit: "litro" },
+      { id: "l1", name: "Leche", detail: "Entera pasteurizada", checked: false, quantity: 0, unit: "litro", price: 1.15 },
+      { id: "l2", name: "Queso fresco", detail: "Blanco pasteurizado", checked: false, quantity: 0, unit: "kg", price: 4.95 },
+      { id: "l3", name: "Queso mozzarella", detail: "Para pizza", checked: false, quantity: 0, unit: "kg", price: 5.65 },
+      { id: "l4", name: "Yogurt natural", detail: "Sin azúcar", checked: false, quantity: 0, unit: "litro", price: 1.60 },
+      { id: "l5", name: "Mantequilla", detail: "Sin sal", checked: false, quantity: 0, unit: "kg", price: 4.20 },
+      { id: "l6", name: "Crema", detail: "Para batir", checked: false, quantity: 0, unit: "litro", price: 2.10 },
     ],
   },
   {
     name: "Vegetales",
     items: [
-      { id: "v1", name: "Zanahoria", detail: "Orgánica", checked: false, quantity: 0, unit: "kg" },
-      { id: "v2", name: "Tomate", detail: "Maduro para ensalada", checked: false, quantity: 0, unit: "kg" },
-      { id: "v3", name: "Cebolla", detail: "Blanca", checked: false, quantity: 0, unit: "kg" },
-      { id: "v4", name: "Pepino", detail: "Verde fresco", checked: false, quantity: 0, unit: "kg" },
-      { id: "v5", name: "Pimiento", detail: "Rojo", checked: false, quantity: 0, unit: "kg" },
-      { id: "v6", name: "Espinaca", detail: "Hoja fresca", checked: false, quantity: 0, unit: "kg" },
+      { id: "v1", name: "Zanahoria", detail: "Orgánica", checked: false, quantity: 0, unit: "kg", price: 1.05 },
+      { id: "v2", name: "Tomate", detail: "Maduro para ensalada", checked: false, quantity: 0, unit: "kg", price: 1.40 },
+      { id: "v3", name: "Cebolla", detail: "Blanca", checked: false, quantity: 0, unit: "kg", price: 0.90 },
+      { id: "v4", name: "Pepino", detail: "Verde fresco", checked: false, quantity: 0, unit: "kg", price: 1.25 },
+      { id: "v5", name: "Pimiento", detail: "Rojo", checked: false, quantity: 0, unit: "kg", price: 1.75 },
+      { id: "v6", name: "Espinaca", detail: "Hoja fresca", checked: false, quantity: 0, unit: "kg", price: 1.35 },
     ],
   },
   {
     name: "Frutas",
     items: [
-      { id: "f1", name: "Manzana", detail: "Roja", checked: false, quantity: 0, unit: "kg" },
-      { id: "f2", name: "Banana", detail: "Fresca", checked: false, quantity: 0, unit: "kg" },
-      { id: "f3", name: "Naranja", detail: "Para jugo", checked: false, quantity: 0, unit: "kg" },
-      { id: "f4", name: "Uva", detail: "Sin semilla", checked: false, quantity: 0, unit: "kg" },
-      { id: "f5", name: "Fresa", detail: "Fresca", checked: false, quantity: 0, unit: "kg" },
-      { id: "f6", name: "Piña", detail: "Madura", checked: false, quantity: 0, unit: "unidad" },
+      { id: "f1", name: "Manzana", detail: "Roja", checked: false, quantity: 0, unit: "kg", price: 2.10 },
+      { id: "f2", name: "Banana", detail: "Fresca", checked: false, quantity: 0, unit: "kg", price: 0.90 },
+      { id: "f3", name: "Naranja", detail: "Para jugo", checked: false, quantity: 0, unit: "kg", price: 0.95 },
+      { id: "f4", name: "Uva", detail: "Sin semilla", checked: false, quantity: 0, unit: "kg", price: 3.20 },
+      { id: "f5", name: "Fresa", detail: "Fresca", checked: false, quantity: 0, unit: "kg", price: 3.55 },
+      { id: "f6", name: "Piña", detail: "Madura", checked: false, quantity: 0, unit: "unidad", price: 1.05 },
     ],
   },
   {
     name: "Avícolas",
     items: [
-      { id: "a1", name: "Pollo", detail: "Pechuga sin piel", checked: false, quantity: 0, unit: "kg" },
-      { id: "a2", name: "Huevos", detail: "Blancos grandes", checked: false, quantity: 0, unit: "docena" },
-      { id: "a3", name: "Pavo", detail: "Rebanado para sandwich", checked: false, quantity: 0, unit: "kg" },
-      { id: "a4", name: "Pollo", detail: "Muslo sin piel", checked: false, quantity: 0, unit: "kg" },
-      { id: "a5", name: "Pollo", detail: "Entero", checked: false, quantity: 0, unit: "kg" },
+      { id: "a1", name: "Pollo", detail: "Pechuga sin piel", checked: false, quantity: 0, unit: "kg", price: 3.20 },
+      { id: "a2", name: "Huevos", detail: "Blancos grandes", checked: false, quantity: 0, unit: "docena", price: 1.70 },
+      { id: "a3", name: "Pavo", detail: "Rebanado para sandwich", checked: false, quantity: 0, unit: "kg", price: 3.90 },
+      { id: "a4", name: "Pollo", detail: "Muslo sin piel", checked: false, quantity: 0, unit: "kg", price: 2.65 },
+      { id: "a5", name: "Pollo", detail: "Entero", checked: false, quantity: 0, unit: "kg", price: 2.50 },
     ],
   },
   {
     name: "Plátanos y Tubérculos",
     items: [
-      { id: "p1", name: "Plátano verde", detail: "Para freír", checked: false, quantity: 0, unit: "unidad" },
-      { id: "p2", name: "Plátano maduro", detail: "Para cocinar", checked: false, quantity: 0, unit: "unidad" },
-      { id: "p3", name: "Papa", detail: "Blanca", checked: false, quantity: 0, unit: "kg" },
-      { id: "p4", name: "Yuca", detail: "Fresca", checked: false, quantity: 0, unit: "kg" },
-      { id: "p5", name: "Batata", detail: "Naranja", checked: false, quantity: 0, unit: "kg" },
+      { id: "p1", name: "Plátano verde", detail: "Para freír", checked: false, quantity: 0, unit: "unidad", price: 0.20 },
+      { id: "p2", name: "Plátano maduro", detail: "Para cocinar", checked: false, quantity: 0, unit: "unidad", price: 0.25 },
+      { id: "p3", name: "Papa", detail: "Blanca", checked: false, quantity: 0, unit: "kg", price: 0.80 },
+      { id: "p4", name: "Yuca", detail: "Fresca", checked: false, quantity: 0, unit: "kg", price: 0.70 },
+      { id: "p5", name: "Batata", detail: "Naranja", checked: false, quantity: 0, unit: "kg", price: 0.90 },
     ],
   },
   {
     name: "Harinas y Cereales",
     items: [
-      { id: "h1", name: "Harina de trigo", detail: "Todo propósito", checked: false, quantity: 0, unit: "kg" },
-      { id: "h2", name: "Harina de maíz", detail: "Precocida", checked: false, quantity: 0, unit: "kg" },
-      { id: "h3", name: "Arroz", detail: "Grano largo", checked: false, quantity: 0, unit: "kg" },
-      { id: "h4", name: "Pasta", detail: "Espagueti", checked: false, quantity: 0, unit: "kg" },
-      { id: "h5", name: "Avena", detail: "En hojuelas", checked: false, quantity: 0, unit: "kg" },
-      { id: "h6", name: "Quinoa", detail: "Orgánica", checked: false, quantity: 0, unit: "kg" },
+      { id: "h1", name: "Harina de trigo", detail: "Todo propósito", checked: false, quantity: 0, unit: "kg", price: 0.95 },
+      { id: "h2", name: "Harina de maíz", detail: "Precocida", checked: false, quantity: 0, unit: "kg", price: 0.90 },
+      { id: "h3", name: "Arroz", detail: "Grano largo", checked: false, quantity: 0, unit: "kg", price: 1.05 },
+      { id: "h4", name: "Pasta", detail: "Espagueti", checked: false, quantity: 0, unit: "kg", price: 1.15 },
+      { id: "h5", name: "Avena", detail: "En hojuelas", checked: false, quantity: 0, unit: "kg", price: 1.40 },
+      { id: "h6", name: "Quinoa", detail: "Orgánica", checked: false, quantity: 0, unit: "kg", price: 4.40 },
     ],
   },
   {
     name: "Carnes",
     items: [
-      { id: "c1", name: "Carne molida", detail: "Res magra", checked: false, quantity: 0, unit: "kg" },
-      { id: "c2", name: "Bistec", detail: "De res", checked: false, quantity: 0, unit: "kg" },
-      { id: "c3", name: "Costilla", detail: "De cerdo", checked: false, quantity: 0, unit: "kg" },
-      { id: "c4", name: "Lomo", detail: "De cerdo", checked: false, quantity: 0, unit: "kg" },
-      { id: "c5", name: "Chorizo", detail: "Para parrilla", checked: false, quantity: 0, unit: "kg" },
+      { id: "c1", name: "Carne molida", detail: "Res magra", checked: false, quantity: 0, unit: "kg", price: 5.30 },
+      { id: "c2", name: "Bistec", detail: "De res", checked: false, quantity: 0, unit: "kg", price: 6.20 },
+      { id: "c3", name: "Costilla", detail: "De cerdo", checked: false, quantity: 0, unit: "kg", price: 5.00 },
+      { id: "c4", name: "Lomo", detail: "De cerdo", checked: false, quantity: 0, unit: "kg", price: 5.65 },
+      { id: "c5", name: "Chorizo", detail: "Para parrilla", checked: false, quantity: 0, unit: "kg", price: 4.80 },
     ],
   },
   {
     name: "Pescados y Mariscos",
     items: [
-      { id: "m1", name: "Filete de pescado", detail: "Tilapia", checked: false, quantity: 0, unit: "kg" },
-      { id: "m2", name: "Camarones", detail: "Medianos", checked: false, quantity: 0, unit: "kg" },
-      { id: "m3", name: "Salmón", detail: "En filete", checked: false, quantity: 0, unit: "kg" },
-      { id: "m4", name: "Atún", detail: "Fresco", checked: false, quantity: 0, unit: "kg" },
-      { id: "m5", name: "Pulpo", detail: "Limpio", checked: false, quantity: 0, unit: "kg" },
+      { id: "m1", name: "Filete de pescado", detail: "Tilapia", checked: false, quantity: 0, unit: "kg", price: 3.90 },
+      { id: "m2", name: "Camarones", detail: "Medianos", checked: false, quantity: 0, unit: "kg", price: 7.10 },
+      { id: "m3", name: "Salmón", detail: "En filete", checked: false, quantity: 0, unit: "kg", price: 10.60 },
+      { id: "m4", name: "Atún", detail: "Fresco", checked: false, quantity: 0, unit: "kg", price: 5.30 },
+      { id: "m5", name: "Pulpo", detail: "Limpio", checked: false, quantity: 0, unit: "kg", price: 8.85 },
     ],
   },
 ]
 
-// Componente PDF
-const MyDocument = ({ selectedProducts }) => {
+// Componente PDF actualizado
+const MyDocument = ({ selectedProducts, totalPrice }) => {
   const formatDate = () => {
     const now = new Date()
     return now.toLocaleDateString("es-ES", {
@@ -206,16 +238,29 @@ const MyDocument = ({ selectedProducts }) => {
         {selectedProducts.map((category) => (
           <View key={category.name}>
             <Text style={pdfStyles.categoryName}>{category.name}</Text>
-            {category.items.map((item) => (
-              <View key={`${category.name}-${item.name}`} style={pdfStyles.productRow}>
-                <Text style={pdfStyles.productName}>{item.name}</Text>
-                <Text style={pdfStyles.productDetail}>
-                  {item.quantity} {item.unit}
-                </Text>
-              </View>
-            ))}
+            {category.items.map((item) => {
+              const itemPrice = calculateProductPrice(item.quantity, item.price)
+              return (
+                <View key={`${category.name}-${item.name}`} style={pdfStyles.productRow}>
+                  <Text style={pdfStyles.productName}>{item.name}</Text>
+                  <View style={{ flexDirection: 'row', gap: 10 }}>
+                    <Text style={pdfStyles.productDetail}>
+                      {item.quantity} {item.unit}
+                    </Text>
+                    <Text style={pdfStyles.productPrice}>
+                      {formatCurrency(itemPrice)}
+                    </Text>
+                  </View>
+                </View>
+              )
+            })}
           </View>
         ))}
+
+        <View style={pdfStyles.totalRow}>
+          <Text>Total:</Text>
+          <Text>{formatCurrency(totalPrice)}</Text>
+        </View>
 
         <Text style={pdfStyles.timestamp}>Generado el: {formatDate()}</Text>
 
@@ -228,7 +273,7 @@ const MyDocument = ({ selectedProducts }) => {
 }
 
 // Componente para mostrar el PDF
-const PDFViewer = ({ shoppingListData, onClose }) => {
+const PDFViewer = ({ shoppingListData, totalPrice, onClose }) => {
   const [pdfUrl, setPdfUrl] = useState("")
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -248,7 +293,7 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
           throw new Error("No hay datos para generar el PDF")
         }
 
-        const blob = await pdf(<MyDocument selectedProducts={shoppingListData} />).toBlob()
+        const blob = await pdf(<MyDocument selectedProducts={shoppingListData} totalPrice={totalPrice} />).toBlob()
         const url = URL.createObjectURL(blob)
         setPdfUrl(url)
         setError(null)
@@ -267,7 +312,7 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
         URL.revokeObjectURL(pdfUrl)
       }
     }
-  }, [shoppingListData])
+  }, [shoppingListData, totalPrice])
 
   if (loading) {
     return (
@@ -355,8 +400,13 @@ const PDFViewer = ({ shoppingListData, onClose }) => {
 }
 
 // Componente ProductItem mejorado
-const ProductItem = ({ item, onChange, onQuantityChange, onUnitChange }) => {
-  const units = ["kg", "lb", "unidad", "docena", "g", "litro"]
+const ProductItem = ({ item, onChange, onQuantityChange }) => {
+  const calculateItemPrice = () => {
+    const quantity = parseFloat(item.quantity) || 0
+    const price = parseFloat(item.price) || 0
+    const total = quantity * price
+    return Math.round(total * 100) / 100 // Redondeo a 2 decimales
+  }
 
   return (
     <div
@@ -364,63 +414,69 @@ const ProductItem = ({ item, onChange, onQuantityChange, onUnitChange }) => {
         item.checked ? "bg-amber-50 border-chedar/70 shadow-md" : "bg-white border-gray-200 hover:border-amber-200"
       }`}
     >
-      <div className="flex items-center mb-2">
+      <div className="flex items-start mb-2">
         <div
-          className={`flex items-center justify-center w-6 h-6 rounded-full border-2 cursor-pointer ${
+          className={`flex items-center justify-center w-6 h-6 rounded-full border-2 cursor-pointer mt-1 ${
             item.checked ? "bg-chedar border-amber-500" : "border-gray-300"
           }`}
           onClick={onChange}
         >
           {item.checked && <Check className="h-4 w-4 text-white" />}
         </div>
-        <label onClick={onChange} className="ml-3 flex-1 cursor-pointer">
-          <span className={`block font-play text-lg tracking-wide ${item.checked ? "text-verde" : "text-gray-800"}`}>{item.name}</span>
-          <span className={`block text-sm ${item.checked ? "text-rock" : "text-gray-500"}`}>{item.detail}</span>
-        </label>
+        
+        <div className="ml-3 flex-1">
+          <div className="flex justify-between items-start">
+            <div>
+              <span className={`block font-play text-lg tracking-wide ${item.checked ? "text-verde" : "text-gray-800"}`}>
+                {item.name}
+              </span>
+              <span className={`block text-sm ${item.checked ? "text-rock" : "text-gray-500"}`}>
+                {item.detail}
+              </span>
+            </div>
+            
+            {/* Precio unitario siempre visible */}
+            <span className="text-sm font-medium text-emerald-600 ml-2">
+              {formatCurrency(item.price)}/{item.unit}
+            </span>
+          </div>
+
+          {/* Total solo visible cuando está seleccionado y cantidad > 0 */}
+          {item.checked && item.quantity > 0 && (
+            <div className="mt-2 bg-amber-100 px-3 py-1 rounded-lg inline-block">
+              <span className="text-sm font-medium text-amber-800">
+                Total: {formatCurrency(calculateItemPrice())}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
 
       {item.checked && (
-        <div className="mt-3 flex items-center gap-2">
-          <div className="flex-1">
-            <label className="block text-xs text-rock mb-1 font-medium">Cantidad</label>
-            <div className="flex items-center">
-              <button
-                onClick={() => onQuantityChange(Math.max(0, Number.parseInt(item.quantity || 0) - 1))}
-                className="h-9 w-9 flex items-center justify-center bg-chedar text-white rounded-l-lg border border-amber-200 hover:bg-amber-200 transition-colors"
-                aria-label="Disminuir cantidad"
-              >
-                <Minus className="h-4 w-4" />
-              </button>
-              <input
-                type="number"
-                min="0"
-                value={item.quantity || 0}
-                onChange={(e) => onQuantityChange(e.target.value)}
-                className="h-9 w-12 text-center border-y border-amber-200 focus:outline-none focus:ring-1 focus:ring-amber-500 text-verde bg-white"
-              />
-              <button
-                onClick={() => onQuantityChange(Number.parseInt(item.quantity || 0) + 1)}
-                className="h-9 w-9 flex items-center justify-center bg-chedar text-white rounded-r-lg border border-amber-200 hover:bg-amber-200 transition-colors"
-                aria-label="Aumentar cantidad"
-              >
-                <Plus className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-
-          <div className="flex-1">
-            <label className="block text-xs text-rock mb-1 font-medium">Unidad</label>
-            <select
-              value={item.unit || units[0]}
-              onChange={(e) => onUnitChange(e.target.value)}
-              className="w-full h-9 px-3 text-sm border border-amber-200 rounded-lg focus:ring-1 focus:ring-chedar focus:border-amber-500 bg-white text-verde"
+        <div className="mt-3">
+          <label className="block text-xs text-rock mb-1 font-medium">Cantidad</label>
+          <div className="flex items-center">
+            <button
+              onClick={() => onQuantityChange(Math.max(0, Number(item.quantity || 0) - 1))}
+              className="h-9 w-9 flex items-center justify-center bg-chedar text-white rounded-l-lg border border-amber-200 hover:bg-amber-200 transition-colors"
+              aria-label="Disminuir cantidad"
             >
-              {units.map((unit) => (
-                <option key={unit} value={unit}>
-                  {unit}
-                </option>
-              ))}
-            </select>
+              <Minus className="h-4 w-4" />
+            </button>
+            <input
+              type="number"
+              min="0"
+              value={item.quantity || 0}
+              onChange={(e) => onQuantityChange(e.target.value)}
+              className="h-9 w-16 text-center border-y border-amber-200 focus:outline-none focus:ring-1 focus:ring-amber-500 text-verde bg-white"
+            />
+            <button
+              onClick={() => onQuantityChange(Number(item.quantity || 0) + 1)}
+              className="h-9 w-9 flex items-center justify-center bg-chedar text-white rounded-r-lg border border-amber-200 hover:bg-amber-200 transition-colors"
+              aria-label="Aumentar cantidad"
+            >
+              <Plus className="h-4 w-4" />
+            </button>
           </div>
         </div>
       )}
@@ -429,7 +485,7 @@ const ProductItem = ({ item, onChange, onQuantityChange, onUnitChange }) => {
 }
 
 // Componente ProductCategory mejorado
-const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantityChange, onUnitChange }) => {
+const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantityChange }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const hasCheckedItems = category.items.some((item) => item.checked)
   const checkedCount = category.items.filter((item) => item.checked).length
@@ -475,7 +531,6 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
               item={item}
               onChange={() => onCheckboxChange(categoryIndex, item.id)}
               onQuantityChange={(value) => onQuantityChange(categoryIndex, item.id, value)}
-              onUnitChange={(unit) => onUnitChange(categoryIndex, item.id, unit)}
             />
           ))}
         </div>
@@ -485,7 +540,7 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
 }
 
 // Componente SelectedSummary mejorado
-const SelectedSummary = ({ selectedProducts = [], onClose = () => {}, onViewPDF = () => {} }) => {
+const SelectedSummary = ({ selectedProducts = [], totalPrice = 0, onClose = () => {}, onViewPDF = () => {} }) => {
   const totalItems = selectedProducts.reduce((acc, cat) => acc + cat.items.length, 0)
 
   return (
@@ -516,26 +571,42 @@ const SelectedSummary = ({ selectedProducts = [], onClose = () => {}, onViewPDF 
                 >
                   <h4 className="font-play tracking-wide text-verde border-b border-amber-200 pb-2 mb-3">{category.name}</h4>
                   <ul className="space-y-3">
-                    {category.items.map((item) => (
-                      <li
-                        key={item.id}
-                        className="flex justify-between items-center text-gray-700 p-2 hover:bg-amber-50 rounded-lg transition-colors"
-                      >
-                        <div>
-                          <span className="font-avenir text-verde">{item.name}</span>
-                          <span className="text-sm text-chedar block">{item.detail}</span>
-                        </div>
-                        <span className="font-medium whitespace-nowrap ml-2 px-3 py-1 bg-chedar rounded-lg text-white">
-                          {item.quantity} {item.unit}
-                        </span>
-                      </li>
-                    ))}
+                    {category.items.map((item) => {
+                      const itemPrice = calculateProductPrice(item.quantity, item.price)
+                      return (
+                        <li
+                          key={item.id}
+                          className="flex justify-between items-center text-gray-700 p-2 hover:bg-amber-50 rounded-lg transition-colors"
+                        >
+                          <div>
+                            <span className="font-avenir text-verde">{item.name}</span>
+                            <span className="text-sm text-chedar block">{item.detail}</span>
+                            <span className="text-xs text-gray-500 block">
+                              {formatCurrency(item.price)} / {item.unit}
+                            </span>
+                          </div>
+                          <div className="flex flex-col items-end">
+                            <span className="font-medium whitespace-nowrap ml-2 px-3 py-1 bg-chedar rounded-lg text-white">
+                              {item.quantity} {item.unit}
+                            </span>
+                            <span className="text-sm font-medium text-emerald-600 mt-1">
+                              {formatCurrency(itemPrice)}
+                            </span>
+                          </div>
+                        </li>
+                      )
+                    })}
                   </ul>
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 pt-4 flex flex-col items-center">
+            <div className="mt-6 pt-4 border-t border-amber-200">
+              <div className="flex justify-between items-center mb-6">
+                <span className="font-play text-lg text-verde">Total:</span>
+                <span className="font-bold text-xl text-emerald-600">{formatCurrency(totalPrice)}</span>
+              </div>
+
               <button
                 onClick={onViewPDF}
                 className="w-full sm:w-auto px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors flex items-center justify-center shadow-md"
@@ -559,7 +630,7 @@ const SelectedSummary = ({ selectedProducts = [], onClose = () => {}, onViewPDF 
       <div className="p-4 border-t border-amber-100 bg-amber-50 shadow-inner">
         {selectedProducts.length > 0 && (
           <PDFDownloadLink
-            document={<MyDocument selectedProducts={selectedProducts} />}
+            document={<MyDocument selectedProducts={selectedProducts} totalPrice={totalPrice} />}
             fileName="lista_compras.pdf"
             className="flex items-center justify-center w-full px-4 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-colors shadow-md"
           >
@@ -621,6 +692,14 @@ function App() {
       .filter((category) => category.items.length > 0)
   }, [categories])
 
+  const totalPrice = useMemo(() => {
+    return selectedProducts.reduce((total, category) => {
+      return total + category.items.reduce((catTotal, item) => {
+        return catTotal + calculateProductPrice(item.quantity, item.price)
+      }, 0)
+    }, 0)
+  }, [selectedProducts])
+
   const handleCheckboxChange = (categoryIndex, itemId) => {
     const updatedCategories = [...categories]
     const itemIndex = updatedCategories[categoryIndex].items.findIndex((item) => item.id === itemId)
@@ -642,17 +721,9 @@ function App() {
     const updatedCategories = [...categories]
     const itemIndex = updatedCategories[categoryIndex].items.findIndex((item) => item.id === itemId)
 
-    const parsedValue = Number.parseInt(value, 10)
-    updatedCategories[categoryIndex].items[itemIndex].quantity = isNaN(parsedValue) ? 0 : Math.max(0, parsedValue)
+    const parsedValue = Number(value) || 0
+    updatedCategories[categoryIndex].items[itemIndex].quantity = Math.max(0, parsedValue)
 
-    setCategories(updatedCategories)
-  }
-
-  const handleUnitChange = (categoryIndex, itemId, unit) => {
-    const updatedCategories = [...categories]
-    const itemIndex = updatedCategories[categoryIndex].items.findIndex((item) => item.id === itemId)
-
-    updatedCategories[categoryIndex].items[itemIndex].unit = unit
     setCategories(updatedCategories)
   }
 
@@ -674,7 +745,7 @@ function App() {
   const totalSelectedItems = selectedProducts.reduce((acc, cat) => acc + cat.items.length, 0)
 
   if (showPdfViewer && shoppingListData) {
-    return <PDFViewer shoppingListData={shoppingListData} onClose={() => setShowPdfViewer(false)} />
+    return <PDFViewer shoppingListData={shoppingListData} totalPrice={totalPrice} onClose={() => setShowPdfViewer(false)} />
   }
 
   return (
@@ -792,7 +863,6 @@ function App() {
                         categoryIndex={categoryIndex}
                         onCheckboxChange={handleCheckboxChange}
                         onQuantityChange={handleQuantityChange}
-                        onUnitChange={handleUnitChange}
                       />
                     ),
                   )}
@@ -804,6 +874,7 @@ function App() {
                 <div className="lg:w-2/5 border-l border-amber-100">
                   <SelectedSummary
                     selectedProducts={selectedProducts}
+                    totalPrice={totalPrice}
                     onClose={() => setShowSummary(false)}
                     onViewPDF={() => {
                       setShoppingListData(selectedProducts)
@@ -823,6 +894,7 @@ function App() {
           <div className="w-full h-full bg-white shadow-xl flex flex-col">
             <SelectedSummary
               selectedProducts={selectedProducts}
+              totalPrice={totalPrice}
               onClose={() => setShowSummary(false)}
               onViewPDF={() => {
                 setShoppingListData(selectedProducts)

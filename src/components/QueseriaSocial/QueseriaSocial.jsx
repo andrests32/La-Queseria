@@ -15,7 +15,7 @@ const QueseriaSocial = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="relative w-full mx-auto py-20 -mt-7 md:-mt-5.5 lg:-mt-6 overflow-hidden"
+      className="relative w-full mx-auto py-20  overflow-hidden"
     >
       {/* Fondo con blobs decorativos color chedar */}
       <div className="absolute inset-0 pointer-events-none">
