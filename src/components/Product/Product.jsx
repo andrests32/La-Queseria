@@ -1,7 +1,7 @@
 // src/components/ProductsOfTheWeek/ProductsOfTheWeek.jsx
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useMemo } from 'react';
-import { Star, ArrowRight, ShoppingBasket, Zap, Clock, AlertCircle } from "lucide-react";
+import { Star, ArrowRight, Zap, Clock, AlertCircle } from "lucide-react";
 import { usePersistentTimer } from "../../hooks/usePersistentTimer";
 import ProductCard from "../ProductCard/ProductCard";
 import { createClient } from 'contentful';
