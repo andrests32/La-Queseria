@@ -125,90 +125,271 @@ const calculateProductPrice = (quantity, price) => {
 
 // Datos iniciales con precios en dólares y unidades fijas (actualizados con precios reales)
 const initialCategories = [
+
+  {
+    name: "Frutos Secos",
+    items: [
+      { id: "f1", code: "QNSD1", name: "MANÍ QUEBRADO AL GRANEL 454 GR", detail: "Maní", checked: false, quantity: 0, price: 1.25 },
+      { id: "f2", code: "QNSD64", name: "ALMENDRAS 1OOG  GUSTAMAS", detail: "Almendras", checked: false, quantity: 0, price: 1.5 },
+      { id: "f3", code: "QNSD74", name: "ARANDANOS 100G GUSTAMAS", detail: "Arándanos", checked: false, quantity: 0, price: 1.25 },
+      { id: "f4", code: "QNSD429", name: "MANÍ  MOLIDO  AL GRANEL 454 GR", detail: "Maní", checked: false, quantity: 0, price: 1.25 },
+      { id: "f5", code: "QNSD432", name: "MANÍ EN PEPA AL GRANEL 454 GR", detail: "Maní", checked: false, quantity: 0, price: 1.25 },
+      { id: "f6", code: "QNSD473", name: "NUEZ  FUNDA 100GR", detail: "Nuez", checked: false, quantity: 0, price: 1.25 },
+      { id: "f7", code: "QNSD507", name: "PASAS AL GRANEL", detail: "Pasas", checked: false, quantity: 0, price: 1.25 }
+    ]
+  },
+  {
+    name: "Gelatinas",
+    items: [
+      { id: "f1", code: "QNSD4", name: "GELATINA GELHADA 200GR FRAMBUESA", detail: "Frambuesa", checked: false, quantity: 0, price: 1.45 },
+      { id: "f2", code: "QNSD5", name: "GELATINA GELHADA 200GR FRESA", detail: "Fresa", checked: false, quantity: 0, price: 1.45 },
+      { id: "f3", code: "QNSD6", name: "GELATINA GELHADA 200GR LIMON", detail: "Limón", checked: false, quantity: 0, price: 1.45 },
+      { id: "f4", code: "QNSD7", name: "GELATINA GELHADA 200GR MANZANA", detail: "Manzana", checked: false, quantity: 0, price: 1.45 },
+      { id: "f5", code: "QNSD8", name: "GELATINA GELHADA 200GR MORA", detail: "Mora", checked: false, quantity: 0, price: 1.45 },
+      { id: "f6", code: "QNSD9", name: "GELATINA GELHADA 200GR NARANJA", detail: "Naranja", checked: false, quantity: 0, price: 1.45 },
+      { id: "f7", code: "QNSD10", name: "GELATINA GELHADA 400GR  MANZANA", detail: "Manzana", checked: false, quantity: 0, price: 2.3 },
+      { id: "f8", code: "QNSD11", name: "GELATINA GELHADA 400GR CHICLE", detail: "Chicle", checked: false, quantity: 0, price: 2.3 },
+      { id: "f9", code: "QNSD12", name: "GELATINA GELHADA 400GR FRUTOS ROJOS", detail: "Frutos Rojos", checked: false, quantity: 0, price: 2.3 },
+      { id: "f10", code: "QNSD13", name: "GELATINA GELHADA 400GR MORA", detail: "Mora", checked: false, quantity: 0, price: 2.3 },
+      { id: "f11", code: "QNSD314", name: "GELATINA GELHADA  SABOR CEREZA 200GR", detail: "Cereza", checked: false, quantity: 0, price: 1.45 },
+      { id: "f12", code: "QNSD315", name: "GELATINA GELHADA  SABOR CEREZA 400GR", detail: "Cereza", checked: false, quantity: 0, price: 2.3 },
+      { id: "f13", code: "QNSD316", name: "GELATINA GELHADA  SABOR LIMON 400GR", detail: "Limón", checked: false, quantity: 0, price: 2.3 },
+      { id: "f14", code: "QNSD317", name: "GELATINA GELHADA  SABOR PIÑA 400GR", detail: "Piña", checked: false, quantity: 0, price: 2.3 },
+      { id: "f15", code: "QNSD318", name: "GELATINA GELHADA CANDY POP 400GR", detail: "Candy Pop", checked: false, quantity: 0, price: 2.3 },
+      { id: "f16", code: "QNSD319", name: "GELATINA GELHADA SABOR FRAMBRUESA 400GR", detail: "Frambuesa", checked: false, quantity: 0, price: 2.05 },
+      { id: "f17", code: "QNSD320", name: "GELATINA GELHADA SABOR UVA 400GR", detail: "Uva", checked: false, quantity: 0, price: 2.3 },
+      { id: "f18", code: "QNSD321", name: "GELATINA GELHADA SORPRESA 400GR", detail: "Sorpresa", checked: false, quantity: 0, price: 1.95 },
+      { id: "f19", code: "QNSD322", name: "GELATINA GELHADA SABOR  NARANJA 400GR", detail: "Naranja", checked: false, quantity: 0, price: 2 },
+      { id: "f20", code: "QNSD325", name: "GELHADA 200GR PIÑA", detail: "Piña", checked: false, quantity: 0, price: 1.45 },
+      { id: "f21", code: "QNSD326", name: "GELHADA 200GR UVA", detail: "Uva", checked: false, quantity: 0, price: 1.45 },
+      { id: "f22", code: "QNSD327", name: "GELTINA GELHADA  SABOR FRESA 400GR", detail: "Fresa", checked: false, quantity: 0, price: 2.05 }
+    ]
+  },
+  {
+    name: "Arroz",
+    items: [
+      { id: "f1", code: "QNSD2", name: "ARROZ FLOR", detail: "Flor", checked: false, quantity: 0, price: 9.98 },
+      { id: "f2", code: "QNSD19", name: "ARROZ CONEJO", detail: "Conejo", checked: false, quantity: 0, price: 9 },
+      { id: "f3", code: "QNSD20", name: "ARROZ MI HACIENDA", detail: "Mi Hacienda", checked: false, quantity: 0, price: 13 },
+      { id: "f4", code: "QNSD21", name: "ARROZ WILLIAM", detail: "William", checked: false, quantity: 0, price: 11 },
+      { id: "f5", code: "QNSD22", name: "ARROZ MARCELO", detail: "Marcelo", checked: false, quantity: 0, price: 12.5 },
+      { id: "f6", code: "QNSD23", name: "ARROZ PRIMICIA", detail: "Primicia", checked: false, quantity: 0, price: 12.95 },
+      { id: "f7", code: "QNSD24", name: "GLORIA MATILDE", detail: "Gloria", checked: false, quantity: 0, price: 12.75 },
+      { id: "f8", code: "QNSD25", name: "NUESTRA ESMERALDA", detail: "Esmeralda", checked: false, quantity: 0, price: 12.75 },
+      { id: "f9", code: "QNSD82", name: "ARROZ  WILLIAM AL GRANEL", detail: "William", checked: false, quantity: 0, price: 0.5 },
+      { id: "f10", code: "QNSD84", name: "ARROZ CONEJO 10 LB", detail: "Conejo", checked: false, quantity: 0, price: 4.25 },
+      { id: "f11", code: "QNSD85", name: "ARROZ CONEJO AL GRANEL", detail: "Conejo", checked: false, quantity: 0, price: 0.35 },
+      { id: "f12", code: "QNSD86", name: "ARROZ ESMERALDAS 10LB", detail: "Esmeraldas", checked: false, quantity: 0, price: 5.6 },
+      { id: "f13", code: "QNSD87", name: "ARROZ FLOR 10L", detail: "Flor", checked: false, quantity: 0, price: 4.25 },
+      { id: "f14", code: "QNSD88", name: "ARROZ GLORIA  MATILDE 10 LB", detail: "Gloria", checked: false, quantity: 0, price: 5.6 },
+      { id: "f15", code: "QNSD89", name: "ARROZ MARCELO AL GRANEL", detail: "Marcelo", checked: false, quantity: 0, price: 0.55 },
+      { id: "f16", code: "QNSD90", name: "ARROZ MI HACIENDA 10LB", detail: "Mi Hacienda", checked: false, quantity: 0, price: 5.6 },
+      { id: "f17", code: "QNSD91", name: "ARROZ MI HACIENDA AL GRANEL", detail: "Mi Hacienda", checked: false, quantity: 0, price: 0.5 },
+      { id: "f18", code: "QNSD92", name: "ARROZ PRIMICIA  10LB", detail: "Primicia", checked: false, quantity: 0, price: 5.6 },
+      { id: "f19", code: "QNSD93", name: "ARROZ PRIMICIA AL GRANEL", detail: "Primicia", checked: false, quantity: 0, price: 0.55 },
+      { id: "f20", code: "QNSD94", name: "ARROZ SUPER FLOR AL GRANEL", detail: "Super Flor", checked: false, quantity: 0, price: 0.4 },
+      { id: "f21", code: "QNSD328", name: "GLORIA MATILDE AL GRANEL", detail: "Gloria", checked: false, quantity: 0, price: 0.55 },
+      { id: "f22", code: "QNSD329", name: "GLORIA MATILDE QUINTAL", detail: "Gloria", checked: false, quantity: 0, price: 52 },
+      { id: "f23", code: "QNSD556", name: "QUINTAL ARROZ FLOR NUEVO", detail: "Flor", checked: false, quantity: 0, price: 35.5 },
+      { id: "f24", code: "QNSD557", name: "QUINTAL MI HACIENDA", detail: "Mi Hacienda", checked: false, quantity: 0, price: 52 },
+      { id: "f25", code: "QNSD558", name: "QUINTAL WILLIAM", detail: "William", checked: false, quantity: 0, price: 43 }
+    ]
+  },
+  {
+    name: "Aceites",
+    items: [
+      { id: "f1", code: "QNSD26", name: "ACEITE ALESOL BOTELLA  900ML", detail: "Alesol", checked: false, quantity: 0, price: 2.15 },
+      { id: "f2", code: "QNSD27", name: "ACEITE ALESOL FUNDA 900ML", detail: "Alesol", checked: false, quantity: 0, price: 1.75 },
+      { id: "f3", code: "QNSD28", name: "ACEITE EL COLORADO 900ML", detail: "Colorado", checked: false, quantity: 0, price: 1.49 },
+      { id: "f4", code: "QNSD29", name: "ACEITE GIRASOL  1LT BOTELLA FABRIL", detail: "Girasol", checked: false, quantity: 0, price: 2.75 },
+      { id: "f5", code: "QNSD30", name: "ACEITE GIRASOL 1LT BOTELLA FRAILE", detail: "Girasol", checked: false, quantity: 0, price: 2.7 },
+      { id: "f6", code: "QNSD31", name: "ACEITE GIRASOL 250 ML BOTELLA", detail: "Girasol", checked: false, quantity: 0, price: 0.85 },
+      { id: "f7", code: "QNSD32", name: "ACEITE JOYASOL FUNDA  1LT", detail: "Joyasol", checked: false, quantity: 0, price: 1.75 },
+      { id: "f8", code: "QNSD33", name: "ACEITE PALMA DE ORO  FUNDA 1LT", detail: "Palma", checked: false, quantity: 0, price: 1.95 },
+      { id: "f9", code: "QNSD34", name: "ACEITE PALMA DE ORO 390ML BOTELLA", detail: "Palma", checked: false, quantity: 0, price: 0.9 },
+      { id: "f10", code: "QNSD35", name: "ACEITE PALMA DE ORO 900ML BOTELLA", detail: "Palma", checked: false, quantity: 0, price: 2.42 },
+      { id: "f11", code: "QNSD36", name: "ACEITE PALMA DE ORO BOTTELA 750ML", detail: "Palma", checked: false, quantity: 0, price: 1.75 },
+      { id: "f12", code: "QNSD37", name: "ACEITE PALMA DE ORO FUNDA  112ML", detail: "Palma", checked: false, quantity: 0, price: 0.25 },
+      { id: "f13", code: "QNSD38", name: "ACEITE PALMA DE ORO FUNDA  210ML", detail: "Palma", checked: false, quantity: 0, price: 0.5 },
+      { id: "f14", code: "QNSD39", name: "ACEITE PALMA DE ORO FUNDA  480ML", detail: "Palma", checked: false, quantity: 0, price: 1 },
+      { id: "f15", code: "QNSD40", name: "ACEITE PALMA DE ORO FUNDA  840ML", detail: "Palma", checked: false, quantity: 0, price: 1.75 },
+      { id: "f16", code: "QNSD41", name: "ACEITE SABOR CASERO  1LT", detail: "Casero", checked: false, quantity: 0, price: 1.65 },
+      { id: "f17", code: "QNSD42", name: "ACEITE SUPER 1LT", detail: "Super", checked: false, quantity: 0, price: 1.75 },
+      { id: "f18", code: "QNSD43", name: "ACEITE TRIREFINADO 900ML FUNDA", detail: "Trirefinado", checked: false, quantity: 0, price: 1.99 },
+      { id: "f19", code: "QNSD44", name: "ACEITE VIVI CANOLA 1TL BOTELLA", detail: "Canola", checked: false, quantity: 0, price: 2.65 },
+      { id: "f20", code: "QNSD680", name: "TRIREFINADO 5LT", detail: "Trirefinado", checked: false, quantity: 0, price: 11.5 }
+    ]
+  },
+  {
+    name: "Bebidas",
+    items: [
+      { id: "f1", code: "QNSD51", name: "AGUA DASANI  600ML", detail: "Dasani", checked: false, quantity: 0, price: 0.5 },
+      { id: "f2", code: "QNSD52", name: "AGUA DASANI 1.2L", detail: "Dasani", checked: false, quantity: 0, price: 0.75 },
+      { id: "f3", code: "QNSD53", name: "AGUA DASANI 3.8L", detail: "Dasani", checked: false, quantity: 0, price: 1.5 },
+      { id: "f4", code: "QNSD54", name: "AGUA DASANI MINERALIZADA 500ML", detail: "Dasani", checked: false, quantity: 0, price: 0.5 },
+      { id: "f5", code: "QNSD55", name: "AGUA DASANI SIN GAS 6.05 LT", detail: "Dasani", checked: false, quantity: 0, price: 1.5 },
+      { id: "f6", code: "QNSD56", name: "AGUA DE COCO", detail: "Coco", checked: false, quantity: 0, price: 1.5 },
+      { id: "f7", code: "QNSD57", name: "AGUA MINERALIZA MANA 500ML", detail: "Mana", checked: false, quantity: 0, price: 0.35 },
+      { id: "f8", code: "QNSD58", name: "AGUA MINERALIZADA  MANA 1LT", detail: "Mana", checked: false, quantity: 0, price: 0.5 },
+      { id: "f9", code: "QNSD75", name: "AROMATEL  FRUTOS ROJOS 340ML", detail: "Frutos Rojos", checked: false, quantity: 0, price: 0.75 },
+      { id: "f10", code: "QNSD77", name: "AROMATEL COCO BAMBU 340ML", detail: "Coco Bambú", checked: false, quantity: 0, price: 1 },
+      { id: "f11", code: "QNSD78", name: "AROMATEL FLORAL 340ML", detail: "Floral", checked: false, quantity: 0, price: 0.75 },
+      { id: "f12", code: "QNSD79", name: "AROMATEL FRUTOS ROJOS  900ML", detail: "Frutos Rojos", checked: false, quantity: 0, price: 2.75 },
+      { id: "f13", code: "QNSD175", name: "CHOCOLATADA  LENUTRIT EN FUNDA 200ML", detail: "Lenutrit", checked: false, quantity: 0, price: 0.45 },
+      { id: "f14", code: "QNSD176", name: "CHOCOLATADA  LENUTRIT EN FUNDA 900ML", detail: "Lenutrit", checked: false, quantity: 0, price: 1.25 },
+      { id: "f15", code: "QNSD177", name: "CHOCOLATADA BEBIDA TONI 200ML", detail: "Toni", checked: false, quantity: 0, price: 1 },
+      { id: "f16", code: "QNSD201", name: "COCA COLA 3LT", detail: "Coca Cola", checked: false, quantity: 0, price: 3 },
+      { id: "f17", code: "QNSD202", name: "COCA COLA 500ML", detail: "Coca Cola", checked: false, quantity: 0, price: 0.75 },
+      { id: "f18", code: "QNSD203", name: "COCA COLA SABOR ORGINAL 1L", detail: "Coca Cola", checked: false, quantity: 0, price: 1.1 },
+      { id: "f19", code: "QNSD204", name: "COCACOLA  300ML", detail: "Coca Cola", checked: false, quantity: 0, price: 0.5 },
+      { id: "f20", code: "QNSD245", name: "DEL VALLE DURAZNO 250 ML", detail: "Durazno", checked: false, quantity: 0, price: 0.4 },
+      { id: "f21", code: "QNSD275", name: "FANTA  NARANJA 1.35L", detail: "Naranja", checked: false, quantity: 0, price: 1.15 },
+      { id: "f22", code: "QNSD276", name: "FANTA 3LT", detail: "Fanta", checked: false, quantity: 0, price: 3 },
+      { id: "f23", code: "QNSD277", name: "FANTA NARANJA 500ML", detail: "Naranja", checked: false, quantity: 0, price: 0.5 },
+      { id: "f24", code: "QNSD294", name: "FIORA 3LT", detail: "Fiora", checked: false, quantity: 0, price: 3 },
+      { id: "f25", code: "QNSD295", name: "FIORA VANTI 500ML", detail: "Vanti", checked: false, quantity: 0, price: 0.5 },
+      { id: "f26", code: "QNSD296", name: "FIORA VANTI FRESA 1.35L", detail: "Fresa", checked: false, quantity: 0, price: 1.15 },
+      { id: "f27", code: "QNSD303", name: "FRESA BEBIDA TONI 200ML", detail: "Fresa", checked: false, quantity: 0, price: 1 },
+      { id: "f28", code: "QNSD304", name: "FRUSH AVENA  CANELA  1000ML TONI TETRACK", detail: "Avena Canela", checked: false, quantity: 0, price: 2.5 },
+      { id: "f29", code: "QNSD305", name: "FRUSH AVENA NARANJILLA MARACUYA 200ML", detail: "Naranjilla", checked: false, quantity: 0, price: 0.5 },
+      { id: "f30", code: "QNSD309", name: "FURY ENERGY 500ML", detail: "Fury", checked: false, quantity: 0, price: 0.85 },
+      { id: "f31", code: "QNSD310", name: "FUZETEA TE NEGRO SABOR LIMON 1L", detail: "Limón", checked: false, quantity: 0, price: 1.25 },
+      { id: "f32", code: "QNSD311", name: "FUZETEA TE NEGRO SABOR LIMON 550 ML", detail: "Limón", checked: false, quantity: 0, price: 0.75 },
+      { id: "f33", code: "QNSD365", name: "INCA KOLA 1L", detail: "Inca Kola", checked: false, quantity: 0, price: 0.75 },
+      { id: "f34", code: "QNSD366", name: "INKA COLA 500ML", detail: "Inka Cola", checked: false, quantity: 0, price: 0.4 },
+      { id: "f35", code: "QNSD526", name: "POWER DE 1LT", detail: "Power", checked: false, quantity: 0, price: 1 },
+      { id: "f36", code: "QNSD621", name: "SPRITE FRESA 3L", detail: "Fresa", checked: false, quantity: 0, price: 3 },
+      { id: "f37", code: "QNSD622", name: "SPRITE SABOR A LIMON 1.35L", detail: "Limón", checked: false, quantity: 0, price: 1.01 },
+      { id: "f38", code: "QNSD623", name: "SPRITE SABOR A LIMON 500ML", detail: "Limón", checked: false, quantity: 0, price: 0.5 }
+    ]
+  },
   {
     name: "Lácteos",
     items: [
-      { id: "l1", name: "Leche", detail: "Entera pasteurizada", checked: false, quantity: 0, unit: "litro", price: 1.15 },
-      { id: "l2", name: "Queso fresco", detail: "Blanco pasteurizado", checked: false, quantity: 0, unit: "kg", price: 4.95 },
-      { id: "l3", name: "Queso mozzarella", detail: "Para pizza", checked: false, quantity: 0, unit: "kg", price: 5.65 },
-      { id: "l4", name: "Yogurt natural", detail: "Sin azúcar", checked: false, quantity: 0, unit: "litro", price: 1.60 },
-      { id: "l5", name: "Mantequilla", detail: "Sin sal", checked: false, quantity: 0, unit: "kg", price: 4.20 },
-      { id: "l6", name: "Crema", detail: "Para batir", checked: false, quantity: 0, unit: "litro", price: 2.10 },
-    ],
+      { id: "f1", code: "QNSD219", name: "CREMA DE LECHE  ORDEÑO 1LT", detail: "Crema", checked: false, quantity: 0, price: 3.6 },
+      { id: "f2", code: "QNSD220", name: "CREMA DE LECHE LENUTRIT  EN FUNDA 200 ML", detail: "Lenutrit", checked: false, quantity: 0, price: 1 },
+      { id: "f3", code: "QNSD221", name: "CREMA DE LECHE PARMALAT EN FUNDA 200ML", detail: "Parmalat", checked: false, quantity: 0, price: 1.25 },
+      { id: "f4", code: "QNSD222", name: "CREMA DE LECHE TRU 250ML", detail: "Tru", checked: false, quantity: 0, price: 1.45 },
+      { id: "f5", code: "QNSD395", name: "LA SABROSA MARGARINA  420GR", detail: "Margarina", checked: false, quantity: 0, price: 0.85 },
+      { id: "f6", code: "QNSD403", name: "LECHE  ORDEÑO 1LT FUNDA", detail: "Ordeño", checked: false, quantity: 0, price: 0.9 },
+      { id: "f7", code: "QNSD404", name: "LECHE AL GRANEL PRODUCCION LITRO", detail: "Leche", checked: false, quantity: 0, price: 0.52 },
+      { id: "f8", code: "QNSD405", name: "LECHE CONDENSADA  LA LECHERA 100GR", detail: "Lechera", checked: false, quantity: 0, price: 0.98 },
+      { id: "f9", code: "QNSD406", name: "LECHE CONDENSADA LA LECHERA 393GR", detail: "Lechera", checked: false, quantity: 0, price: 2.15 },
+      { id: "f10", code: "QNSD407", name: "LECHE HERVIDA ENTERA AL GRANEL", detail: "Leche", checked: false, quantity: 0, price: 0.75 },
+      { id: "f11", code: "QNSD408", name: "LECHE PARMALAT 200ML", detail: "Parmalat", checked: false, quantity: 0, price: 0.25 },
+      { id: "f12", code: "QNSD409", name: "LECHE TONI SEMIDESCREAMADA FRUTILLA  200 ML", detail: "Frutilla", checked: false, quantity: 0, price: 1 },
+      { id: "f13", code: "QNSD410", name: "LECHE TONI SEMIDESCREMADA FRUTILLA 135ML", detail: "Frutilla", checked: false, quantity: 0, price: 0.6 },
+      { id: "f14", code: "QNSD411", name: "LECHE VAQUITA EN POLVO 190GR", detail: "Vaquita", checked: false, quantity: 0, price: 1.69 },
+      { id: "f15", code: "QNSD412", name: "LECHE VAQUITA EN POLVO 31GR", detail: "Vaquita", checked: false, quantity: 0, price: 0.35 },
+      { id: "f16", code: "QNSD413", name: "LECHE VAQUITA EN POLVO 90GR", detail: "Vaquita", checked: false, quantity: 0, price: 0.95 },
+      { id: "f17", code: "QNSD416", name: "LENUTRIT YOGURT FRUTILLA FUNDA 750G", detail: "Frutilla", checked: false, quantity: 0, price: 1 },
+      { id: "f18", code: "QNSD417", name: "LENUTRIT YOGURT MORA FUNDA 750G", detail: "Mora", checked: false, quantity: 0, price: 1 },
+      { id: "f19", code: "QNSD420", name: "LINDA LECHE ENTERA  EN FUNDA 1LT", detail: "Linda", checked: false, quantity: 0, price: 0.75 },
+      { id: "f20", code: "QNSD444", name: "MANTECA LOS 3 CHANCHITOS", detail: "Manteca", checked: false, quantity: 0, price: 2.37 },
+      { id: "f21", code: "QNSD445", name: "MANTECA TRES CHANCHITOS 453GR", detail: "Manteca", checked: false, quantity: 0, price: 1 },
+      { id: "f22", code: "QNSD446", name: "MANTEQUILLA GIRASOL 240G", detail: "Girasol", checked: false, quantity: 0, price: 1.1 },
+      { id: "f23", code: "QNSD447", name: "MANTEQUILLA MANABA", detail: "Manaba", checked: false, quantity: 0, price: 1.5 },
+      { id: "f24", code: "QNSD448", name: "MAYONESA  250G FRAILE", detail: "Mayonesa", checked: false, quantity: 0, price: 1 },
+      { id: "f25", code: "QNSD449", name: "MAYONESA MAGGI 30GR", detail: "Maggi", checked: false, quantity: 0, price: 0.35 },
+      { id: "f26", code: "QNSD504", name: "PARMALAT DESCREMADA FUNDA 900 ML", detail: "Parmalat", checked: false, quantity: 0, price: 1.1 },
+      { id: "f27", code: "QNSD505", name: "PARMALAT DESLACTOSADA FUNDA 900 ML", detail: "Parmalat", checked: false, quantity: 0, price: 1.1 },
+      { id: "f28", code: "QNSD506", name: "PARMALAT ENTERA EN FUNDA 900 ML", detail: "Parmalat", checked: false, quantity: 0, price: 0.95 },
+      { id: "f29", code: "QNSD533", name: "PRODULECHE ENTERA EN FUNDA 1/2", detail: "Produleche", checked: false, quantity: 0, price: 0.4 },
+      { id: "f30", code: "QNSD534", name: "PRODULECHE ENTERA EN FUNDA 1/4", detail: "Produleche", checked: false, quantity: 0, price: 0.25 },
+      { id: "f31", code: "QNSD535", name: "PRODULECHE ENTERA EN FUNDA 1LT", detail: "Produleche", checked: false, quantity: 0, price: 0.7 },
+      { id: "f32", code: "QNSD537", name: "QUESO CHEDDAR FUNDIDO 500GR", detail: "Cheddar", checked: false, quantity: 0, price: 3 },
+      { id: "f33", code: "QNSD538", name: "QUESO CHEDDAR LAMINADO AL GRANEL", detail: "Cheddar", checked: false, quantity: 0, price: 2.85 },
+      { id: "f34", code: "QNSD539", name: "QUESO CHICLOSO AL GRANEL", detail: "Chicloso", checked: false, quantity: 0, price: 2.4 },
+      { id: "f35", code: "QNSD540", name: "QUESO CREMA 250GR  TONI", detail: "Queso", checked: false, quantity: 0, price: 2.5 },
+      { id: "f36", code: "QNSD541", name: "QUESO CREMA 50 G TONI", detail: "Queso", checked: false, quantity: 0, price: 0.75 },
+      { id: "f37", code: "QNSD542", name: "QUESO CREMA TONI 100GR", detail: "Queso", checked: false, quantity: 0, price: 1.25 },
+      { id: "f38", code: "QNSD543", name: "QUESO CREMA TONI DE 50G", detail: "Queso", checked: false, quantity: 0, price: 0.5 },
+      { id: "f39", code: "QNSD544", name: "QUESO DE FABRICA SEMIDURO", detail: "Queso", checked: false, quantity: 0, price: 2 },
+      { id: "f40", code: "QNSD546", name: "QUESO DE FINCA AL GRANEL", detail: "Queso", checked: false, quantity: 0, price: 2.6 },
+      { id: "f41", code: "QNSD547", name: "QUESO DE FINCA AL VACÍO 250 GR", detail: "Queso", checked: false, quantity: 0, price: 1.75 },
+      { id: "f42", code: "QNSD549", name: "QUESO DE MESA AL GRANEL", detail: "Queso", checked: false, quantity: 0, price: 1.85 },
+      { id: "f43", code: "QNSD550", name: "QUESO DE MESA PR.", detail: "Queso", checked: false, quantity: 0, price: 1.47 },
+      { id: "f44", code: "QNSD551", name: "QUESO DESCREMADO AL GRANEL", detail: "Queso", checked: false, quantity: 0, price: 0.75 },
+      { id: "f45", code: "QNSD553", name: "QUESO MOZARELLA ENTERO AL GRANEL", detail: "Mozarella", checked: false, quantity: 0, price: 2.65 },
+      { id: "f46", code: "QNSD554", name: "QUESO MOZARELLA LAMINADO AL GRANEL", detail: "Mozarella", checked: false, quantity: 0, price: 2.85 },
+      { id: "f47", code: "QNSD561", name: "RANCHITO  LECHE ENTERA  FUNDA 1LT", detail: "Ranchito", checked: false, quantity: 0, price: 0.9 },
+      { id: "f48", code: "QNSD562", name: "RANCHITO LECHE ENTERA FUNDA 1/2", detail: "Ranchito", checked: false, quantity: 0, price: 0.45 },
+      { id: "f49", code: "QNSD563", name: "RANCHITO LECHE ENTERA FUNDA 1/4", detail: "Ranchito", checked: false, quantity: 0, price: 0.25 },
+      { id: "f50", code: "QNSD576", name: "REYLECHE  DESCREMADA 1LT TETRAPPACK", detail: "Reyleche", checked: false, quantity: 0, price: 1.45 },
+      { id: "f51", code: "QNSD577", name: "REYLECHE 1LT TETRAPACK", detail: "Reyleche", checked: false, quantity: 0, price: 1.2 },
+      { id: "f52", code: "QNSD578", name: "REYLECHE DESLACTOSADA 1LT TETRACK", detail: "Reyleche", checked: false, quantity: 0, price: 1.65 },
+      { id: "f53", code: "QNSD579", name: "REYLECHE DESLACTOSADA FUNDA 900 ML", detail: "Reyleche", checked: false, quantity: 0, price: 1.1 },
+      { id: "f54", code: "QNSD580", name: "REYLECHE ENTERA FUNDA 200 ML", detail: "Reyleche", checked: false, quantity: 0, price: 0.25 },
+      { id: "f55", code: "QNSD581", name: "REYLECHE ENTERA FUNDA 450 ML", detail: "Reyleche", checked: false, quantity: 0, price: 0.5 },
+      { id: "f56", code: "QNSD582", name: "REYLECHE ENTERA REYEN FUNDA 900 ML", detail: "Reyleche", checked: false, quantity: 0, price: 1 },
+      { id: "f57", code: "QNSD583", name: "REYLECHE SEMIDESCREMADA FUNDA 900ML", detail: "Reyleche", checked: false, quantity: 0, price: 1.1 },
+      { id: "f58", code: "QNSD667", code: "QNSD668", name: "TONI LECHE   SEMIDESCREMADA 1LT TETRACK", detail: "Toni", checked: false, quantity: 0, price: 1.8 },
+      { id: "f59", code: "QNSD669", name: "TONI LECHE CARTON ENTERA 1LT", detail: "Toni", checked: false, quantity: 0, price: 1.6 },
+      { id: "f60", code: "QNSD681", name: "TRU ENTERA CARTON 1LT", detail: "Tru", checked: false, quantity: 0, price: 1.1 },
+      { id: "f61", code: "QNSD682", name: "ULTRA LECHE ENTERA EN FUNDA 900ML", detail: "Ultra", checked: false, quantity: 0, price: 0.7 }
+    ]
   },
   {
-    name: "Vegetales",
+    name: "Yogures",
     items: [
-      { id: "v1", name: "Zanahoria", detail: "Orgánica", checked: false, quantity: 0, unit: "kg", price: 1.05 },
-      { id: "v2", name: "Tomate", detail: "Maduro para ensalada", checked: false, quantity: 0, unit: "kg", price: 1.40 },
-      { id: "v3", name: "Cebolla", detail: "Blanca", checked: false, quantity: 0, unit: "kg", price: 0.90 },
-      { id: "v4", name: "Pepino", detail: "Verde fresco", checked: false, quantity: 0, unit: "kg", price: 1.25 },
-      { id: "v5", name: "Pimiento", detail: "Rojo", checked: false, quantity: 0, unit: "kg", price: 1.75 },
-      { id: "v6", name: "Espinaca", detail: "Hoja fresca", checked: false, quantity: 0, unit: "kg", price: 1.35 },
-    ],
+      { id: "f1", code: "QNSD306", name: "FRUSH YOGURTH FRUTILLA 900GR TONI", detail: "Frutilla", checked: false, quantity: 0, price: 1.5 },
+      { id: "f2", code: "QNSD416", name: "LENUTRIT YOGURT FRUTILLA FUNDA 750G", detail: "Frutilla", checked: false, quantity: 0, price: 1 },
+      { id: "f3", code: "QNSD417", name: "LENUTRIT YOGURT MORA FUNDA 750G", detail: "Mora", checked: false, quantity: 0, price: 1 },
+      { id: "f4", code: "QNSD564", name: "RANCHITO YOGURTH FRUTILLA 900GR", detail: "Frutilla", checked: false, quantity: 0, price: 0.95 },
+      { id: "f5", code: "QNSD565", name: "RANCHITO YOGURTH MORA 900GR", detail: "Mora", checked: false, quantity: 0, price: 0.95 },
+      { id: "f6", code: "QNSD688", name: "YOGURT CLASICO FRUTILLA 190G", detail: "Frutilla", checked: false, quantity: 0, price: 1 },
+      { id: "f7", code: "QNSD689", name: "YOGURT GRIEGO  NATURAL 150G", detail: "Natural", checked: false, quantity: 0, price: 1.75 },
+      { id: "f8", code: "QNSD690", name: "YOGURTH  NATURAL BOTELLA TONI 950GR", detail: "Natural", checked: false, quantity: 0, price: 3.5 },
+      { id: "f9", code: "QNSD692", name: "YOGURTH (POMO) MIX SABORES 1LT", detail: "Mix", checked: false, quantity: 0, price: 1.5 },
+      { id: "f10", code: "QNSD693", name: "YOGURTH (POMO) MIX SABORES 4LT", detail: "Mix", checked: false, quantity: 0, price: 4.5 },
+      { id: "f11", code: "QNSD694", name: "YOGURTH (POMO) MIX SABORES 500ML", detail: "Mix", checked: false, quantity: 0, price: 1 },
+      { id: "f12", code: "QNSD695", name: "YOGURTH (POMO) MIXSABORES 2LT", detail: "Mix", checked: false, quantity: 0, price: 2.5 },
+      { id: "f13", code: "QNSD696", name: "YOGURTH CLASICO 110G TONI", detail: "Clásico", checked: false, quantity: 0, price: 0.5 },
+      { id: "f14", code: "QNSD697", name: "YOGURTH GRIEGO 150GR TONI", detail: "Griego", checked: false, quantity: 0, price: 1.75 },
+      { id: "f15", code: "QNSD698", name: "YOGURTH GRIEGO FRUTILLA 150GR", detail: "Frutilla", checked: false, quantity: 0, price: 1.75 },
+      { id: "f16", code: "QNSD699", name: "YOGURTH GRIEGO MANGO 150GR", detail: "Mango", checked: false, quantity: 0, price: 1.75 },
+      { id: "f17", code: "QNSD700", name: "YOGURTH MIX FRUTI BOLITAS 180GR", detail: "Frutibolitas", checked: false, quantity: 0, price: 1 },
+      { id: "f18", code: "QNSD701", name: "YOGURTH MIX VAINI BOLITAS 180GR", detail: "Vainibolitas", checked: false, quantity: 0, price: 1 },
+      { id: "f19", code: "QNSD702", name: "YOGURTH PARAISO COCO  FUNDA   900G", detail: "Coco", checked: false, quantity: 0, price: 1 },
+      { id: "f20", code: "QNSD703", name: "YOGURTH PARAISO DURAZNO  FUNDA 900G", detail: "Durazno", checked: false, quantity: 0, price: 1 },
+      { id: "f21", code: "QNSD704", name: "YOGURTH PARAISO FUNDA 900 g", detail: "Paraíso", checked: false, quantity: 0, price: 1 },
+      { id: "f22", code: "QNSD705", name: "YOGURTH PARAISO GUANABANA 900G", detail: "Guanábana", checked: false, quantity: 0, price: 1 },
+      { id: "f23", code: "QNSD706", name: "YOGURTH PARAISO MORA 900G", detail: "Mora", checked: false, quantity: 0, price: 1 },
+      { id: "f24", code: "QNSD708", name: "YOGURTH TONI BEBIBLE 750G", detail: "Bebible", checked: false, quantity: 0, price: 1.7 }
+    ]
   },
   {
-    name: "Frutas",
+    name: "Café e Infusiones",
     items: [
-      { id: "f1", name: "Manzana", detail: "Roja", checked: false, quantity: 0, unit: "kg", price: 2.10 },
-      { id: "f2", name: "Banana", detail: "Fresca", checked: false, quantity: 0, unit: "kg", price: 0.90 },
-      { id: "f3", name: "Naranja", detail: "Para jugo", checked: false, quantity: 0, unit: "kg", price: 0.95 },
-      { id: "f4", name: "Uva", detail: "Sin semilla", checked: false, quantity: 0, unit: "kg", price: 3.20 },
-      { id: "f5", name: "Fresa", detail: "Fresca", checked: false, quantity: 0, unit: "kg", price: 3.55 },
-      { id: "f6", name: "Piña", detail: "Madura", checked: false, quantity: 0, unit: "unidad", price: 1.05 },
-    ],
-  },
-  {
-    name: "Avícolas",
-    items: [
-      { id: "a1", name: "Pollo", detail: "Pechuga sin piel", checked: false, quantity: 0, unit: "kg", price: 3.20 },
-      { id: "a2", name: "Huevos", detail: "Blancos grandes", checked: false, quantity: 0, unit: "docena", price: 1.70 },
-      { id: "a3", name: "Pavo", detail: "Rebanado para sandwich", checked: false, quantity: 0, unit: "kg", price: 3.90 },
-      { id: "a4", name: "Pollo", detail: "Muslo sin piel", checked: false, quantity: 0, unit: "kg", price: 2.65 },
-      { id: "a5", name: "Pollo", detail: "Entero", checked: false, quantity: 0, unit: "kg", price: 2.50 },
-    ],
-  },
-  {
-    name: "Plátanos y Tubérculos",
-    items: [
-      { id: "p1", name: "Plátano verde", detail: "Para freír", checked: false, quantity: 0, unit: "unidad", price: 0.20 },
-      { id: "p2", name: "Plátano maduro", detail: "Para cocinar", checked: false, quantity: 0, unit: "unidad", price: 0.25 },
-      { id: "p3", name: "Papa", detail: "Blanca", checked: false, quantity: 0, unit: "kg", price: 0.80 },
-      { id: "p4", name: "Yuca", detail: "Fresca", checked: false, quantity: 0, unit: "kg", price: 0.70 },
-      { id: "p5", name: "Batata", detail: "Naranja", checked: false, quantity: 0, unit: "kg", price: 0.90 },
-    ],
-  },
-  {
-    name: "Harinas y Cereales",
-    items: [
-      { id: "h1", name: "Harina de trigo", detail: "Todo propósito", checked: false, quantity: 0, unit: "kg", price: 0.95 },
-      { id: "h2", name: "Harina de maíz", detail: "Precocida", checked: false, quantity: 0, unit: "kg", price: 0.90 },
-      { id: "h3", name: "Arroz", detail: "Grano largo", checked: false, quantity: 0, unit: "kg", price: 1.05 },
-      { id: "h4", name: "Pasta", detail: "Espagueti", checked: false, quantity: 0, unit: "kg", price: 1.15 },
-      { id: "h5", name: "Avena", detail: "En hojuelas", checked: false, quantity: 0, unit: "kg", price: 1.40 },
-      { id: "h6", name: "Quinoa", detail: "Orgánica", checked: false, quantity: 0, unit: "kg", price: 4.40 },
-    ],
-  },
-  {
-    name: "Carnes",
-    items: [
-      { id: "c1", name: "Carne molida", detail: "Res magra", checked: false, quantity: 0, unit: "kg", price: 5.30 },
-      { id: "c2", name: "Bistec", detail: "De res", checked: false, quantity: 0, unit: "kg", price: 6.20 },
-      { id: "c3", name: "Costilla", detail: "De cerdo", checked: false, quantity: 0, unit: "kg", price: 5.00 },
-      { id: "c4", name: "Lomo", detail: "De cerdo", checked: false, quantity: 0, unit: "kg", price: 5.65 },
-      { id: "c5", name: "Chorizo", detail: "Para parrilla", checked: false, quantity: 0, unit: "kg", price: 4.80 },
-    ],
-  },
-  {
-    name: "Pescados y Mariscos",
-    items: [
-      { id: "m1", name: "Filete de pescado", detail: "Tilapia", checked: false, quantity: 0, unit: "kg", price: 3.90 },
-      { id: "m2", name: "Camarones", detail: "Medianos", checked: false, quantity: 0, unit: "kg", price: 7.10 },
-      { id: "m3", name: "Salmón", detail: "En filete", checked: false, quantity: 0, unit: "kg", price: 10.60 },
-      { id: "m4", name: "Atún", detail: "Fresco", checked: false, quantity: 0, unit: "kg", price: 5.30 },
-      { id: "m5", name: "Pulpo", detail: "Limpio", checked: false, quantity: 0, unit: "kg", price: 8.85 },
-    ],
-  },
+      { id: "f1", code: "QNSD15", name: "ILE TE HIERBALUISA CAJA 37.5GR", detail: "Hierbaluisa", checked: false, quantity: 0, price: 0.95 },
+      { id: "f2", code: "QNSD129", name: "BUENDIA CAFE FRASCO 170G", detail: "Buendía", checked: false, quantity: 0, price: 8.6 },
+      { id: "f3", code: "QNSD130", name: "BUENDIA CAFE FRASCO 50G", detail: "Buendía", checked: false, quantity: 0, price: 3.3 },
+      { id: "f4", code: "QNSD131", name: "BUENDIA CAFE FRASCO 85G", detail: "Buendía", checked: false, quantity: 0, price: 5.4 },
+      { id: "f5", code: "QNSD132", name: "CAFE  MOLIDO LOESX DE 200G", detail: "Loesx", checked: false, quantity: 0, price: 2.5 },
+      { id: "f6", code: "QNSD133", name: "CAFÉ BUEN DIA 10G", detail: "Buen Día", checked: false, quantity: 0, price: 0.5 },
+      { id: "f7", code: "QNSD134", name: "CAFE BUENDIA 20GR", detail: "Buendía", checked: false, quantity: 0, price: 1 },
+      { id: "f8", code: "QNSD135", name: "CAFE CAYETANO 100GR", detail: "Cayetano", checked: false, quantity: 0, price: 2.5 },
+      { id: "f9", code: "QNSD136", name: "CAFE CAYETANO 50GR", detail: "Cayetano", checked: false, quantity: 0, price: 1.5 },
+      { id: "f10", code: "QNSD137", name: "CAFÉ DE PASAR GAPRÉ 454 GR", detail: "Gapré", checked: false, quantity: 0, price: 3.25 },
+      { id: "f11", code: "QNSD138", name: "CAFÉ DE PASAR GAPRÉ AL GRANEL 454 GR", detail: "Gapré", checked: false, quantity: 0, price: 4.75 },
+      { id: "f12", code: "QNSD139", name: "CAFE LABRADOR 200G", detail: "Labrador", checked: false, quantity: 0, price: 2.5 },
+      { id: "f13", code: "QNSD140", name: "CAFE LABRADOR 450G", detail: "Labrador", checked: false, quantity: 0, price: 5 },
+      { id: "f14", code: "QNSD141", name: "CAFE MOLIDO LOEX 450G", detail: "Loex", checked: false, quantity: 0, price: 6 },
+      { id: "f15", code: "QNSD142", name: "CAFE ORO  40GR", detail: "Oro", checked: false, quantity: 0, price: 1.78 },
+      { id: "f16", code: "QNSD143", name: "CAFE ORO 20G", detail: "Oro", checked: false, quantity: 0, price: 1 },
+      { id: "f17", code: "QNSD144", name: "CAFE ORO 45G", detail: "Oro", checked: false, quantity: 0, price: 1.95 },
+      { id: "f18", code: "QNSD145", name: "CAFE ORO SOLUBLE  FRASCO 50G", detail: "Oro", checked: false, quantity: 0, price: 3.38 },
+      { id: "f19", code: "QNSD146", name: "CAFE ORO SOLUBLE FRASCO 85G", detail: "Oro", checked: false, quantity: 0, price: 4.89 },
+      { id: "f20", code: "QNSD147", name: "CAFE PRES2  50g", detail: "Pres2", checked: false, quantity: 0, price: 1.25 },
+      { id: "f21", code: "QNSD148", name: "CAFFE LATO  250GR TONI CAPUCCINO TETRACK", detail: "Cappuccino", checked: false, quantity: 0, price: 1 },
+      { id: "f22", code: "QNSD149", name: "CAFFE LATO CAPUCCINO 285ML TONI", detail: "Cappuccino", checked: false, quantity: 0, price: 2 },
+      { id: "f23", code: "QNSD150", name: "CAFFE LATO DOBLE ESPRESSO 285ML", detail: "Espresso", checked: false, quantity: 0, price: 2 },
+      { id: "f24", code: "QNSD151", name: "CAFFE LATO MOCACCINO 285ML TONI", detail: "Mocaccino", checked: false, quantity: 0, price: 2 },
+      { id: "f25", code: "QNSD152", name: "CAFFE MOCCACCINO TONI 250G TETRACK", detail: "Moccaccino", checked: false, quantity: 0, price: 1 },
+      { id: "f26", code: "QNSD482", name: "ORO CAFE SOLUBLE LIOFILIZADO SOBRE 23G", detail: "Oro", checked: false, quantity: 0, price: 1.1 },
+      { id: "f27", code: "QNSD676", name: "TOSCANA CAFE INSTANTANEO 45G", detail: "Toscana", checked: false, quantity: 0, price: 1.25 }
+    ]
+  }
 ]
 
 // Componente PDF actualizado
@@ -242,10 +423,11 @@ const MyDocument = ({ selectedProducts, totalPrice }) => {
               const itemPrice = calculateProductPrice(item.quantity, item.price)
               return (
                 <View key={`${category.name}-${item.name}`} style={pdfStyles.productRow}>
+                  <Text style={pdfStyles.productName}>Code: {item.code}</Text>
                   <Text style={pdfStyles.productName}>{item.name}</Text>
                   <View style={{ flexDirection: 'row', gap: 10 }}>
                     <Text style={pdfStyles.productDetail}>
-                      {item.quantity} {item.unit}
+                      cant: {item.quantity} {item.unit}
                     </Text>
                     <Text style={pdfStyles.productPrice}>
                       {formatCurrency(itemPrice)}
@@ -265,7 +447,7 @@ const MyDocument = ({ selectedProducts, totalPrice }) => {
         <Text style={pdfStyles.timestamp}>Generado el: {formatDate()}</Text>
 
         <Text style={pdfStyles.footer}>
-          Gracias por comprar en Quesería - La mejor selección de productos lácteos y más
+          Gracias por comprar en Quesería - La mejor selección de productos.
         </Text>
       </Page>
     </Document>
@@ -410,20 +592,18 @@ const ProductItem = ({ item, onChange, onQuantityChange }) => {
 
   return (
     <div
-      className={`flex flex-col p-4 rounded-xl border-2 transition-all ${
-        item.checked ? "bg-amber-50 border-chedar/70 shadow-md" : "bg-white border-gray-200 hover:border-amber-200"
-      }`}
+      className={`flex flex-col p-4 rounded-xl border-2 transition-all ${item.checked ? "bg-amber-50 border-chedar/70 shadow-md" : "bg-white border-gray-200 hover:border-amber-200"
+        }`}
     >
       <div className="flex items-start mb-2">
         <div
-          className={`flex items-center justify-center w-6 h-6 rounded-full border-2 cursor-pointer mt-1 ${
-            item.checked ? "bg-chedar border-amber-500" : "border-gray-300"
-          }`}
+          className={`flex items-center justify-center w-6 h-6 rounded-full border-2 cursor-pointer mt-1 ${item.checked ? "bg-chedar border-amber-500" : "border-gray-300"
+            }`}
           onClick={onChange}
         >
           {item.checked && <Check className="h-4 w-4 text-white" />}
         </div>
-        
+
         <div className="ml-3 flex-1">
           <div className="flex justify-between items-start">
             <div>
@@ -434,10 +614,10 @@ const ProductItem = ({ item, onChange, onQuantityChange }) => {
                 {item.detail}
               </span>
             </div>
-            
+
             {/* Precio unitario siempre visible */}
             <span className="text-sm font-medium text-emerald-600 ml-2">
-              {formatCurrency(item.price)}/{item.unit}
+              {formatCurrency(item.price)}
             </span>
           </div>
 
@@ -492,14 +672,12 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
 
   return (
     <div
-      className={`overflow-hidden transition-all rounded-xl ${
-        hasCheckedItems ? "border-2 border-chedar shadow-md" : "border border-verde"
-      }`}
+      className={`overflow-hidden transition-all rounded-xl ${hasCheckedItems ? "border-2 border-chedar shadow-md" : "border border-verde"
+        }`}
     >
       <div
-        className={`flex items-center justify-between p-4 cursor-pointer transition-colors ${
-          hasCheckedItems ? "bg-chedar" : "bg-white hover:bg-gray-50"
-        }`}
+        className={`flex items-center justify-between p-4 cursor-pointer transition-colors ${hasCheckedItems ? "bg-chedar" : "bg-white hover:bg-gray-50"
+          }`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <h3 className="text-lg font-play text-verde tracking-wide flex items-center">
@@ -520,11 +698,10 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
       </div>
 
       <div
-        className={`transition-all duration-300 ease-in-out ${
-          isExpanded ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-        }`}
+        className={`transition-all duration-300 ease-in-out ${isExpanded ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          }`}
       >
-        <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-3 overflow-y-scroll max-h-[400px] bg-white/50">
           {category.items.map((item) => (
             <ProductItem
               key={item.id}
@@ -540,7 +717,7 @@ const ProductCategory = ({ category, categoryIndex, onCheckboxChange, onQuantity
 }
 
 // Componente SelectedSummary mejorado
-const SelectedSummary = ({ selectedProducts = [], totalPrice = 0, onClose = () => {}, onViewPDF = () => {} }) => {
+const SelectedSummary = ({ selectedProducts = [], totalPrice = 0, onClose = () => { }, onViewPDF = () => { } }) => {
   const totalItems = selectedProducts.reduce((acc, cat) => acc + cat.items.length, 0)
 
   return (
@@ -659,56 +836,56 @@ function App() {
   const STORAGE_KEY = "shoppingList";
 
 
- useEffect(() => {
-  setIsClient(true);
+  useEffect(() => {
+    setIsClient(true);
 
-  const checkIfMobile = () => setIsMobile(window.innerWidth < 1024);
-  checkIfMobile();
-  window.addEventListener("resize", checkIfMobile);
+    const checkIfMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
 
-  if (typeof window !== "undefined") {
-    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (typeof window !== "undefined") {
+      const saved = sessionStorage.getItem(STORAGE_KEY);
 
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
 
-        const merged = initialCategories.map((cat) => {
-          const oldCat = parsed.find((c) => c.name === cat.name) ?? { items: [] };
+          const merged = initialCategories.map((cat) => {
+            const oldCat = parsed.find((c) => c.name === cat.name) ?? { items: [] };
 
-          return {
-            ...cat,
-            items: cat.items.map((item) => {
-              const oldItem = oldCat.items.find((i) => i.id === item.id) ?? {};
-              return {
-                ...item,
-                checked: oldItem.checked ?? false,
-                quantity: oldItem.quantity ?? 0,
-              };
-            }),
-          };
-        });
+            return {
+              ...cat,
+              items: cat.items.map((item) => {
+                const oldItem = oldCat.items.find((i) => i.id === item.id) ?? {};
+                return {
+                  ...item,
+                  checked: oldItem.checked ?? false,
+                  quantity: oldItem.quantity ?? 0,
+                };
+              }),
+            };
+          });
 
-        setCategories(merged);
-      } catch (e) {
-        console.error("Error al fusionar datos:", e);
+          setCategories(merged);
+        } catch (e) {
+          console.error("Error al fusionar datos:", e);
+        }
       }
     }
-  }
 
-  return () => window.removeEventListener("resize", checkIfMobile);
-}, []);
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
 
   useEffect(() => {
-  if (isClient && typeof window !== "undefined") {
-    try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(categories));
-    } catch (e) {
-      console.error("Error al guardar datos:", e);
+    if (isClient && typeof window !== "undefined") {
+      try {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(categories));
+      } catch (e) {
+        console.error("Error al guardar datos:", e);
+      }
     }
-  }
-}, [categories, isClient]);
+  }, [categories, isClient]);
 
 
   const selectedProducts = useMemo(() => {
@@ -807,11 +984,10 @@ function App() {
               <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                 <button
                   onClick={() => setShowSummary(!showSummary)}
-                  className={`flex items-center justify-center px-4 py-3 rounded-xl font-medium transition-colors w-full sm:w-auto ${
-                    hasSelectedProducts
+                  className={`flex items-center justify-center px-4 py-3 rounded-xl font-medium transition-colors w-full sm:w-auto ${hasSelectedProducts
                       ? "bg-chedar text-white hover:bg-chedar shadow-md"
                       : "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  }`}
+                    }`}
                   disabled={!hasSelectedProducts}
                 >
                   <ShoppingCart className="h-5 w-5 mr-2" />
@@ -847,11 +1023,10 @@ function App() {
                     <div className="flex space-x-2 min-w-max">
                       <button
                         onClick={() => setActiveCategory(null)}
-                        className={`px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
-                          activeCategory === null
+                        className={`px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${activeCategory === null
                             ? "bg-chedar text-white"
                             : "bg-white border border-amber-200 text-chedar"
-                        }`}
+                          }`}
                       >
                         Todos los productos
                       </button>
@@ -859,18 +1034,16 @@ function App() {
                         <button
                           key={category.name}
                           onClick={() => setActiveCategory(index)}
-                          className={`px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
-                            activeCategory === index
+                          className={`px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${activeCategory === index
                               ? "bg-amber-500 text-white"
                               : "bg-white border border-verde text-verde"
-                          } ${category.items.some((item) => item.checked) ? "font-medium" : ""}`}
+                            } ${category.items.some((item) => item.checked) ? "font-medium" : ""}`}
                         >
                           {category.name}
                           {category.items.some((item) => item.checked) && (
                             <span
-                              className={`ml-1.5 px-1.5 text-xs rounded-full ${
-                                activeCategory === index ? "bg-white text-amber-600" : "bg-chedar text-white font-bold"
-                              }`}
+                              className={`ml-1.5 px-1.5 text-xs rounded-full ${activeCategory === index ? "bg-white text-amber-600" : "bg-chedar text-white font-bold"
+                                }`}
                             >
                               {category.items.filter((item) => item.checked).length}
                             </span>
