@@ -18,7 +18,7 @@ export default function ProductsOfTheWeek({
   const [hoveredCard, setHoveredCard] = useState(null);
   const [products, setProducts] = useState(initialProducts);
   const [lastUpdated, setLastUpdated] = useState(initialLastUpdated);
-  const { timeLeft, resetTimer, setIsActive } = usePersistentTimer(1 * 10 * 30);
+  const { timeLeft, resetTimer, setIsActive } = usePersistentTimer(24 * 60 * 60);
   const [isChecking, setIsChecking] = useState(false);
 
   // Función para obtener productos directamente de Contentful
